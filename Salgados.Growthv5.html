@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Como fazer 20k sem sair de casa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* massa e fritura: marrom tostado, creme e dourado */
+    --ink:#1E1410;
+    --dark:#241811;
+    --dark-2:#2E1F16;
+    --dark-line:#3D2B20;
+    --cream:#FAF5EC;
+    --cream-2:#FFFFFF;
+    --cream-line:#E8DECD;
+    --gold:#F7B733;
+    --gold-deep:#E09A16;
+    --ember:#D6452B;
+    --text-light:#FFF8EE;
+    --muted-light:#C3AF9E;
+    --muted-dark:#6E6055;
+    --safe-t:env(safe-area-inset-top,0px);
+    --safe-b:env(safe-area-inset-bottom,0px);
+    --r:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:calc(82px + var(--safe-t));}
+  body{
+    background:var(--dark);color:var(--text-light);
+    font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%;
+    padding-top:var(--safe-t);overflow-x:hidden;
+  }
+  img,svg{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px;}
+
+  h1,h2,h3,.brand,.price-big,.stat b{font-family:'Outfit',sans-serif;letter-spacing:-0.03em;}
+  h1{font-size:clamp(2.3rem,1.6rem + 3.4vw,3.9rem);line-height:1.05;font-weight:800;}
+  h2{font-size:clamp(1.7rem,1.3rem + 2vw,2.5rem);line-height:1.12;font-weight:800;max-width:19ch;}
+  .hl{color:var(--gold);}
+  .hl-2{color:var(--ember);}
+
+  .eyebrow{display:flex;align-items:center;gap:10px;font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .eyebrow::before{content:"";width:26px;height:1px;background:currentColor;flex:0 0 auto;}
+  .lead{color:var(--muted-light);max-width:58ch;margin-top:14px;font-size:1rem;}
+
+  /* ---- BOTÃO PÍLULA COM SELO DE SETA ---- */
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;background:var(--gold);color:#241811;
+    border:none;border-radius:999px;padding:8px 8px 8px 24px;font-family:'Figtree',sans-serif;
+    font-weight:700;font-size:1rem;text-decoration:none;cursor:pointer;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .btn::after{
+    content:"↗";display:inline-flex;align-items:center;justify-content:center;
+    width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--gold);
+    font-size:.95rem;flex:0 0 auto;
+  }
+  .btn:hover{background:var(--gold-deep);transform:translateY(-1px);}
+  .btn:focus-visible{outline:3px solid var(--ember);outline-offset:3px;}
+  .btn-sm{padding:6px 6px 6px 18px;font-size:.88rem;}
+  .btn-sm::after{width:30px;height:30px;font-size:.85rem;}
+  .btn-dark{background:var(--ink);color:var(--gold);}
+  .btn-dark::after{background:var(--gold);color:var(--ink);}
+  .btn-dark:hover{background:#150D09;}
+
+  /* ---- TOPO FIXO ---- */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(36,24,17,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--dark-line);}
+  .topbar .wrap{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px;}
+  .brand{font-weight:800;font-size:1.15rem;white-space:nowrap;}
+  .brand span{color:var(--gold);}
+  .timer{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(247,183,51,.45);background:rgba(247,183,51,.1);color:var(--gold);border-radius:999px;padding:7px 14px;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;}
+  .timer b{font-variant-numeric:tabular-nums;font-size:.9rem;letter-spacing:.02em;}
+  .topbar-note{color:var(--muted-light);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .topbar .btn{margin-left:auto;}
+
+  /* ---- FAIXA CORRIDA ---- */
+  .marquee{background:var(--gold);color:#241811;overflow:hidden;padding:10px 0;}
+  .marquee-track{display:flex;gap:40px;width:max-content;animation:slide 26s linear infinite;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;}
+  @keyframes slide{to{transform:translateX(-50%);}}
+
+  /* ---- SEÇÕES ---- */
+  section{padding:76px 0;}
+  .light{background:var(--cream);color:var(--ink);}
+  .light .lead,.light p{color:var(--muted-dark);}
+  .light .eyebrow{color:var(--ember);}
+  .light h2,.light h3{color:var(--ink);}
+  .curve{display:block;width:100%;height:46px;}
+  .curve.to-dark{background:var(--cream);}
+  .curve.to-light{background:var(--dark);}
+
+  /* ---- HERO ---- */
+  .hero{padding:72px 0 56px;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;}
+  .hero p{color:var(--muted-light);margin-top:20px;max-width:46ch;}
+  .hero .btn{margin-top:28px;}
+  .hero-checks{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;color:var(--muted-light);font-size:.82rem;}
+  .hero-checks span{display:inline-flex;align-items:center;gap:7px;}
+  .tick{width:17px;height:17px;border-radius:50%;background:rgba(247,183,51,.16);color:var(--gold);display:inline-flex;align-items:center;justify-content:center;font-size:.6rem;flex:0 0 auto;}
+  .hero-media{border-radius:26px;overflow:hidden;border:1px solid var(--dark-line);background:linear-gradient(160deg,#3A2718,#241811);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;position:relative;}
+  .hero-media p{color:var(--muted-light);font-size:.84rem;max-width:26ch;}
+  .hero-media video,.hero-media img,.hero-media iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;}
+  .hero-tag{position:absolute;left:16px;bottom:16px;display:flex;align-items:center;gap:9px;background:rgba(255,248,238,.95);color:var(--ink);border-radius:999px;padding:8px 14px;font-size:.76rem;font-weight:600;}
+  .hero-tag i{width:9px;height:9px;border-radius:50%;background:var(--ember);display:block;}
+
+  /* ---- CARDS DE NÚMERO ---- */
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px;}
+  .stat{background:var(--cream-2);border:1px solid var(--cream-line);border-radius:var(--r);padding:24px 20px;}
+  .stat-ico{width:38px;height:38px;border-radius:12px;background:rgba(214,69,43,.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .stat-ico svg{width:19px;height:19px;stroke:var(--ember);fill:none;stroke-width:1.8;}
+  .stat b{display:block;font-size:1.75rem;font-weight:800;color:var(--ember);line-height:1.1;}
+  .stat span{font-size:.84rem;color:var(--muted-dark);display:block;margin-top:6px;}
+  .disclaimer{color:var(--muted-dark);font-size:.75rem;margin-top:22px;max-width:70ch;}
+
+  /* ---- LISTA DE ENTREGÁVEIS ---- */
+  .deliver{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:34px;}
+  .deliver-item{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:16px;padding:18px 20px;display:flex;gap:13px;align-items:flex-start;font-size:.92rem;}
+  .deliver-item .tick{background:rgba(247,183,51,.18);margin-top:3px;}
+  .light .deliver-item{background:var(--cream-2);border-color:var(--cream-line);color:var(--ink);}
+  .light .deliver-item .tick{background:rgba(214,69,43,.12);color:var(--ember);}
+
+  /* ---- DESTAQUE / BÔNUS EM MOLDURA ---- */
+  .frame{border:1.5px solid var(--gold);border-radius:var(--r);padding:26px;margin-top:20px;background:rgba(247,183,51,.05);}
+  .frame .eyebrow{margin-bottom:10px;}
+  .frame h3{font-size:1.25rem;font-weight:700;margin-bottom:8px;}
+  .frame p{color:var(--muted-light);font-size:.92rem;max-width:62ch;}
+
+  /* ---- CALCULADORA ---- */
+  .calc{display:grid;grid-template-columns:1fr 320px;gap:32px;align-items:center;margin-top:34px;background:var(--cream-2);border:1px solid var(--cream-line);border-radius:var(--r);padding:30px;}
+  .calc-field{margin-bottom:22px;}
+  .calc-field:last-child{margin-bottom:0;}
+  .calc-field label{display:flex;justify-content:space-between;font-size:.88rem;color:var(--muted-dark);margin-bottom:10px;}
+  .calc-field label b{color:var(--ink);font-weight:700;}
+  .calc input[type=range]{width:100%;accent-color:var(--ember);height:4px;}
+  .calc-out{background:var(--ink);border-radius:18px;padding:26px 22px;text-align:center;color:var(--text-light);}
+  .calc-out small{color:var(--muted-light);font-size:.8rem;display:block;}
+  .calc-out b{display:block;font-family:'Outfit',sans-serif;font-size:2.1rem;font-weight:800;color:var(--gold);letter-spacing:-.03em;margin:8px 0 4px;}
+  .calc-note{color:var(--muted-dark);font-size:.75rem;margin-top:16px;}
+
+  /* ---- DUAS COLUNAS (serve / não serve) ---- */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px;}
+  .col{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:var(--r);padding:26px;}
+  .col.on{border-color:var(--gold);background:rgba(247,183,51,.06);}
+  .col h3{font-size:1.05rem;font-weight:700;margin-bottom:16px;}
+  .col ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .col li{display:flex;gap:11px;font-size:.9rem;color:var(--muted-light);line-height:1.5;}
+  .col li i{font-style:normal;flex:0 0 auto;font-weight:700;}
+  .col.on li i{color:var(--gold);}
+  .col.off li i{color:#7A6857;}
+
+  /* ---- QUEM CRIOU ---- */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  .about-media{border-radius:26px;overflow:hidden;border:1px solid var(--dark-line);background:linear-gradient(160deg,#3A2718,#241811);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;position:relative;}
+  .about-media p{color:var(--muted-light);font-size:.84rem;}
+  .about-media img,.about-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px;}
+  .chip{border:1px solid var(--dark-line);background:var(--dark-2);border-radius:999px;padding:8px 15px;font-size:.8rem;color:var(--text-light);}
+
+  /* ---- DEPOIMENTOS ---- */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px;}
+  .testi{background:var(--cream-2);border:1px solid var(--cream-line);border-radius:18px;padding:14px;}
+  .testi-badge{display:inline-block;background:var(--cream);border:1px solid var(--cream-line);color:var(--muted-dark);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin-bottom:12px;}
+  .wa{background:#E9DDCE;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px;}
+  .wa div{max-width:88%;padding:9px 11px;border-radius:9px;font-size:.82rem;line-height:1.45;color:#191919;}
+  .wa .in{align-self:flex-start;background:#fff;border-top-left-radius:3px;}
+  .wa .out{align-self:flex-end;background:#DCF8C6;border-top-right-radius:3px;}
+  .wa time{display:block;text-align:right;font-size:.63rem;color:#5B8A5B;margin-top:4px;}
+
+  /* ---- BÔNUS ---- */
+  .bonus-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px;}
+  .bonus{background:var(--cream-2);border:1px solid var(--cream-line);border-radius:var(--r);overflow:hidden;}
+  .bonus-top{background:linear-gradient(150deg,#2E1F16,#4A2F1C);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;}
+  .bonus-top span{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.15rem;color:var(--gold);line-height:1.15;}
+  .bonus-body{padding:18px;}
+  .bonus-tag{display:inline-block;background:rgba(214,69,43,.1);color:var(--ember);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:10px;}
+  .bonus h4{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:5px;}
+  .bonus p{font-size:.82rem;color:var(--muted-dark);}
+
+  /* ---- OFERTA ---- */
+  .offer{max-width:720px;margin:34px auto 0;background:var(--cream-2);border-radius:26px;padding:38px 34px;color:var(--ink);text-align:center;}
+  .price-anchor{color:var(--muted-dark);text-decoration:line-through;font-size:.95rem;}
+  .price-label{color:var(--muted-dark);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;margin-top:6px;}
+  .price-big{font-size:clamp(2.8rem,2rem + 3vw,3.6rem);font-weight:800;color:var(--ember);line-height:1;margin:6px 0 4px;}
+  .price-sub{color:var(--muted-dark);font-size:.86rem;}
+  .offer-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left;margin:26px 0 28px;}
+  .offer-list div{display:flex;gap:10px;font-size:.87rem;color:var(--ink);}
+  .offer-list .tick{background:rgba(214,69,43,.12);color:var(--ember);margin-top:3px;}
+  .offer .btn{width:100%;justify-content:space-between;background:var(--ember);color:#fff;padding:12px 12px 12px 26px;font-size:1.02rem;}
+  .offer .btn::after{background:#fff;color:var(--ember);width:40px;height:40px;}
+  .offer .btn:hover{background:#B63722;}
+  .secure{color:var(--muted-dark);font-size:.76rem;margin-top:14px;}
+
+  /* ---- GARANTIA ---- */
+  .guarantee{display:flex;gap:24px;align-items:center;max-width:720px;margin:20px auto 0;background:var(--dark-2);border:1px solid var(--dark-line);border-radius:var(--r);padding:24px;}
+  .seal{flex:0 0 auto;width:92px;height:92px;border-radius:50%;background:var(--gold);color:#241811;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.05;}
+  .seal b{font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:800;}
+  .seal span{font-size:.6rem;font-weight:700;max-width:66px;}
+  .guarantee h3{font-size:1.05rem;font-weight:700;margin-bottom:6px;}
+  .guarantee p{color:var(--muted-light);font-size:.89rem;}
+
+  /* ---- FAQ ---- */
+  .faq{display:flex;flex-direction:column;gap:10px;margin-top:30px;}
+  .faq details{background:var(--cream-2);border:1px solid var(--cream-line);border-radius:16px;overflow:hidden;}
+  .faq summary{list-style:none;cursor:pointer;padding:18px 20px;font-weight:600;font-size:.96rem;color:var(--ink);display:flex;justify-content:space-between;gap:14px;align-items:center;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary i{font-style:normal;color:var(--ember);transition:transform .2s ease;flex:0 0 auto;}
+  .faq details[open] summary i{transform:rotate(180deg);}
+  .faq .body{padding:0 20px 18px;color:var(--muted-dark);font-size:.9rem;}
+
+  /* ---- FECHAMENTO + RODAPÉ ---- */
+  .closing{text-align:center;padding:84px 0 60px;}
+  .closing h2{margin:0 auto;max-width:17ch;}
+  .closing p{color:var(--muted-light);margin:16px auto 0;max-width:46ch;}
+  .closing .btn{margin-top:28px;}
+  .closing .hero-checks{justify-content:center;}
+  footer{padding:0 0 calc(40px + var(--safe-b));}
+  .foot-card{background:#150D09;border-radius:26px;padding:34px;}
+  .foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;}
+  .foot-card .brand{display:block;margin-bottom:8px;}
+  .foot-card .desc{color:var(--muted-light);font-size:.85rem;max-width:34ch;}
+  .foot-links{display:flex;gap:44px;flex-wrap:wrap;}
+  .foot-links h5{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  .foot-links a{display:block;color:var(--text-light);text-decoration:none;font-size:.87rem;padding:4px 0;}
+  .foot-links a:hover{color:var(--gold);}
+  .legal{color:#8A7768;font-size:.75rem;line-height:1.6;margin-top:28px;max-width:88ch;}
+  .copy{color:#6E5E51;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-top:22px;}
+
+  /* ---- CTA FIXO NO CELULAR + WHATSAPP ---- */
+  .mobile-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(21,13,9,.96);border-top:1px solid var(--dark-line);padding:12px 18px calc(12px + var(--safe-b));}
+  .mobile-cta .row{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .mobile-cta b{display:block;font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:800;color:var(--gold);}
+  .mobile-cta small{color:var(--muted-light);font-size:.7rem;}
+  .wa-float{position:fixed;right:16px;bottom:16px;z-index:55;width:50px;height:50px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.6);}
+  .wa-float svg{width:25px;height:25px;fill:#fff;}
+
+  /* ---- MODAL ---- */
+  .backdrop{display:none;position:fixed;inset:0;background:rgba(15,9,6,.78);z-index:100;align-items:center;justify-content:center;padding:20px;}
+  .backdrop.open{display:flex;}
+  .modal{background:var(--cream);color:var(--ink);border-radius:24px;padding:30px;max-width:420px;width:100%;position:relative;}
+  .modal h3{font-size:1.3rem;font-weight:800;margin-bottom:8px;}
+  .modal .desc{color:var(--muted-dark);font-size:.88rem;margin-bottom:18px;}
+  .modal input{width:100%;background:#fff;border:1px solid var(--cream-line);border-radius:12px;color:var(--ink);padding:14px 16px;font-size:.95rem;font-family:inherit;margin-bottom:11px;outline:none;}
+  .modal input:focus{border-color:var(--ember);}
+  .modal .btn{width:100%;justify-content:space-between;background:var(--ember);color:#fff;padding:11px 11px 11px 22px;}
+  .modal .btn::after{background:#fff;color:var(--ember);}
+  .modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted-dark);font-size:1.5rem;cursor:pointer;line-height:1;}
+  .form-legal{color:var(--muted-dark);font-size:.73rem;margin-top:12px;}
+  .confirm{display:none;text-align:center;font-weight:700;padding:22px 0;}
+
+  @media(max-width:900px){
+    .hero-grid,.about,.calc{grid-template-columns:1fr;gap:34px;}
+    .hero-media{aspect-ratio:16/11;}
+    .stat-grid,.bonus-grid{grid-template-columns:1fr 1fr;}
+    .testi-grid{grid-template-columns:1fr 1fr;}
+    .topbar-note{display:none;}
+  }
+  @media(max-width:720px){
+    section{padding:58px 0;}
+    .deliver,.two,.offer-list{grid-template-columns:1fr;}
+    .testi-grid{grid-template-columns:1fr;}
+    .guarantee{flex-direction:column;text-align:center;}
+    .mobile-cta{display:block;}
+    body{padding-bottom:calc(80px + var(--safe-b));}
+    .wa-float{bottom:calc(86px + var(--safe-b));}
+    .topbar .btn{display:none;}
+    .timer{margin-left:auto;}
+    .offer{padding:30px 22px;}
+    .foot-card{padding:26px 22px;}
+  }
+  @media(max-width:460px){
+    .stat-grid,.bonus-grid{grid-template-columns:1fr;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">salgados<span>.growth</span></div>
+    <div class="timer">⚠ Preço de fundador expira em <b id="timer">09:58</b></div>
+    <div class="topbar-note">Turma de fundadores</div>
+    <button class="btn btn-sm open-waitlist">Garantir vaga</button>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Método 20k sem sair de casa</div>
+      <h1>Você também pode sair do <span class="hl">zero</span> aos primeiros <span class="hl-2">R$20 mil</span> vendendo de casa.</h1>
+      <p>Você não precisa de loja, nem de experiência com vendas. Aprenda, passo a passo, do produto certo até o pedido fechado no WhatsApp — nas horas livres, sem largar o emprego.</p>
+      <button class="btn open-waitlist">Quero garantir minha vaga</button>
+      <div class="hero-checks">
+        <span><i class="tick">✓</i> Criado dentro de uma operação real</span>
+        <span><i class="tick">✓</i> Pagamento único de R$99,90</span>
+        <span><i class="tick">✓</i> 7 dias de garantia</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <p>Coloque aqui uma foto sua com os salgados prontos, ou o vídeo de apresentação.</p>
+      <div class="hero-tag"><i></i> Método criado numa cozinha de casa</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Produto validado</span><span>Precificação</span><span>Roteiros virais</span><span>Vendas no WhatsApp</span><span>Rotina e gestão</span><span>Suporte no grupo</span>
+    <span>Produto validado</span><span>Precificação</span><span>Roteiros virais</span><span>Vendas no WhatsApp</span><span>Rotina e gestão</span><span>Suporte no grupo</span>
+  </div>
+</div>
+
+<section class="light">
+  <div class="wrap">
+    <div class="eyebrow">Resultados reais</div>
+    <h2>Começou em casa e virou três lojas</h2>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"/></svg></div>
+        <b>3 lojas</b><span>abertas em 2 anos, partindo da cozinha de casa</span>
+      </div>
+      <div class="stat">
+        <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M21 7v6h-6"/></svg></div>
+        <b>R$20 mil</b><span>é a meta que o método persegue em vendas no mês</span>
+      </div>
+      <div class="stat">
+        <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+        <b>4 áreas</b><span>de especialistas no grupo: gestão, marketing, tecnologia e contabilidade</span>
+      </div>
+      <div class="stat">
+        <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M20.6 12.6L12 21.2 2.8 12 12 2.8h8.6z"/><circle cx="15.5" cy="8.5" r="1.4"/></svg></div>
+        <b>7 dias</b><span>de garantia incondicional para testar sem risco</span>
+      </div>
+    </div>
+    <p class="disclaimer">Resultados da operação que deu origem ao método. Não representam garantia de resultado individual.</p>
+  </div>
+</section>
+
+<svg class="curve to-dark" viewBox="0 0 1440 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C360,52 1080,52 1440,0 L1440,46 L0,46 Z" fill="#241811"/></svg>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">O que você vai receber</div>
+    <h2>Tudo o que eu queria saber no dia 1</h2>
+    <p class="lead">Cada aula resolve um travamento de quem quer renda própria e ainda não tem negócio: o que vender, como vender sem aparecer, como precificar sem perder dinheiro e quando dar o próximo passo.</p>
+    <div class="deliver">
+      <div class="deliver-item"><i class="tick">✓</i> Produto e cardápio já validados na prática</div>
+      <div class="deliver-item"><i class="tick">✓</i> Criativos que geram pedido, sem produtora e sem aparecer</div>
+      <div class="deliver-item"><i class="tick">✓</i> Roteiros de vídeos virais prontos pra gravar</div>
+      <div class="deliver-item"><i class="tick">✓</i> Estratégias pra fazer o perfil crescer do zero</div>
+      <div class="deliver-item"><i class="tick">✓</i> Ficha técnica de precificação, sem trabalhar de graça</div>
+      <div class="deliver-item"><i class="tick">✓</i> Script de WhatsApp do primeiro contato ao pedido fechado</div>
+      <div class="deliver-item"><i class="tick">✓</i> Controle de estoque e produção mesmo produzindo sozinho</div>
+      <div class="deliver-item"><i class="tick">✓</i> Os sinais de quando dá pra largar o CLT sem se endividar</div>
+      <div class="deliver-item"><i class="tick">✓</i> Grupo no WhatsApp com especialistas pra tirar dúvidas</div>
+      <div class="deliver-item"><i class="tick">✓</i> Acesso quase vitalício ao curso e às atualizações</div>
+    </div>
+
+    <div class="frame">
+      <div class="eyebrow">Bônus exclusivo</div>
+      <h3>Planilha de precificação</h3>
+      <p>Coloque o valor dos insumos que você compra e descubra o custo real de cada salgado e o preço de venda que preserva a sua margem.</p>
+    </div>
+
+    <div style="margin-top:28px;"><button class="btn open-waitlist">Quero começar</button></div>
+  </div>
+</section>
+
+<svg class="curve to-light" viewBox="0 0 1440 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C360,52 1080,52 1440,0 L1440,46 L0,46 Z" fill="#FAF5EC"/></svg>
+
+<section class="light" id="simulador">
+  <div class="wrap">
+    <div class="eyebrow">Faz a conta</div>
+    <h2>Quanto dá pra faturar vendendo de casa</h2>
+    <p class="lead">Mexa nos controles com a sua realidade: quantos pedidos por dia você consegue atender e quanto entra em cada pedido.</p>
+    <div class="calc">
+      <div>
+        <div class="calc-field">
+          <label for="calcPedidos">Pedidos por dia <b id="outPedidos">8</b></label>
+          <input type="range" id="calcPedidos" min="1" max="40" value="8">
+        </div>
+        <div class="calc-field">
+          <label for="calcTicket">Valor médio do pedido <b id="outTicket">R$60</b></label>
+          <input type="range" id="calcTicket" min="20" max="200" step="5" value="60">
+        </div>
+        <div class="calc-field">
+          <label for="calcDias">Dias de venda por mês <b id="outDias">22</b></label>
+          <input type="range" id="calcDias" min="8" max="30" value="22">
+        </div>
+      </div>
+      <div class="calc-out">
+        <small>Faturamento estimado no mês</small>
+        <b id="outFat">R$10.560</b>
+        <small>margem de 40% ≈ <span id="outLucro">R$4.224</span> de lucro</small>
+      </div>
+    </div>
+    <p class="calc-note">Simulação para você projetar cenários. Não é promessa de resultado: depende do seu produto, da sua região e da sua execução.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Antes de entrar</div>
+    <h2>Isso serve pra você?</h2>
+    <div class="two">
+      <div class="col on">
+        <h3>Faz sentido se você</h3>
+        <ul>
+          <li><i>✓</i> Está no CLT e quer uma renda própria começando pelas horas livres</li>
+          <li><i>✓</i> Quer vender de casa antes de pensar em ponto físico</li>
+          <li><i>✓</i> Nunca vendeu nada e precisa de um passo a passo</li>
+          <li><i>✓</i> Já vende, mas desconfia que está com o preço errado</li>
+          <li><i>✓</i> Não quer aparecer em vídeo e mesmo assim precisa atrair pedidos</li>
+        </ul>
+      </div>
+      <div class="col off">
+        <h3>Não faz sentido se você</h3>
+        <ul>
+          <li><i>✕</i> Procura dinheiro rápido sem colocar a mão na massa</li>
+          <li><i>✕</i> Não pretende separar algumas horas por semana pra aplicar</li>
+          <li><i>✕</i> Quer garantia de faturamento — o resultado depende da sua execução</li>
+          <li><i>✕</i> Já tem uma operação grande e busca consultoria personalizada</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap about">
+    <div>
+      <div class="eyebrow">Quem criou o método</div>
+      <h2>Comecei sem uma grande estrutura</h2>
+      <p class="lead">Comecei com uma máquina de salgados em casa, sem sócio investidor e sem fórmula de internet. Testei produto, vendi pelo WhatsApp, rodei os primeiros anúncios sozinho — e em 2 anos abri 3 lojas físicas.</p>
+      <p class="lead">Tudo que está no curso eu apliquei antes de ensinar. No grupo você fala comigo e com quem cuida de gestão, marketing, tecnologia e contabilidade.</p>
+      <div class="chips">
+        <span class="chip">Começou dentro de casa</span>
+        <span class="chip">Vendas pelo WhatsApp</span>
+        <span class="chip">Testado na prática</span>
+        <span class="chip">3 lojas em 2 anos</span>
+      </div>
+    </div>
+    <div class="about-media">
+      <p>Coloque aqui a sua foto — de preferência na cozinha ou na loja.</p>
+      <div class="hero-tag"><i></i> Método criado numa operação real</div>
+    </div>
+  </div>
+</section>
+
+<svg class="curve to-light" viewBox="0 0 1440 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C360,52 1080,52 1440,0 L1440,46 L0,46 Z" fill="#FAF5EC"/></svg>
+
+<section class="light" id="depoimentos">
+  <div class="wrap">
+    <div class="eyebrow">Feedbacks</div>
+    <h2>O que estão achando do método</h2>
+    <p class="lead">Um gostinho do tipo de conversa que rola no grupo de suporte da turma de fundadores. Troque por prints reais assim que tiver.</p>
+    <div class="testi-grid">
+      <div class="testi"><span class="testi-badge">Aluno(a) do método</span>
+        <div class="wa"><div class="in">Confesso que entrei meio inseguro(a), nunca vendi nada antes.</div><div class="out">Segui o passo a passo do jeito que tá lá e já saiu o primeiro pedido essa semana 🙌<time>08:42 ✓✓</time></div></div>
+      </div>
+      <div class="testi"><span class="testi-badge">Aluno(a) do método</span>
+        <div class="wa"><div class="in">A parte de precificação salvou minha vida, eu tava vendendo no prejuízo sem saber.</div><div class="out">Agora eu sei exatamente quanto cobrar de cada coisa<time>19:15 ✓✓</time></div></div>
+      </div>
+      <div class="testi"><span class="testi-badge">Aluno(a) do método</span>
+        <div class="wa"><div class="in">Gente, o script de WhatsApp funciona mesmo, parei de parecer robô kkkk</div><div class="out">Já fechei 3 pedidos só de hoje usando ele<time>21:03 ✓✓</time></div></div>
+      </div>
+      <div class="testi"><span class="testi-badge">Aluno(a) do método</span>
+        <div class="wa"><div class="in">Não tenho jeito nenhum pra aparecer em vídeo, tava travado nisso.</div><div class="out">Os roteiros sem aparecer me destravaram total, valeu demais 🙏<time>14:27 ✓✓</time></div></div>
+      </div>
+      <div class="testi"><span class="testi-badge">Aluno(a) do método</span>
+        <div class="wa"><div class="in">Ainda trabalho de carteira assinada, dá pra fazer nas horas vagas mesmo?</div><div class="out">Dá sim, eu tô fazendo tudo depois do expediente e já vendo resultado<time>22:50 ✓✓</time></div></div>
+      </div>
+      <div class="testi"><span class="testi-badge">Aluno(a) do método</span>
+        <div class="wa"><div class="in">Bom dia! Passando só pra agradecer, o grupo de suporte tira muita dúvida.</div><div class="out">Nunca me senti sozinho(a) nesse processo, obrigado(a) de verdade<time>09:11 ✓✓</time></div></div>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin-top:58px;">Bônus exclusivos</div>
+    <h2>Pra quem entra na turma de fundadores</h2>
+    <div class="bonus-grid">
+      <div class="bonus">
+        <div class="bonus-top"><span>PLANILHA DE<br>PRECIFICAÇÃO</span></div>
+        <div class="bonus-body"><span class="bonus-tag">Bônus 01</span><h4>Planilha de precificação</h4><p>Descubra o custo de cada salgado e o preço que preserva sua margem.</p></div>
+      </div>
+      <div class="bonus">
+        <div class="bonus-top"><span>ROTEIRO DE<br>CRIATIVO</span></div>
+        <div class="bonus-body"><span class="bonus-tag">Bônus 02</span><h4>Roteiro de criativo pronto</h4><p>Pra gravar seu primeiro vídeo de vendas sem precisar aparecer.</p></div>
+      </div>
+      <div class="bonus">
+        <div class="bonus-top"><span>ROTEIROS<br>VIRAIS</span></div>
+        <div class="bonus-body"><span class="bonus-tag">Bônus 03</span><h4>Roteiros de vídeos virais</h4><p>Modelos prontos pra atrair pedidos e ganhar seguidores.</p></div>
+      </div>
+      <div class="bonus">
+        <div class="bonus-top"><span>GRUPO DE<br>ESPECIALISTAS</span></div>
+        <div class="bonus-body"><span class="bonus-tag">Bônus 04</span><h4>Grupo de especialistas</h4><p>Gestão, marketing, tecnologia e contabilidade pra tirar dúvidas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="curve to-dark" viewBox="0 0 1440 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C360,52 1080,52 1440,0 L1440,46 L0,46 Z" fill="#241811"/></svg>
+
+<section id="preco">
+  <div class="wrap" style="text-align:center;">
+    <div class="eyebrow" style="justify-content:center;">Oferta da turma de fundadores</div>
+    <h2 style="margin:0 auto;">Comece agora pelo preço de fundador</h2>
+    <div class="offer">
+      <div class="price-anchor">De R$197,00</div>
+      <div class="price-label">Por apenas</div>
+      <div class="price-big">R$ 99,90</div>
+      <div class="price-sub">Pagamento único · sem mensalidade · acesso completo</div>
+      <div class="offer-list">
+        <div><i class="tick">✓</i> Todas as aulas do método, passo a passo</div>
+        <div><i class="tick">✓</i> Atualizações futuras sem custo</div>
+        <div><i class="tick">✓</i> Planilha de precificação <b>(bônus 1)</b></div>
+        <div><i class="tick">✓</i> Roteiro de criativo <b>(bônus 2)</b></div>
+        <div><i class="tick">✓</i> Roteiros de vídeos virais <b>(bônus 3)</b></div>
+        <div><i class="tick">✓</i> Grupo de especialistas <b>(bônus 4)</b></div>
+        <div><i class="tick">✓</i> Acesso quase vitalício ao curso e ao grupo</div>
+        <div><i class="tick">✓</i> Garantia incondicional de 7 dias</div>
+      </div>
+      <button class="btn open-waitlist">Quero entrar na lista e travar o preço</button>
+      <p class="secure">Curso em produção. Quem entra na lista garante o preço de fundador e é avisado assim que o acesso abrir.</p>
+    </div>
+
+    <div class="guarantee">
+      <div class="seal"><b>7</b><span>dias de garantia</span></div>
+      <div style="text-align:left;">
+        <h3>O risco é meu, não seu</h3>
+        <p>Entre, assista as aulas, use a planilha e os roteiros. Se em 7 dias achar que não é pra você, pede o reembolso e devolvemos o valor integral.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="curve to-light" viewBox="0 0 1440 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C360,52 1080,52 1440,0 L1440,46 L0,46 Z" fill="#FAF5EC"/></svg>
+
+<section class="light" id="faq">
+  <div class="wrap">
+    <div class="eyebrow">Dúvidas</div>
+    <h2>Perguntas frequentes</h2>
+    <div class="faq">
+      <details><summary>Consigo começar sem largar meu emprego? <i>⌄</i></summary><div class="body">Sim. O método é pensado pra quem ainda está no CLT: você valida e vende de casa, nas horas livres, e só larga o emprego quando os números sustentarem.</div></details>
+      <details><summary>Preciso ter experiência com vendas ou negócio? <i>⌄</i></summary><div class="body">Não. O passo a passo parte do zero, pensado pra quem nunca teve um negócio.</div></details>
+      <details><summary>Preciso já ter máquina de salgados? <i>⌄</i></summary><div class="body">Não. O curso mostra como validar o produto e as primeiras vendas com o que você já tem na cozinha, e quando faz sentido investir em equipamento.</div></details>
+      <details><summary>Funciona em cidade pequena? <i>⌄</i></summary><div class="body">Sim. O método é sobre alcançar quem está perto de você e vender pelo WhatsApp — funciona em qualquer tamanho de cidade, o que muda é o volume.</div></details>
+      <details><summary>Quanto preciso investir além do curso? <i>⌄</i></summary><div class="body">Não tem valor fixo: depende dos ingredientes e embalagens que você já tem em casa. O curso mostra como validar as primeiras vendas gastando o mínimo possível.</div></details>
+      <details><summary>Posso assistir pelo celular? <i>⌄</i></summary><div class="body">Sim. As aulas são em vídeo e você assiste pelo celular, no seu ritmo.</div></details>
+      <details><summary>O curso já está pronto? <i>⌄</i></summary><div class="body">Está em produção agora. Quem entra na lista de espera garante o preço de fundador e é avisado assim que o acesso abrir.</div></details>
+      <details><summary>E se eu comprar e não gostar? <i>⌄</i></summary><div class="body">Você tem garantia incondicional de 7 dias — se não fizer sentido pra você, devolvemos o valor.</div></details>
+    </div>
+  </div>
+</section>
+
+<svg class="curve to-dark" viewBox="0 0 1440 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C360,52 1080,52 1440,0 L1440,46 L0,46 Z" fill="#241811"/></svg>
+
+<section class="closing">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">Pronto pra começar?</div>
+    <h2>Você não precisa ter tudo pronto para começar</h2>
+    <p>Comece pelo primeiro pedido, não pela loja. As vagas da turma de fundadores são limitadas.</p>
+    <button class="btn open-waitlist">Entrar na lista de espera</button>
+    <div class="hero-checks">
+      <span><i class="tick">✓</i> R$99,90, pagamento único</span>
+      <span><i class="tick">✓</i> 7 dias de garantia</span>
+      <span><i class="tick">✓</i> Suporte no grupo</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-card">
+      <div class="foot-top">
+        <div>
+          <span class="brand">salgados<span>.growth</span></span>
+          <p class="desc">O método por trás de uma máquina de salgados em casa que virou 3 lojas físicas em 2 anos.</p>
+        </div>
+        <div class="foot-links">
+          <div>
+            <h5>Curso</h5>
+            <a href="#simulador">Simulador</a>
+            <a href="#depoimentos">Feedbacks</a>
+            <a href="#preco">Preço</a>
+            <a href="#faq">Dúvidas</a>
+          </div>
+          <div>
+            <h5>Contato</h5>
+            <a href="#" class="open-waitlist">Entrar na lista de espera</a>
+            <a href="#">Política de Privacidade</a>
+            <a href="#">Termos de Uso</a>
+          </div>
+        </div>
+      </div>
+      <p class="legal">Os resultados apresentados pertencem à operação que deu origem ao método e não representam promessa ou garantia de resultados individuais. O desempenho de cada aluno depende da aplicação do método, da região, da dedicação e de outros fatores. Este site não é afiliado ao Facebook, Instagram ou WhatsApp. Seus dados são usados apenas para avisar sobre a abertura das inscrições, conforme a LGPD, e você pode pedir a exclusão a qualquer momento.</p>
+      <p class="copy">© 2026 salgados.growth. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Troque o número pelo seu WhatsApp (55 + DDD + número) -->
+<a class="wa-float" href="https://wa.me/5500000000000?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20turma%20de%20fundadores." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8.9-.1.2-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.3 7.3 0 01-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3c-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.7 3 .6.5 0 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3z"/></svg>
+</a>
+
+<div class="mobile-cta" id="mobileCta">
+  <div class="row">
+    <div><b>R$99,90</b><small>preço de fundador</small></div>
+    <button class="btn btn-sm open-waitlist">Travar preço</button>
+  </div>
+</div>
+
+<div class="backdrop" id="backdrop">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Fechar">&times;</button>
+    <div id="modalForm">
+      <h3>Trave seu preço de fundador</h3>
+      <p class="desc">O curso está em produção. Ao entrar agora você garante o preço de R$99,90, uma vaga na turma de fundadores com acesso ao grupo de especialistas, e é avisado assim que o acesso abrir.</p>
+      <form id="waitForm">
+        <input type="text" placeholder="Nome completo" required>
+        <input type="tel" placeholder="WhatsApp" required>
+        <input type="email" placeholder="E-mail" required>
+        <input type="hidden" name="utm_source" id="fUtmSource">
+        <input type="hidden" name="utm_medium" id="fUtmMedium">
+        <input type="hidden" name="utm_campaign" id="fUtmCampaign">
+        <input type="hidden" name="utm_content" id="fUtmContent">
+        <input type="hidden" name="fbclid" id="fFbclid">
+        <button type="submit" class="btn">Quero minha vaga</button>
+        <p class="form-legal">Usamos seus dados só pra te avisar da abertura. Sem spam, e você pode sair quando quiser.</p>
+      </form>
+    </div>
+    <p class="confirm" id="confirmMsg">Prontinho — sua vaga na turma de fundadores está garantida. Avisamos assim que abrir.</p>
+  </div>
+</div>
+
+<script>
+  // Modal da lista de espera
+  var backdrop = document.getElementById('backdrop');
+  document.querySelectorAll('.open-waitlist').forEach(function(b){
+    b.addEventListener('click', function(e){ e.preventDefault(); backdrop.classList.add('open'); });
+  });
+  document.getElementById('modalClose').addEventListener('click', function(){ backdrop.classList.remove('open'); });
+  backdrop.addEventListener('click', function(e){ if(e.target === backdrop) backdrop.classList.remove('open'); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') backdrop.classList.remove('open'); });
+  document.getElementById('waitForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    // TODO: integrar com o pixel + endpoint de coleta (Kiwify, Formspree, planilha...)
+    document.getElementById('modalForm').style.display = 'none';
+    document.getElementById('confirmMsg').style.display = 'block';
+  });
+
+  // Contador regressivo da barra do topo (10 min por sessão)
+  try{
+    var restante = 598, el = document.getElementById('timer');
+    setInterval(function(){
+      if(restante <= 0) return;
+      restante--;
+      var m = String(Math.floor(restante/60)).padStart(2,'0');
+      var s = String(restante%60).padStart(2,'0');
+      el.textContent = m + ':' + s;
+    }, 1000);
+  }catch(err){}
+
+  // Calculadora de faturamento
+  try{
+    var brl = function(v){ return 'R$' + Math.round(v).toLocaleString('pt-BR'); };
+    var p = document.getElementById('calcPedidos'), t = document.getElementById('calcTicket'), d = document.getElementById('calcDias');
+    function calc(){
+      var fat = (+p.value) * (+t.value) * (+d.value);
+      document.getElementById('outPedidos').textContent = p.value;
+      document.getElementById('outTicket').textContent = brl(+t.value);
+      document.getElementById('outDias').textContent = d.value;
+      document.getElementById('outFat').textContent = brl(fat);
+      document.getElementById('outLucro').textContent = brl(fat * 0.4);
+    }
+    [p,t,d].forEach(function(el){ el.addEventListener('input', calc); });
+    calc();
+  }catch(err){}
+
+  // Captura de UTMs e fbclid pro lead chegar com a origem do anúncio
+  try{
+    var qs = new URLSearchParams(window.location.search);
+    [['utm_source','fUtmSource'],['utm_medium','fUtmMedium'],['utm_campaign','fUtmCampaign'],['utm_content','fUtmContent'],['fbclid','fFbclid']]
+      .forEach(function(par){ var el = document.getElementById(par[1]); if(el) el.value = qs.get(par[0]) || ''; });
+  }catch(err){}
+</script>
+
+</body>
+</html>
