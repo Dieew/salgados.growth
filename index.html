@@ -171,7 +171,7 @@
   .wa time{display:block;text-align:right;font-size:.63rem;color:#5B8A5B;margin-top:4px;}
 
   /* ---- BÔNUS ---- */
-  .bonus-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px;}
+  .bonus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px;}
   .bonus{background:var(--cream-2);border:1px solid var(--cream-line);border-radius:var(--r);overflow:hidden;}
   .bonus-top{background:linear-gradient(150deg,#2E1F16,#4A2F1C);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;}
   .bonus-top span{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.15rem;color:var(--gold);line-height:1.15;}
@@ -251,6 +251,20 @@
   .form-legal{color:var(--muted-dark);font-size:.73rem;margin-top:12px;}
   .confirm{display:none;text-align:center;font-weight:700;padding:22px 0;}
 
+  /* ---- CHECKLIST INTERATIVO ---- */
+  .quiz-card{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:var(--r);padding:10px;margin-top:30px;}
+  .quiz-item{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:14px;cursor:pointer;font-size:.94rem;color:var(--text-light);transition:background .15s ease;user-select:none;}
+  .quiz-item:hover{background:rgba(247,183,51,.06);}
+  .quiz-item.picked{background:rgba(247,183,51,.12);}
+  .quiz-check{flex:0 0 auto;width:22px;height:22px;border-radius:7px;border:1.5px solid var(--dark-line);margin-top:1px;display:flex;align-items:center;justify-content:center;transition:background .15s ease,border-color .15s ease;}
+  .quiz-item.picked .quiz-check{background:var(--gold);border-color:var(--gold);}
+  .quiz-item.picked .quiz-check::after{content:"✓";color:#241811;font-size:.72rem;font-weight:800;}
+  .quiz-result{padding:22px 18px 18px;text-align:center;border-top:1px solid var(--dark-line);margin-top:6px;}
+  .quiz-bar{height:7px;border-radius:20px;background:var(--dark);overflow:hidden;max-width:320px;margin:0 auto 16px;}
+  .quiz-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--ember),var(--gold));transition:width .25s ease;}
+  .quiz-result p{color:var(--muted-light);font-size:.92rem;margin-bottom:14px;}
+  .quiz-result .btn{display:none;}
+
   @media(max-width:900px){
     .hero-grid,.about,.calc{grid-template-columns:1fr;gap:34px;}
     .hero-media{aspect-ratio:16/11;}
@@ -296,7 +310,7 @@
     <div>
       <div class="eyebrow">Método 20k sem sair de casa</div>
       <h1>Você também pode sair do <span class="hl">zero</span> aos primeiros <span class="hl-2">R$20 mil</span> vendendo de casa.</h1>
-      <p>Você não precisa de loja, nem de experiência com vendas. Aprenda, passo a passo, do produto certo até o pedido fechado no WhatsApp — nas horas livres, sem largar o emprego.</p>
+      <p>Você não precisa de loja nem de experiência. Aprenda a escolher produtos com demanda, vender em plataformas onde milhões de clientes já estão e construir seu caminho até R$ 20 mil por mês trabalhando de casa.</p>
       <button class="btn open-waitlist">Quero garantir minha vaga</button>
       <div class="hero-checks">
         <span><i class="tick">✓</i> Criado dentro de uma operação real</span>
@@ -313,31 +327,32 @@
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Produto validado</span><span>Precificação</span><span>Roteiros virais</span><span>Vendas no WhatsApp</span><span>Rotina e gestão</span><span>Suporte no grupo</span>
-    <span>Produto validado</span><span>Precificação</span><span>Roteiros virais</span><span>Vendas no WhatsApp</span><span>Rotina e gestão</span><span>Suporte no grupo</span>
+    <span>Produto validado</span><span>Precificação</span><span>Roteiros virais</span><span>Vendas no WhatsApp</span><span>Rotina e gestão</span><span>Plataformas de venda</span>
+    <span>Produto validado</span><span>Precificação</span><span>Roteiros virais</span><span>Vendas no WhatsApp</span><span>Rotina e gestão</span><span>Plataformas de venda</span>
   </div>
 </div>
 
 <section class="light">
   <div class="wrap">
     <div class="eyebrow">Resultados reais</div>
-    <h2>Começou em casa e virou três lojas</h2>
+    <h2>Comecei em casa. Hoje, tenho 3 lojas.</h2>
+    <p class="lead">O que começou <em>pequeno</em> se transformou em uma operação real.</p>
     <div class="stat-grid">
       <div class="stat">
         <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"/></svg></div>
-        <b>3 lojas</b><span>abertas em 2 anos, partindo da cozinha de casa</span>
+        <b>3 lojas</b><span>construídas a partir de uma operação que começou em casa</span>
       </div>
       <div class="stat">
         <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M21 7v6h-6"/></svg></div>
-        <b>R$20 mil</b><span>é a meta que o método persegue em vendas no mês</span>
+        <b>R$20 mil/mês</b><span>meta de faturamento ensinada pelo método</span>
       </div>
       <div class="stat">
-        <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
-        <b>4 áreas</b><span>de especialistas no grupo: gestão, marketing, tecnologia e contabilidade</span>
+        <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 3M12 3a9 9 0 100 18 9 9 0 000-18z"/></svg></div>
+        <b>2 anos</b><span>tempo de construção da operação</span>
       </div>
       <div class="stat">
-        <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M20.6 12.6L12 21.2 2.8 12 12 2.8h8.6z"/><circle cx="15.5" cy="8.5" r="1.4"/></svg></div>
-        <b>7 dias</b><span>de garantia incondicional para testar sem risco</span>
+        <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <b>Do zero</b><span>sem começar com uma grande estrutura</span>
       </div>
     </div>
     <p class="disclaimer">Resultados da operação que deu origem ao método. Não representam garantia de resultado individual.</p>
@@ -348,21 +363,22 @@
 
 <section>
   <div class="wrap">
-    <div class="eyebrow">O que você vai receber</div>
+    <div class="eyebrow">Do primeiro pedido aos R$20 mil</div>
     <h2>Tudo o que eu queria saber no dia 1</h2>
-    <p class="lead">Cada aula resolve um travamento de quem quer renda própria e ainda não tem negócio: o que vender, como vender sem aparecer, como precificar sem perder dinheiro e quando dar o próximo passo.</p>
+    <p class="lead">Um passo a passo prático para sair do zero e começar a vender salgados de casa, conquistar seus primeiros clientes e construir sua operação de vendas.</p>
     <div class="deliver">
-      <div class="deliver-item"><i class="tick">✓</i> Produto e cardápio já validados na prática</div>
-      <div class="deliver-item"><i class="tick">✓</i> Criativos que geram pedido, sem produtora e sem aparecer</div>
-      <div class="deliver-item"><i class="tick">✓</i> Roteiros de vídeos virais prontos pra gravar</div>
-      <div class="deliver-item"><i class="tick">✓</i> Estratégias pra fazer o perfil crescer do zero</div>
-      <div class="deliver-item"><i class="tick">✓</i> Ficha técnica de precificação, sem trabalhar de graça</div>
-      <div class="deliver-item"><i class="tick">✓</i> Script de WhatsApp do primeiro contato ao pedido fechado</div>
-      <div class="deliver-item"><i class="tick">✓</i> Controle de estoque e produção mesmo produzindo sozinho</div>
-      <div class="deliver-item"><i class="tick">✓</i> Os sinais de quando dá pra largar o CLT sem se endividar</div>
-      <div class="deliver-item"><i class="tick">✓</i> Grupo no WhatsApp com especialistas pra tirar dúvidas</div>
-      <div class="deliver-item"><i class="tick">✓</i> Acesso quase vitalício ao curso e às atualizações</div>
+      <div class="deliver-item"><i class="tick">✓</i> Como começar a vender salgados de casa do zero</div>
+      <div class="deliver-item"><i class="tick">✓</i> O que você precisa para fazer suas primeiras vendas</div>
+      <div class="deliver-item"><i class="tick">✓</i> Quais salgados vender e como escolher os produtos</div>
+      <div class="deliver-item"><i class="tick">✓</i> Como montar seu primeiro cardápio</div>
+      <div class="deliver-item"><i class="tick">✓</i> Como calcular o preço dos seus produtos</div>
+      <div class="deliver-item"><i class="tick">✓</i> Como começar a vender nas plataformas</div>
+      <div class="deliver-item"><i class="tick">✓</i> Como conseguir seus primeiros pedidos</div>
+      <div class="deliver-item"><i class="tick">✓</i> Estratégias para aumentar suas vendas</div>
+      <div class="deliver-item"><i class="tick">✓</i> Como divulgar sua loja mesmo começando do zero</div>
+      <div class="deliver-item"><i class="tick">✓</i> Como organizar sua operação para crescer até R$ 20 mil/mês</div>
     </div>
+    <p class="lead" style="margin-top:22px;">Você não precisa começar com uma loja, funcionários ou uma grande estrutura. Vamos mostrar o que você realmente precisa para fazer suas primeiras vendas trabalhando de casa.</p>
 
     <div class="frame">
       <div class="eyebrow">Bônus exclusivo</div>
@@ -406,28 +422,66 @@
   </div>
 </section>
 
-<section>
+<!-- VERSÃO 1: INTERATIVA (checklist clicável) -->
+<section id="quiz">
   <div class="wrap">
     <div class="eyebrow">Antes de entrar</div>
     <h2>Isso serve pra você?</h2>
+    <p class="lead">Marque o que faz sentido pra sua realidade hoje.</p>
+
+    <div class="quiz-card">
+      <div class="quiz-item" data-quiz-item>
+        <span class="quiz-check"></span>
+        <span>Quer começar um negócio de casa sem precisar abrir uma loja</span>
+      </div>
+      <div class="quiz-item" data-quiz-item>
+        <span class="quiz-check"></span>
+        <span>Quer vender salgados, mas não sabe por onde começar</span>
+      </div>
+      <div class="quiz-item" data-quiz-item>
+        <span class="quiz-check"></span>
+        <span>Nunca vendeu e precisa de um passo a passo simples</span>
+      </div>
+      <div class="quiz-item" data-quiz-item>
+        <span class="quiz-check"></span>
+        <span>Quer começar com pouco investimento e validar suas primeiras vendas</span>
+      </div>
+      <div class="quiz-item" data-quiz-item>
+        <span class="quiz-check"></span>
+        <span>Quer começar pequeno e construir um negócio com potencial de chegar aos R$ 20 mil por mês</span>
+      </div>
+
+      <div class="quiz-result">
+        <div class="quiz-bar"><div class="quiz-bar-fill" id="quizFill"></div></div>
+        <p id="quizMsg">Marque o que faz sentido pra você.</p>
+        <button class="btn open-waitlist" id="quizCta" style="display:none;">Quero garantir minha vaga</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERSÃO 2: ESTÁTICA (duas colunas) -->
+<section style="padding-top:0;">
+  <div class="wrap">
     <div class="two">
       <div class="col on">
-        <h3>Faz sentido se você</h3>
+        <h3>✅ Faz sentido se você</h3>
         <ul>
-          <li><i>✓</i> Está no CLT e quer uma renda própria começando pelas horas livres</li>
-          <li><i>✓</i> Quer vender de casa antes de pensar em ponto físico</li>
-          <li><i>✓</i> Nunca vendeu nada e precisa de um passo a passo</li>
-          <li><i>✓</i> Já vende, mas desconfia que está com o preço errado</li>
-          <li><i>✓</i> Não quer aparecer em vídeo e mesmo assim precisa atrair pedidos</li>
+          <li><i>✓</i> Quer começar um negócio de casa sem precisar abrir uma loja</li>
+          <li><i>✓</i> Quer vender salgados, mas não sabe por onde começar</li>
+          <li><i>✓</i> Nunca vendeu e precisa de um passo a passo simples</li>
+          <li><i>✓</i> Quer começar com pouco investimento e validar suas primeiras vendas</li>
+          <li><i>✓</i> Quer começar pequeno e construir um negócio com potencial de chegar aos R$ 20 mil por mês</li>
         </ul>
       </div>
       <div class="col off">
-        <h3>Não faz sentido se você</h3>
+        <h3>❌ Não faz sentido se você</h3>
         <ul>
-          <li><i>✕</i> Procura dinheiro rápido sem colocar a mão na massa</li>
-          <li><i>✕</i> Não pretende separar algumas horas por semana pra aplicar</li>
-          <li><i>✕</i> Quer garantia de faturamento — o resultado depende da sua execução</li>
-          <li><i>✕</i> Já tem uma operação grande e busca consultoria personalizada</li>
+          <li><i>✕</i> Procura dinheiro rápido sem colocar trabalho em prática</li>
+          <li><i>✕</i> Não está disposto a separar algumas horas por semana para executar</li>
+          <li><i>✕</i> Espera uma garantia de faturamento ou resultado</li>
+          <li><i>✕</i> Já possui uma operação grande e procura estratégias avançadas de gestão</li>
+          <li><i>✕</i> Não quer aprender, testar e ajustar sua estratégia conforme os resultados</li>
         </ul>
       </div>
     </div>
@@ -439,8 +493,9 @@
     <div>
       <div class="eyebrow">Quem criou o método</div>
       <h2>Comecei sem uma grande estrutura</h2>
-      <p class="lead">Comecei com uma máquina de salgados em casa, sem sócio investidor e sem fórmula de internet. Testei produto, vendi pelo WhatsApp, rodei os primeiros anúncios sozinho — e em 2 anos abri 3 lojas físicas.</p>
-      <p class="lead">Tudo que está no curso eu apliquei antes de ensinar. No grupo você fala comigo e com quem cuida de gestão, marketing, tecnologia e contabilidade.</p>
+      <p class="lead">Comecei de casa, com uma máquina de salgados e poucos recursos. Em vez de investir em uma loja física logo no início, busquei plataformas onde os clientes já estavam comprando e comecei a vender por meio delas.</p>
+      <p class="lead">Testei produtos, preços, ofertas e formas de venda. Os primeiros pedidos vieram, a operação cresceu e, em 2 anos, cheguei a 3 lojas físicas.</p>
+      <p class="lead">Tudo o que ensino no curso foi aplicado na prática. Você vai aprender o caminho que usei para sair do zero, começar de casa e transformar os primeiros pedidos em um negócio.</p>
       <div class="chips">
         <span class="chip">Começou dentro de casa</span>
         <span class="chip">Vendas pelo WhatsApp</span>
@@ -461,7 +516,7 @@
   <div class="wrap">
     <div class="eyebrow">Feedbacks</div>
     <h2>O que estão achando do método</h2>
-    <p class="lead">Um gostinho do tipo de conversa que rola no grupo de suporte da turma de fundadores. Troque por prints reais assim que tiver.</p>
+    <p class="lead">Um gostinho do tipo de mensagem que a turma de fundadores manda. Troque por prints reais assim que tiver.</p>
     <div class="testi-grid">
       <div class="testi"><span class="testi-badge">Aluno(a) do método</span>
         <div class="wa"><div class="in">Confesso que entrei meio inseguro(a), nunca vendi nada antes.</div><div class="out">Segui o passo a passo do jeito que tá lá e já saiu o primeiro pedido essa semana 🙌<time>08:42 ✓✓</time></div></div>
@@ -479,7 +534,7 @@
         <div class="wa"><div class="in">Ainda trabalho de carteira assinada, dá pra fazer nas horas vagas mesmo?</div><div class="out">Dá sim, eu tô fazendo tudo depois do expediente e já vendo resultado<time>22:50 ✓✓</time></div></div>
       </div>
       <div class="testi"><span class="testi-badge">Aluno(a) do método</span>
-        <div class="wa"><div class="in">Bom dia! Passando só pra agradecer, o grupo de suporte tira muita dúvida.</div><div class="out">Nunca me senti sozinho(a) nesse processo, obrigado(a) de verdade<time>09:11 ✓✓</time></div></div>
+        <div class="wa"><div class="in">Bom dia! Passando só pra agradecer, o curso é bem mais completo do que eu esperava.</div><div class="out">Aprendi muita coisa que eu nem sabia que precisava saber, obrigado(a) de verdade<time>09:11 ✓✓</time></div></div>
       </div>
     </div>
 
@@ -497,10 +552,6 @@
       <div class="bonus">
         <div class="bonus-top"><span>ROTEIROS<br>VIRAIS</span></div>
         <div class="bonus-body"><span class="bonus-tag">Bônus 03</span><h4>Roteiros de vídeos virais</h4><p>Modelos prontos pra atrair pedidos e ganhar seguidores.</p></div>
-      </div>
-      <div class="bonus">
-        <div class="bonus-top"><span>GRUPO DE<br>ESPECIALISTAS</span></div>
-        <div class="bonus-body"><span class="bonus-tag">Bônus 04</span><h4>Grupo de especialistas</h4><p>Gestão, marketing, tecnologia e contabilidade pra tirar dúvidas.</p></div>
       </div>
     </div>
   </div>
@@ -523,9 +574,9 @@
         <div><i class="tick">✓</i> Planilha de precificação <b>(bônus 1)</b></div>
         <div><i class="tick">✓</i> Roteiro de criativo <b>(bônus 2)</b></div>
         <div><i class="tick">✓</i> Roteiros de vídeos virais <b>(bônus 3)</b></div>
-        <div><i class="tick">✓</i> Grupo de especialistas <b>(bônus 4)</b></div>
-        <div><i class="tick">✓</i> Acesso quase vitalício ao curso e ao grupo</div>
+        <div><i class="tick">✓</i> Acesso quase vitalício ao curso</div>
         <div><i class="tick">✓</i> Garantia incondicional de 7 dias</div>
+        <div><i class="tick">✓</i> Suporte pra tirar dúvidas</div>
       </div>
       <button class="btn open-waitlist">Quero entrar na lista e travar o preço</button>
       <p class="secure">Curso em produção. Quem entra na lista garante o preço de fundador e é avisado assim que o acesso abrir.</p>
@@ -571,7 +622,7 @@
     <div class="hero-checks">
       <span><i class="tick">✓</i> R$99,90, pagamento único</span>
       <span><i class="tick">✓</i> 7 dias de garantia</span>
-      <span><i class="tick">✓</i> Suporte no grupo</span>
+      <span><i class="tick">✓</i> Acesso quase vitalício</span>
     </div>
   </div>
 </section>
@@ -623,7 +674,7 @@
     <button class="modal-close" id="modalClose" aria-label="Fechar">&times;</button>
     <div id="modalForm">
       <h3>Trave seu preço de fundador</h3>
-      <p class="desc">O curso está em produção. Ao entrar agora você garante o preço de R$99,90, uma vaga na turma de fundadores com acesso ao grupo de especialistas, e é avisado assim que o acesso abrir.</p>
+      <p class="desc">O curso está em produção. Ao entrar agora você garante o preço de R$99,90 e uma vaga na turma de fundadores, e é avisado assim que o acesso abrir.</p>
       <form id="waitForm">
         <input type="text" placeholder="Nome completo" required>
         <input type="tel" placeholder="WhatsApp" required>
@@ -656,6 +707,32 @@
     document.getElementById('modalForm').style.display = 'none';
     document.getElementById('confirmMsg').style.display = 'block';
   });
+
+  // Checklist interativo "Isso serve pra você?"
+  try{
+    var quizItems = document.querySelectorAll('[data-quiz-item]');
+    var quizFill = document.getElementById('quizFill');
+    var quizMsg = document.getElementById('quizMsg');
+    var quizCta = document.getElementById('quizCta');
+    var mensagens = [
+      'Marque o que faz sentido pra você.',
+      'Já é um começo — continue marcando.',
+      'Você já tem motivo de sobra pra começar.',
+      'Isso é bem a cara do método.',
+      'Isso é bem a cara do método.',
+      'Isso foi feito pra você. Bora começar?'
+    ];
+    quizItems.forEach(function(item){
+      item.addEventListener('click', function(){
+        item.classList.toggle('picked');
+        var total = quizItems.length;
+        var marcados = document.querySelectorAll('[data-quiz-item].picked').length;
+        quizFill.style.width = (marcados/total*100) + '%';
+        quizMsg.textContent = mensagens[marcados];
+        quizCta.style.display = marcados >= 4 ? 'inline-flex' : 'none';
+      });
+    });
+  }catch(err){}
 
   // Contador regressivo da barra do topo (10 min por sessão)
   try{
