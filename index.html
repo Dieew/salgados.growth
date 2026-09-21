@@ -265,6 +265,13 @@
   .quiz-result p{color:var(--muted-light);font-size:.92rem;margin-bottom:14px;}
   .quiz-result .btn{display:none;}
 
+  /* ---- VÍDEO DE DEPOIMENTO (VERTICAL) ---- */
+  .video-vert-wrap{display:flex;justify-content:center;margin-top:30px;}
+  .video-vert{width:100%;max-width:300px;aspect-ratio:9/16;border-radius:24px;overflow:hidden;border:1px solid var(--cream-line);background:linear-gradient(160deg,#EFE6D6,#E3D7C1);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;position:relative;}
+  .video-vert p{color:var(--muted-dark);font-size:.82rem;max-width:22ch;}
+  .video-vert video,.video-vert img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;}
+  .video-caption{color:var(--muted-dark);font-size:.85rem;margin:16px auto 0;max-width:40ch;text-align:center;}
+
   @media(max-width:900px){
     .hero-grid,.about,.calc{grid-template-columns:1fr;gap:34px;}
     .hero-media{aspect-ratio:16/11;}
@@ -313,13 +320,13 @@
       <p>Você não precisa de loja nem de experiência. Aprenda a escolher produtos com demanda, vender em plataformas onde milhões de clientes já estão e construir seu caminho até R$ 20 mil por mês trabalhando de casa.</p>
       <button class="btn open-waitlist">Quero garantir minha vaga</button>
       <div class="hero-checks">
-        <span><i class="tick">✓</i> Criado dentro de uma operação real</span>
+        <span><i class="tick">✓</i> Criado a partir de um negócio real</span>
         <span><i class="tick">✓</i> Pagamento único de R$99,90</span>
         <span><i class="tick">✓</i> 7 dias de garantia</span>
       </div>
     </div>
     <div class="hero-media">
-      <p>Coloque aqui uma foto sua com os salgados prontos, ou o vídeo de apresentação.</p>
+      <video src="assets/video_home.mp4" controls></video>
       <div class="hero-tag"><i></i> Método criado numa cozinha de casa</div>
     </div>
   </div>
@@ -336,26 +343,26 @@
   <div class="wrap">
     <div class="eyebrow">Resultados reais</div>
     <h2>Comecei em casa. Hoje, tenho 3 lojas.</h2>
-    <p class="lead">O que começou <em>pequeno</em> se transformou em uma operação real.</p>
+    <p class="lead">O que começou <em>pequeno</em> virou um negócio de verdade.</p>
     <div class="stat-grid">
       <div class="stat">
         <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-6 7 6v11M9 21v-6h6v6"/></svg></div>
-        <b>3 lojas</b><span>construídas a partir de uma operação que começou em casa</span>
+        <b>3 lojas</b><span>construídas a partir de um negócio que começou em casa</span>
       </div>
       <div class="stat">
         <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M21 7v6h-6"/></svg></div>
-        <b>R$20 mil/mês</b><span>meta de faturamento ensinada pelo método</span>
+        <b>R$250 mil/mês</b><span>é o que as 3 lojas faturam juntas hoje</span>
       </div>
       <div class="stat">
         <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 3M12 3a9 9 0 100 18 9 9 0 000-18z"/></svg></div>
-        <b>2 anos</b><span>tempo de construção da operação</span>
+        <b>2 anos</b><span>tempo de construção do negócio</span>
       </div>
       <div class="stat">
         <div class="stat-ico"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
         <b>Do zero</b><span>sem começar com uma grande estrutura</span>
       </div>
     </div>
-    <p class="disclaimer">Resultados da operação que deu origem ao método. Não representam garantia de resultado individual.</p>
+    <p class="disclaimer">Resultados do negócio que deu origem ao método. Não representam garantia de resultado individual.</p>
   </div>
 </section>
 
@@ -365,7 +372,7 @@
   <div class="wrap">
     <div class="eyebrow">Do primeiro pedido aos R$20 mil</div>
     <h2>Tudo o que eu queria saber no dia 1</h2>
-    <p class="lead">Um passo a passo prático para sair do zero e começar a vender salgados de casa, conquistar seus primeiros clientes e construir sua operação de vendas.</p>
+    <p class="lead">Um passo a passo prático para sair do zero e começar a vender salgados de casa, conquistar seus primeiros clientes e estruturar suas vendas.</p>
     <div class="deliver">
       <div class="deliver-item"><i class="tick">✓</i> Como começar a vender salgados de casa do zero</div>
       <div class="deliver-item"><i class="tick">✓</i> O que você precisa para fazer suas primeiras vendas</div>
@@ -376,7 +383,7 @@
       <div class="deliver-item"><i class="tick">✓</i> Como conseguir seus primeiros pedidos</div>
       <div class="deliver-item"><i class="tick">✓</i> Estratégias para aumentar suas vendas</div>
       <div class="deliver-item"><i class="tick">✓</i> Como divulgar sua loja mesmo começando do zero</div>
-      <div class="deliver-item"><i class="tick">✓</i> Como organizar sua operação para crescer até R$ 20 mil/mês</div>
+      <div class="deliver-item"><i class="tick">✓</i> Como organizar sua rotina para crescer até R$ 20 mil/mês</div>
     </div>
     <p class="lead" style="margin-top:22px;">Você não precisa começar com uma loja, funcionários ou uma grande estrutura. Vamos mostrar o que você realmente precisa para fazer suas primeiras vendas trabalhando de casa.</p>
 
@@ -480,7 +487,7 @@
           <li><i>✕</i> Procura dinheiro rápido sem colocar trabalho em prática</li>
           <li><i>✕</i> Não está disposto a separar algumas horas por semana para executar</li>
           <li><i>✕</i> Espera uma garantia de faturamento ou resultado</li>
-          <li><i>✕</i> Já possui uma operação grande e procura estratégias avançadas de gestão</li>
+          <li><i>✕</i> Já possui um negócio grande e procura estratégias avançadas de gestão</li>
           <li><i>✕</i> Não quer aprender, testar e ajustar sua estratégia conforme os resultados</li>
         </ul>
       </div>
@@ -494,7 +501,7 @@
       <div class="eyebrow">Quem criou o método</div>
       <h2>Comecei sem uma grande estrutura</h2>
       <p class="lead">Comecei de casa, com uma máquina de salgados e poucos recursos. Em vez de investir em uma loja física logo no início, busquei plataformas onde os clientes já estavam comprando e comecei a vender por meio delas.</p>
-      <p class="lead">Testei produtos, preços, ofertas e formas de venda. Os primeiros pedidos vieram, a operação cresceu e, em 2 anos, cheguei a 3 lojas físicas.</p>
+      <p class="lead">Testei produtos, preços, ofertas e formas de venda. Os primeiros pedidos vieram, o negócio cresceu e, em 2 anos, cheguei a 3 lojas físicas.</p>
       <p class="lead">Tudo o que ensino no curso foi aplicado na prática. Você vai aprender o caminho que usei para sair do zero, começar de casa e transformar os primeiros pedidos em um negócio.</p>
       <div class="chips">
         <span class="chip">Começou dentro de casa</span>
@@ -504,15 +511,29 @@
       </div>
     </div>
     <div class="about-media">
-      <p>Coloque aqui a sua foto — de preferência na cozinha ou na loja.</p>
-      <div class="hero-tag"><i></i> Método criado numa operação real</div>
+      <img src="salgados_foto.jpg" alt="Descrição da imagem">
+      <div class="hero-tag"><i></i> Método criado num negócio real</div>
     </div>
   </div>
 </section>
 
 <svg class="curve to-light" viewBox="0 0 1440 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C360,52 1080,52 1440,0 L1440,46 L0,46 Z" fill="#FAF5EC"/></svg>
 
-<section class="light" id="depoimentos">
+<section class="light" style="text-align:center;">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">Depoimento</div>
+    <h2 style="margin:0 auto;">Um resultado real, de quem eu ajudei</h2>
+    <p class="lead" style="margin:14px auto 0;">Essa pessoa recebeu minha ajuda sem custo — o resultado fala por si.</p>
+    <div class="video-vert-wrap">
+      <!-- Substitua o conteúdo abaixo pelo vídeo vertical (9:16) do depoimento -->
+      <div class="video-vert">
+        <video src="assets/depoimento_amos.mp4" controls></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="depoimentos" style="padding-top:0;">
   <div class="wrap">
     <div class="eyebrow">Feedbacks</div>
     <h2>O que estão achando do método</h2>
@@ -651,7 +672,7 @@
           </div>
         </div>
       </div>
-      <p class="legal">Os resultados apresentados pertencem à operação que deu origem ao método e não representam promessa ou garantia de resultados individuais. O desempenho de cada aluno depende da aplicação do método, da região, da dedicação e de outros fatores. Este site não é afiliado ao Facebook, Instagram ou WhatsApp. Seus dados são usados apenas para avisar sobre a abertura das inscrições, conforme a LGPD, e você pode pedir a exclusão a qualquer momento.</p>
+      <p class="legal">Os resultados apresentados pertencem ao negócio que deu origem ao método e não representam promessa ou garantia de resultados individuais. O desempenho de cada aluno depende da aplicação do método, da região, da dedicação e de outros fatores. Este site não é afiliado ao Facebook, Instagram ou WhatsApp. Seus dados são usados apenas para avisar sobre a abertura das inscrições, conforme a LGPD, e você pode pedir a exclusão a qualquer momento.</p>
       <p class="copy">© 2026 salgados.growth. Todos os direitos reservados.</p>
     </div>
   </div>
