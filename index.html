@@ -739,16 +739,16 @@ function ativarSomDepoimento() {
       <h3>Trave seu preço de fundador</h3>
       <p class="desc">O curso está em produção. Ao entrar agora você garante o preço de R$99,90 e uma vaga na turma de fundadores, e é avisado assim que o acesso abrir.</p>
       <form id="waitForm">
-        <input type="text" placeholder="Nome completo" required>
-        <input type="tel" placeholder="WhatsApp" required>
-        <input type="email" placeholder="E-mail" required>
+        <input type="text" id="leadNome" placeholder="Nome completo" required>
+        <input type="tel" id="leadWhatsapp" placeholder="WhatsApp" required>
+        <input type="email" id="leadEmail" placeholder="E-mail" required>
         <input type="hidden" name="utm_source" id="fUtmSource">
         <input type="hidden" name="utm_medium" id="fUtmMedium">
         <input type="hidden" name="utm_campaign" id="fUtmCampaign">
         <input type="hidden" name="utm_content" id="fUtmContent">
         <input type="hidden" name="fbclid" id="fFbclid">
         <button type="submit" class="btn">Quero minha vaga</button>
-        <p class="form-legal">Usamos seus dados só pra te avisar da abertura. Sem spam, e você pode sair quando quiser.</p>
+        <p class="form-legal">Ao enviar, seus dados serão usados para abrir uma conversa no WhatsApp e entrar em contato sobre a turma. Sem spam.</p>
       </form>
     </div>
     <p class="confirm" id="confirmMsg">Prontinho — sua vaga na turma de fundadores está garantida. Avisamos assim que abrir.</p>
@@ -766,9 +766,23 @@ function ativarSomDepoimento() {
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') backdrop.classList.remove('open'); });
   document.getElementById('waitForm').addEventListener('submit', function(e){
     e.preventDefault();
-    // TODO: integrar com o pixel + endpoint de coleta (Kiwify, Formspree, planilha...)
+
+    var nome = document.getElementById('leadNome').value.trim();
+    var whatsapp = document.getElementById('leadWhatsapp').value.trim();
+    var email = document.getElementById('leadEmail').value.trim();
+
+    var mensagem = 'Oi! Quero entrar na turma de fundadores.\n\n' +
+      'Nome: ' + nome + '\n' +
+      'WhatsApp: ' + whatsapp + '\n' +
+      'E-mail: ' + email;
+
+    var urlWhatsApp = 'https://wa.me/5561974019023?text=' + encodeURIComponent(mensagem);
+
     document.getElementById('modalForm').style.display = 'none';
+    document.getElementById('confirmMsg').textContent = 'Prontinho! Vamos abrir o WhatsApp para você concluir o contato.';
     document.getElementById('confirmMsg').style.display = 'block';
+
+    window.open(urlWhatsApp, '_blank', 'noopener,noreferrer');
   });
 
   // Checklist interativo "Isso serve pra você?"
