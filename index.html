@@ -237,20 +237,6 @@
   .wa-float{position:fixed;right:16px;bottom:16px;z-index:55;width:50px;height:50px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.6);}
   .wa-float svg{width:25px;height:25px;fill:#fff;}
 
-  /* ---- MODAL ---- */
-  .backdrop{display:none;position:fixed;inset:0;background:rgba(15,9,6,.78);z-index:100;align-items:center;justify-content:center;padding:20px;}
-  .backdrop.open{display:flex;}
-  .modal{background:var(--cream);color:var(--ink);border-radius:24px;padding:30px;max-width:420px;width:100%;position:relative;}
-  .modal h3{font-size:1.3rem;font-weight:800;margin-bottom:8px;}
-  .modal .desc{color:var(--muted-dark);font-size:.88rem;margin-bottom:18px;}
-  .modal input{width:100%;background:#fff;border:1px solid var(--cream-line);border-radius:12px;color:var(--ink);padding:14px 16px;font-size:.95rem;font-family:inherit;margin-bottom:11px;outline:none;}
-  .modal input:focus{border-color:var(--ember);}
-  .modal .btn{width:100%;justify-content:space-between;background:var(--ember);color:#fff;padding:11px 11px 11px 22px;}
-  .modal .btn::after{background:#fff;color:var(--ember);}
-  .modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted-dark);font-size:1.5rem;cursor:pointer;line-height:1;}
-  .form-legal{color:var(--muted-dark);font-size:.73rem;margin-top:12px;}
-  .confirm{display:none;text-align:center;font-weight:700;padding:22px 0;}
-
   /* ---- CHECKLIST INTERATIVO ---- */
   .quiz-card{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:var(--r);padding:10px;margin-top:30px;}
   .quiz-item{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-radius:14px;cursor:pointer;font-size:.94rem;color:var(--text-light);transition:background .15s ease;user-select:none;}
@@ -308,7 +294,7 @@
     <div class="brand">salgados<span>.growth</span></div>
     <div class="timer">⚠ Preço de fundador expira em <b id="timer">09:58</b></div>
     <div class="topbar-note">Turma de fundadores</div>
-    <button class="btn btn-sm open-waitlist" onclick="abrirWhatsApp()">Garantir vaga</button>
+    <a class="btn btn-sm" href="https://pay.kiwify.com.br/EAsIbs3" target="_blank" rel="noopener noreferrer">Garantir acesso</a>
   </div>
 </div>
 
@@ -318,7 +304,7 @@
       <div class="eyebrow">Método 20k sem sair de casa</div>
       <h1>Você também pode sair do <span class="hl">zero</span> aos primeiros <span class="hl-2">R$20 mil</span> vendendo de casa.</h1>
       <p>Você não precisa de loja nem de experiência. Aprenda a escolher produtos com demanda, vender em plataformas onde milhões de clientes já estão e construir seu caminho até R$ 20 mil por mês trabalhando de casa.</p>
-      <button class="btn open-waitlist">Quero garantir minha vaga</button>
+      <a class="btn" href="https://pay.kiwify.com.br/EAsIbs3" target="_blank" rel="noopener noreferrer">Quero garantir meu acesso</a>
       <div class="hero-checks">
         <span><i class="tick">✓</i> Criado a partir de um negócio real</span>
         <span><i class="tick">✓</i> Pagamento único de R$99,90</span>
@@ -393,7 +379,7 @@
       <p>Coloque o valor dos insumos que você compra e descubra o custo real de cada salgado e o preço de venda que preserva a sua margem.</p>
     </div>
 
-    <div style="margin-top:28px;"><button class="btn open-waitlist" onclick="abrirWhatsApp()">Quero começar</button></div>
+    <div style="margin-top:28px;"><a class="btn" href="https://pay.kiwify.com.br/EAsIbs3" target="_blank" rel="noopener noreferrer">Quero começar</a></div>
   </div>
 </section>
 
@@ -461,7 +447,7 @@
       <div class="quiz-result">
         <div class="quiz-bar"><div class="quiz-bar-fill" id="quizFill"></div></div>
         <p id="quizMsg">Marque o que faz sentido pra você.</p>
-        <button class="btn open-waitlist" id="quizCta" style="display:none;">Quero garantir minha vaga</button>
+        <a class="btn" id="quizCta" href="https://pay.kiwify.com.br/EAsIbs3" target="_blank" rel="noopener noreferrer" style="display:none;">Quero garantir meu acesso</a>
       </div>
     </div>
   </div>
@@ -602,7 +588,7 @@ function ativarSomDepoimento() {
     </div>
 
     <div class="eyebrow" style="margin-top:58px;">Bônus exclusivos</div>
-    <h2>Pra quem entra na turma de fundadores</h2>
+    <h2>Pra quem compra o acesso ao método</h2>
     <div class="bonus-grid">
       <div class="bonus">
         <div class="bonus-top"><span>PLANILHA DE<br>PRECIFICAÇÃO</span></div>
@@ -641,8 +627,8 @@ function ativarSomDepoimento() {
         <div><i class="tick">✓</i> Garantia incondicional de 7 dias</div>
         <div><i class="tick">✓</i> Suporte pra tirar dúvidas</div>
       </div>
-      <button class="btn open-waitlist" onclick="abrirWhatsApp()">Quero entrar na lista e travar o preço</button>
-      <p class="secure">Curso em produção. Quem entra na lista garante o preço de fundador e é avisado assim que o acesso abrir.</p>
+      <a class="btn" href="https://pay.kiwify.com.br/EAsIbs3" target="_blank" rel="noopener noreferrer">Quero garantir meu acesso</a>
+      <p class="secure">Pagamento único pelo checkout da Kiwify, com acesso conforme as condições apresentadas no checkout.</p>
     </div>
 
     <div class="guarantee">
@@ -668,7 +654,7 @@ function ativarSomDepoimento() {
       <details><summary>Funciona em cidade pequena? <i>⌄</i></summary><div class="body">Sim. O método é sobre alcançar quem está perto de você e vender pelo WhatsApp — funciona em qualquer tamanho de cidade, o que muda é o volume.</div></details>
       <details><summary>Quanto preciso investir além do curso? <i>⌄</i></summary><div class="body">Não tem valor fixo: depende dos ingredientes e embalagens que você já tem em casa. O curso mostra como validar as primeiras vendas gastando o mínimo possível.</div></details>
       <details><summary>Posso assistir pelo celular? <i>⌄</i></summary><div class="body">Sim. As aulas são em vídeo e você assiste pelo celular, no seu ritmo.</div></details>
-      <details><summary>O curso já está pronto? <i>⌄</i></summary><div class="body">Está em produção agora. Quem entra na lista de espera garante o preço de fundador e é avisado assim que o acesso abrir.</div></details>
+      <details><summary>Como funciona o acesso? <i>⌄</i></summary><div class="body">A compra é feita pelo checkout seguro da Kiwify. Após a confirmação do pagamento, siga as instruções de acesso apresentadas no checkout.</div></details>
       <details><summary>E se eu comprar e não gostar? <i>⌄</i></summary><div class="body">Você tem garantia incondicional de 7 dias — se não fizer sentido pra você, devolvemos o valor.</div></details>
     </div>
   </div>
@@ -680,8 +666,8 @@ function ativarSomDepoimento() {
   <div class="wrap">
     <div class="eyebrow" style="justify-content:center;">Pronto pra começar?</div>
     <h2>Você não precisa ter tudo pronto para começar</h2>
-    <p>Comece pelo primeiro pedido, não pela loja. As vagas da turma de fundadores são limitadas.</p>
-    <button class="btn open-waitlist" onclick="abrirWhatsApp()">Entrar na lista de espera</button>
+    <p>Comece pelo primeiro pedido, não pela loja. Garanta seu acesso pelo checkout da Kiwify.</p>
+    <a class="btn" href="https://pay.kiwify.com.br/EAsIbs3" target="_blank" rel="noopener noreferrer">Quero comprar agora</a>
     <div class="hero-checks">
       <span><i class="tick">✓</i> R$99,90, pagamento único</span>
       <span><i class="tick">✓</i> 7 dias de garantia</span>
@@ -701,89 +687,38 @@ function ativarSomDepoimento() {
         <div class="foot-links">
           <div>
             <h5>Curso</h5>
-            <a href="https://wa.me/5561974019023?text=Oi%21%20Quero%20saber%20mais%20sobre%20a%20turma%20de%20fundadores.">Simulador</a>
+            <a href="#simulador">Simulador</a>
             <a href="#depoimentos">Feedbacks</a>
             <a href="#preco">Preço</a>
             <a href="#faq">Dúvidas</a>
           </div>
           <div>
             <h5>Contato</h5>
-            <a href="https://wa.me/5561974019023?text=Oi%21%20Quero%20saber%20mais%20sobre%20a%20turma%20de%20fundadores." class="open-waitlist">Entrar na lista de espera</a>
+            <a href="https://pay.kiwify.com.br/EAsIbs3" target="_blank" rel="noopener noreferrer">Comprar acesso</a>
             <a href="#">Política de Privacidade</a>
             <a href="#">Termos de Uso</a>
           </div>
         </div>
       </div>
-      <p class="legal">Os resultados apresentados pertencem ao negócio que deu origem ao método e não representam promessa ou garantia de resultados individuais. O desempenho de cada aluno depende da aplicação do método, da região, da dedicação e de outros fatores. Este site não é afiliado ao Facebook, Instagram ou WhatsApp. Seus dados são usados apenas para avisar sobre a abertura das inscrições, conforme a LGPD, e você pode pedir a exclusão a qualquer momento.</p>
+      <p class="legal">Os resultados apresentados pertencem ao negócio que deu origem ao método e não representam promessa ou garantia de resultados individuais. O desempenho de cada aluno depende da aplicação do método, da região, da dedicação e de outros fatores. Este site não é afiliado ao Facebook, Instagram ou WhatsApp. As compras são processadas pelo checkout da Kiwify. Consulte as condições de pagamento, acesso e garantia apresentadas no checkout.</p>
       <p class="copy">© 2026 salgados.growth. Todos os direitos reservados.</p>
     </div>
   </div>
 </footer>
 
-<!-- Troque o número pelo seu WhatsApp (55 + DDD + número) -->
-<a class="wa-float" href="https://wa.me/5561974019023?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20turma%20de%20fundadores." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+<a class="wa-float" href="https://wa.me/5561974019023?text=Oi%21%20Quero%20saber%20mais%20sobre%20o%20curso." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8.9-.1.2-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.3 7.3 0 01-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3c-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.7 3 .6.5 0 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3z"/></svg>
 </a>
 
 <div class="mobile-cta" id="mobileCta">
   <div class="row">
     <div><b>R$99,90</b><small>preço de fundador</small></div>
-    <button class="btn btn-sm open-waitlist" onclick="abrirWhatsApp()">Travar preço</button>
+    <a class="btn btn-sm" href="https://pay.kiwify.com.br/EAsIbs3" target="_blank" rel="noopener noreferrer">Comprar agora</a>
   </div>
 </div>
 
-<div class="backdrop" id="backdrop">
-  <div class="modal">
-    <button class="modal-close" id="modalClose" aria-label="Fechar">&times;</button>
-    <div id="modalForm">
-      <h3>Trave seu preço de fundador</h3>
-      <p class="desc">O curso está em produção. Ao entrar agora você garante o preço de R$99,90 e uma vaga na turma de fundadores, e é avisado assim que o acesso abrir.</p>
-      <form id="waitForm">
-        <input type="text" id="leadNome" placeholder="Nome completo" required>
-        <input type="tel" id="leadWhatsapp" placeholder="WhatsApp" required>
-        <input type="email" id="leadEmail" placeholder="E-mail" required>
-        <input type="hidden" name="utm_source" id="fUtmSource">
-        <input type="hidden" name="utm_medium" id="fUtmMedium">
-        <input type="hidden" name="utm_campaign" id="fUtmCampaign">
-        <input type="hidden" name="utm_content" id="fUtmContent">
-        <input type="hidden" name="fbclid" id="fFbclid">
-        <button type="submit" class="btn">Quero minha vaga</button>
-        <p class="form-legal">Ao enviar, seus dados serão usados para abrir uma conversa no WhatsApp e entrar em contato sobre a turma. Sem spam.</p>
-      </form>
-    </div>
-    <p class="confirm" id="confirmMsg">Prontinho — sua vaga na turma de fundadores está garantida. Avisamos assim que abrir.</p>
-  </div>
-</div>
 
 <script>
-  // Modal da lista de espera
-  var backdrop = document.getElementById('backdrop');
-  document.querySelectorAll('.open-waitlist').forEach(function(b){
-    b.addEventListener('click', function(e){ e.preventDefault(); backdrop.classList.add('open'); });
-  });
-  document.getElementById('modalClose').addEventListener('click', function(){ backdrop.classList.remove('open'); });
-  backdrop.addEventListener('click', function(e){ if(e.target === backdrop) backdrop.classList.remove('open'); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') backdrop.classList.remove('open'); });
-  document.getElementById('waitForm').addEventListener('submit', function(e){
-    e.preventDefault();
-
-    var nome = document.getElementById('leadNome').value.trim();
-    var whatsapp = document.getElementById('leadWhatsapp').value.trim();
-    var email = document.getElementById('leadEmail').value.trim();
-
-    var mensagem = 'Oi! Quero entrar na turma de fundadores.\n\n' +
-      'Nome: ' + nome + '\n' +
-      'WhatsApp: ' + whatsapp + '\n' +
-      'E-mail: ' + email;
-
-    var urlWhatsApp = 'https://wa.me/5561974019023?text=' + encodeURIComponent(mensagem);
-
-    document.getElementById('modalForm').style.display = 'none';
-    document.getElementById('confirmMsg').textContent = 'Prontinho! Vamos abrir o WhatsApp para você concluir o contato.';
-    document.getElementById('confirmMsg').style.display = 'block';
-
-    window.open(urlWhatsApp, '_blank', 'noopener,noreferrer');
-  });
 
   // Checklist interativo "Isso serve pra você?"
   try{
@@ -838,25 +773,8 @@ function ativarSomDepoimento() {
     [p,t,d].forEach(function(el){ el.addEventListener('input', calc); });
     calc();
   }catch(err){}
-
-  // Captura de UTMs e fbclid pro lead chegar com a origem do anúncio
-  try{
-    var qs = new URLSearchParams(window.location.search);
-    [['utm_source','fUtmSource'],['utm_medium','fUtmMedium'],['utm_campaign','fUtmCampaign'],['utm_content','fUtmContent'],['fbclid','fFbclid']]
-      .forEach(function(par){ var el = document.getElementById(par[1]); if(el) el.value = qs.get(par[0]) || ''; });
-  }catch(err){}
 </script>
 
-
-<script>
-  const WHATSAPP_NUMBER = "5561974019023";
-  const WHATSAPP_DEFAULT_MESSAGE = "Oi! Quero saber mais sobre a turma de fundadores.";
-
-  function abrirWhatsApp(mensagem = WHATSAPP_DEFAULT_MESSAGE) {
-    const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(mensagem);
-    window.open(url, "_blank", "noopener,noreferrer");
-  }
-</script>
 
 </body>
 </html>
