@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Isso é pra você? 20k sem sair de casa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1E1410; --dark:#241811; --dark-2:#2E1F16; --dark-line:#3D2B20;
+    --cream:#FAF5EC; --cream-2:#FFFFFF; --cream-line:#E8DECD;
+    --gold:#F7B733; --gold-deep:#E09A16; --ember:#D6452B;
+    --text-light:#FFF8EE; --muted-light:#C3AF9E; --muted-dark:#6E6055;
+    --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{
+    background:var(--dark);color:var(--text-light);
+    font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%;
+    overflow:hidden;position:fixed;inset:0;
+  }
+  h1,h2,.brand,.price-big{font-family:'Outfit',sans-serif;letter-spacing:-0.03em;}
+  .hl{color:var(--gold);}
+
+  .top{position:fixed;top:0;left:0;right:0;z-index:20;padding:calc(16px + var(--safe-t)) 20px 14px;background:linear-gradient(180deg,var(--dark) 60%,transparent);}
+  .top-row{display:flex;align-items:center;gap:14px;max-width:520px;margin:0 auto;}
+  .back{width:34px;height:34px;border-radius:50%;background:var(--dark-2);border:1px solid var(--dark-line);display:flex;align-items:center;justify-content:center;color:var(--muted-light);flex:0 0 auto;cursor:pointer;font-size:1rem;}
+  .back:disabled{opacity:0;pointer-events:none;}
+  .bar{flex:1;height:7px;border-radius:20px;background:var(--dark-2);overflow:hidden;}
+  .bar-fill{height:100%;width:6%;background:linear-gradient(90deg,var(--ember),var(--gold));transition:width .35s ease;}
+  .step-count{font-size:.72rem;color:var(--muted-light);flex:0 0 auto;font-variant-numeric:tabular-nums;}
+
+  .stage{position:absolute;inset:0;padding-top:calc(70px + var(--safe-t));padding-bottom:calc(24px + var(--safe-b));display:flex;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+  .wrap{max-width:520px;margin:0 auto;padding:0 22px;width:100%;flex:1;display:flex;flex-direction:column;}
+
+  .screen{display:none;flex-direction:column;flex:1;animation:fade .35s ease;}
+  .screen.active{display:flex;}
+  @keyframes fade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+  .eyebrow{display:flex;align-items:center;gap:9px;font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:currentColor;}
+  h2{font-size:clamp(1.4rem,1.15rem + 1.6vw,1.85rem);line-height:1.18;font-weight:800;}
+  .sub{color:var(--muted-light);font-size:.92rem;margin-top:10px;max-width:42ch;}
+
+  .options{display:flex;flex-direction:column;gap:11px;margin-top:26px;}
+  .opt{background:var(--dark-2);border:1.5px solid var(--dark-line);border-radius:16px;padding:17px 18px;display:flex;align-items:center;gap:13px;font-size:.96rem;color:var(--text-light);cursor:pointer;text-align:left;transition:border-color .15s ease,background .15s ease,transform .1s ease;}
+  .opt:active{transform:scale(.98);}
+  .opt .dot{flex:0 0 auto;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--dark-line);display:flex;align-items:center;justify-content:center;}
+  .opt.chosen{border-color:var(--gold);background:rgba(247,183,51,.1);}
+  .opt.chosen .dot{background:var(--gold);border-color:var(--gold);}
+  .opt.chosen .dot::after{content:"✓";font-size:.62rem;font-weight:800;color:var(--ink);}
+  .opt:disabled{pointer-events:none;}
+
+  .micro-feedback{margin-top:16px;font-size:.86rem;color:var(--gold);opacity:0;transform:translateY(4px);transition:opacity .25s ease,transform .25s ease;min-height:1.2em;}
+  .micro-feedback.show{opacity:1;transform:translateY(0);}
+
+  .cta-fixed{margin-top:auto;padding-top:22px;}
+  .btn{
+    width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--gold);color:var(--ink);
+    border:none;border-radius:999px;padding:16px 20px;font-family:'Figtree',sans-serif;font-weight:700;font-size:1.02rem;
+    cursor:pointer;transition:background .15s ease,transform .15s ease;
+  }
+  .btn:active{transform:scale(.98);}
+  .btn:disabled{opacity:.4;pointer-events:none;}
+  .btn-ember{background:var(--ember);color:#fff;}
+
+  .result-badge{align-self:center;background:rgba(247,183,51,.14);color:var(--gold);border-radius:999px;padding:7px 16px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;}
+  .result h2{text-align:center;max-width:22ch;margin:0 auto;}
+  .result .sub{text-align:center;margin:12px auto 0;}
+  .match-list{display:flex;flex-direction:column;gap:10px;margin-top:24px;}
+  .match-item{background:var(--dark-2);border:1px solid var(--dark-line);border-radius:14px;padding:14px 16px;display:flex;gap:11px;align-items:flex-start;font-size:.87rem;color:var(--text-light);}
+  .match-item i{flex:0 0 auto;color:var(--gold);font-style:normal;font-weight:700;}
+
+  .testi-slot{margin-top:26px;background:var(--dark-2);border:1.5px dashed var(--dark-line);border-radius:20px;padding:16px;text-align:center;}
+  .testi-slot .video-box{width:100%;max-width:220px;aspect-ratio:9/16;margin:0 auto;border-radius:16px;background:linear-gradient(160deg,#3A2718,#241811);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+  .testi-slot .video-box video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .testi-slot p{color:var(--muted-light);font-size:.78rem;margin-top:12px;}
+  .testi-slot .placeholder{color:var(--muted-light);font-size:.78rem;padding:0 10px;}
+
+  .offer{background:var(--cream-2);color:var(--ink);border-radius:22px;padding:28px 24px;margin-top:26px;text-align:center;}
+  .price-label{color:var(--muted-dark);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;}
+  .price-big{font-size:2.4rem;font-weight:800;color:var(--ember);line-height:1;margin:6px 0 2px;}
+  .price-sub{color:var(--muted-dark);font-size:.82rem;margin-bottom:18px;}
+  .offer .checks{display:flex;flex-direction:column;gap:7px;text-align:left;margin-bottom:18px;font-size:.85rem;color:var(--ink);}
+  .offer .checks span{display:flex;gap:8px;}
+  .offer .checks i{color:var(--ember);font-style:normal;font-weight:700;}
+  .secure{color:var(--muted-dark);font-size:.72rem;margin-top:12px;}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-row">
+    <button class="back" id="backBtn" aria-label="Voltar">←</button>
+    <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+    <span class="step-count" id="stepCount">1/6</span>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="wrap" id="wrap">
+
+    <div class="screen active" data-screen="0">
+      <div class="eyebrow">Antes de continuar</div>
+      <h2>Vamos ver se o método <span class="hl">20k sem sair de casa</span> combina com a sua vida hoje?</h2>
+      <p class="sub">São 6 perguntas rápidas. No final você recebe seu resultado.</p>
+      <div class="cta-fixed">
+        <button class="btn" data-next>Começar ↗</button>
+      </div>
+    </div>
+
+    <div class="screen" data-screen="1">
+      <div class="eyebrow">Pergunta 1 de 6</div>
+      <h2>Hoje você trabalha de carteira assinada (CLT)?</h2>
+      <div class="options" data-options="q1">
+        <button class="opt" data-value="sim">Sim, sou CLT<span class="dot"></span></button>
+        <button class="opt" data-value="nao">Não, mas quero mudar de vida<span class="dot"></span></button>
+      </div>
+      <p class="micro-feedback" id="fb1"></p>
+    </div>
+
+    <div class="screen" data-screen="2">
+      <div class="eyebrow">Pergunta 2 de 6</div>
+      <h2>O que mais pesa no seu dia de CLT?</h2>
+      <div class="options" data-options="q2">
+        <button class="opt" data-value="salario">O salário não sobra no fim do mês<span class="dot"></span></button>
+        <button class="opt" data-value="crescimento">Não vejo crescimento nem espaço pra evoluir<span class="dot"></span></button>
+        <button class="opt" data-value="negocio">Sempre quis ter meu próprio negócio<span class="dot"></span></button>
+        <button class="opt" data-value="familia">Falta tempo pra família<span class="dot"></span></button>
+      </div>
+      <p class="micro-feedback" id="fb2"></p>
+    </div>
+
+    <div class="screen" data-screen="3">
+      <div class="eyebrow">Pergunta 3 de 6</div>
+      <h2>Você já pensou em ter uma renda extra vendendo salgados de casa?</h2>
+      <div class="options" data-options="q3">
+        <button class="opt" data-value="ja">Sim, já pensei nisso<span class="dot"></span></button>
+        <button class="opt" data-value="nunca">Nunca tinha pensado, mas topo<span class="dot"></span></button>
+      </div>
+      <p class="micro-feedback" id="fb3"></p>
+    </div>
+
+    <div class="screen" data-screen="4">
+      <div class="eyebrow">Pergunta 4 de 6</div>
+      <h2>Quanto tempo livre você tem por semana pra dedicar a isso?</h2>
+      <div class="options" data-options="q4">
+        <button class="opt" data-value="pouco">Menos de 5 horas<span class="dot"></span></button>
+        <button class="opt" data-value="medio">Entre 5 e 10 horas<span class="dot"></span></button>
+        <button class="opt" data-value="alto">Mais de 10 horas<span class="dot"></span></button>
+      </div>
+      <p class="micro-feedback" id="fb4"></p>
+    </div>
+
+    <div class="screen" data-screen="5">
+      <div class="eyebrow">Pergunta 5 de 6</div>
+      <h2>O que mais te trava pra começar hoje?</h2>
+      <div class="options" data-options="q5">
+        <button class="opt" data-value="produto">Não sei o que vender<span class="dot"></span></button>
+        <button class="opt" data-value="preco">Não sei como precificar<span class="dot"></span></button>
+        <button class="opt" data-value="vendas">Não sei como vender ou divulgar<span class="dot"></span></button>
+        <button class="opt" data-value="medo">Medo de tentar e não dar certo<span class="dot"></span></button>
+      </div>
+      <p class="micro-feedback" id="fb5"></p>
+    </div>
+
+    <div class="screen" data-screen="6">
+      <div class="eyebrow">Pergunta 6 de 6</div>
+      <h2>Se isso virasse uma renda extra de R$2 a 5 mil por mês, mudaria sua decisão de continuar só no CLT?</h2>
+      <div class="options" data-options="q6">
+        <button class="opt" data-value="sim">Sim, com certeza<span class="dot"></span></button>
+        <button class="opt" data-value="talvez">Talvez, quero ver como funciona<span class="dot"></span></button>
+      </div>
+      <p class="micro-feedback" id="fb6"></p>
+    </div>
+
+    <div class="screen" data-screen="final">
+      <div class="result">
+        <div class="result-badge">Seu resultado</div>
+        <h2>Você pode começar do zero, de casa, no tempo que tiver hoje.</h2>
+        <p class="sub" id="final-sub">Aos poucos, com clientes de verdade, dá pra ir aumentando de vida.</p>
+
+        <div class="match-list" id="matchList"></div>
+
+        <div class="testi-slot">
+          <div class="video-box">
+            <p class="placeholder">Espaço reservado para o vídeo de depoimento de um aluno</p>
+          </div>
+          <p>Substitua este bloco pelo vídeo vertical do depoimento antes de publicar.</p>
+        </div>
+
+        <div class="offer">
+          <div class="price-label">Preço de fundador</div>
+          <div class="price-big">R$99,90</div>
+          <div class="price-sub">Pagamento único, sem mensalidade</div>
+          <div class="checks">
+            <span><i>✓</i> Passo a passo do zero até os primeiros pedidos</span>
+            <span><i>✓</i> Roteiros de vídeos virais e estratégias pra ganhar seguidores</span>
+            <span><i>✓</i> Planilha de precificação sem perder margem</span>
+            <span><i>✓</i> Acesso quase vitalício</span>
+            <span><i>✓</i> Garantia incondicional de 7 dias</span>
+          </div>
+          <a class="btn btn-ember" href="https://pay.kiwify.com.br/EAsIbs3" target="_blank" rel="noopener noreferrer">Quero garantir meu acesso ↗</a>
+          <p class="secure">Compra processada pelo checkout seguro da Kiwify.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var order = ["0","1","2","3","4","5","6","final"];
+  var questionSteps = ["1","2","3","4","5","6"];
+  var idx = 0;
+  var answers = {};
+  var screens = {};
+  order.forEach(function(id){ screens[id] = document.querySelector('[data-screen="'+id+'"]'); });
+
+  var barFill = document.getElementById('barFill');
+  var stepCount = document.getElementById('stepCount');
+  var backBtn = document.getElementById('backBtn');
+
+  function render(){
+    order.forEach(function(id){ screens[id].classList.remove('active'); });
+    screens[order[idx]].classList.add('active');
+    document.querySelector('.stage').scrollTop = 0;
+
+    var id = order[idx];
+    var qIndex = questionSteps.indexOf(id);
+    var total = questionSteps.length;
+    if(id === "0"){
+      stepCount.textContent = "";
+      barFill.style.width = "3%";
+    } else if(id === "final"){
+      stepCount.textContent = "Pronto";
+      barFill.style.width = "100%";
+    } else {
+      stepCount.textContent = (qIndex+1) + "/" + total;
+      barFill.style.width = ((qIndex+1)/total*100) + "%";
+    }
+    backBtn.disabled = (idx === 0);
+  }
+
+  function goNext(){ if(idx < order.length-1){ idx++; render(); } }
+  function goBack(){ if(idx > 0){ idx--; render(); } }
+
+  backBtn.addEventListener('click', goBack);
+  document.querySelectorAll('[data-next]').forEach(function(btn){ btn.addEventListener('click', goNext); });
+
+  var feedbackText = {
+    q1: {
+      sim: 'Ótimo ponto de partida: dá pra começar sem sair do emprego.',
+      nao: 'Perfeito, o método também serve pra quem já quer virar essa página.'
+    },
+    q2: {
+      salario: 'Uma renda extra de casa já ajuda a fechar esse buraco no mês.',
+      crescimento: 'Ter o próprio negócio muda esse teto de crescimento.',
+      negocio: 'Esse é o ponto de partida perfeito pra começar.',
+      familia: 'O método cabe em pouco tempo, sem tomar seu dia inteiro.'
+    },
+    q3: {
+      ja: 'Então chegou a hora de sair do pensar e ir pro fazer.',
+      nunca: 'Dá pra começar do zero, sem nunca ter vendido nada.'
+    },
+    q4: {
+      pouco: 'Mesmo com pouco tempo, dá pra tirar os primeiros pedidos do papel.',
+      medio: 'Esse tempo já é suficiente pra tocar o método com calma.',
+      alto: 'Com esse tempo dá pra acelerar bem mais rápido.'
+    },
+    q5: {
+      produto: 'O que vender e como montar o cardápio vem logo no início do curso.',
+      preco: 'Tem uma planilha pronta pra você precificar sem perder margem.',
+      vendas: 'Tem passo a passo de vendas, divulgação e roteiros prontos pra usar.',
+      medo: 'É normal sentir isso no começo. O passo a passo existe pra reduzir esse risco.'
+    },
+    q6: {
+      sim: 'Essa renda é o primeiro passo pra ir aumentando de vida aos poucos.',
+      talvez: 'Faz sentido testar primeiro. É assim que o método funciona.'
+    }
+  };
+
+  document.querySelectorAll('[data-options]').forEach(function(group){
+    var key = group.getAttribute('data-options');
+    var fb = document.getElementById('fb' + key.replace('q',''));
+    group.querySelectorAll('.opt').forEach(function(opt){
+      opt.addEventListener('click', function(){
+        group.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('chosen'); o.disabled = true; });
+        opt.classList.add('chosen');
+        answers[key] = opt.getAttribute('data-value');
+        if(fb){
+          fb.textContent = (feedbackText[key] || {})[answers[key]] || '';
+          fb.classList.add('show');
+        }
+        setTimeout(function(){
+          group.querySelectorAll('.opt').forEach(function(o){ o.disabled = false; });
+          goNext();
+        }, 650);
+      });
+    });
+  });
+
+  function buildMatchList(){
+    var items = [];
+    if(answers.q1 === 'sim') items.push('Você começa de casa, sem largar o CLT agora.');
+    else items.push('Você já está pronto pra sair do zero e mudar de vida.');
+    var tempo = {
+      pouco: 'Mesmo com pouco tempo por semana, dá pra tirar os primeiros pedidos do papel.',
+      medio: 'Seu tempo livre já é suficiente pra tocar o método com calma.',
+      alto: 'Seu tempo livre permite acelerar ainda mais rápido.'
+    };
+    items.push(tempo[answers.q4] || 'No tempo que você tiver disponível, dá pra começar a vender.');
+    var trava = {
+      produto: 'O que vender e como montar o cardápio: resolvido logo no início do curso.',
+      preco: 'Como precificar sem perder margem: tem planilha pronta no curso.',
+      vendas: 'Como vender e divulgar: passo a passo com roteiros prontos.',
+      medo: 'O medo de tentar: reduzido com um passo a passo claro do início ao fim.'
+    };
+    items.push(trava[answers.q5] || 'O que te trava hoje é resolvido dentro do curso.');
+    items.push('Você começa pequeno e vai aumentando de vida conforme conquista clientes.');
+    var list = document.getElementById('matchList');
+    list.innerHTML = items.map(function(t){ return '<div class="match-item"><i>✓</i><span>'+t+'</span></div>'; }).join('');
+  }
+
+  var finalScreen = screens['final'];
+  var observer = new MutationObserver(function(){
+    if(finalScreen.classList.contains('active')) buildMatchList();
+  });
+  observer.observe(finalScreen, {attributes:true, attributeFilter:['class']});
+
+  render();
+})();
+</script>
+
+</body>
+</html>
