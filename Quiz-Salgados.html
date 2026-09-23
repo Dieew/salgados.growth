@@ -76,10 +76,27 @@
   .match-item i{flex:0 0 auto;color:var(--gold);font-style:normal;font-weight:700;}
 
   .testi-slot{margin-top:26px;background:var(--dark-2);border:1.5px dashed var(--dark-line);border-radius:20px;padding:16px;text-align:center;}
-  .testi-slot .video-box{width:100%;max-width:220px;aspect-ratio:9/16;margin:0 auto;border-radius:16px;background:linear-gradient(160deg,#3A2718,#241811);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
-  .testi-slot .video-box video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .testi-slot .video-box{
+    width:100%;max-width:360px;aspect-ratio:9/16;margin:0 auto;border-radius:16px;
+    background:#120d09;display:flex;align-items:center;justify-content:center;
+    overflow:hidden;position:relative;
+  }
+  .testi-slot .video-box video{
+    display:block;width:100%;height:100%;object-fit:contain;
+    background:#120d09;border-radius:16px;
+  }
   .testi-slot p{color:var(--muted-light);font-size:.78rem;margin-top:12px;}
   .testi-slot .placeholder{color:var(--muted-light);font-size:.78rem;padding:0 10px;}
+  .sound-btn{
+    width:100%;max-width:360px;margin:12px auto 0;display:flex;align-items:center;
+    justify-content:center;gap:8px;background:transparent;color:var(--gold);
+    border:1px solid rgba(247,183,51,.45);border-radius:999px;padding:12px 16px;
+    font-family:'Figtree',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;
+    transition:background .15s ease,border-color .15s ease,transform .1s ease;
+  }
+  .sound-btn:hover{background:rgba(247,183,51,.08);border-color:var(--gold);}
+  .sound-btn:active{transform:scale(.98);}
+  .sound-btn.is-on{background:rgba(247,183,51,.12);border-color:var(--gold);}
 
   .offer{background:var(--cream-2);color:var(--ink);border-radius:22px;padding:28px 24px;margin-top:26px;text-align:center;}
   .price-label{color:var(--muted-dark);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;}
@@ -188,17 +205,21 @@
 
         <div class="testi-slot">
           <div class="video-box">
-            <p class="placeholder">Espaço reservado para o vídeo de depoimento de um aluno</p>
+            <video
+              id="videoDepoimento"
+              src="assets/depoimento_amos.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              aria-label="Depoimento em vídeo">
+            </video>
           </div>
-           <video
-            id="videoDepoimento"
-            src="assets/depoimento_amos.mp4"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto">
-        </video>
+          <button type="button" class="sound-btn" id="soundBtn" aria-label="Ativar som do depoimento">
+            🔊 Escute com som o depoimento
+          </button>
+          <p>Assista ao depoimento e, se quiser, ative o áudio.</p>
         </div>
 
         <div class="offer">
@@ -340,6 +361,29 @@
     if(finalScreen.classList.contains('active')) buildMatchList();
   });
   observer.observe(finalScreen, {attributes:true, attributeFilter:['class']});
+
+  // O navegador bloqueia autoplay com áudio. Por isso o vídeo começa
+  // silencioso e o botão abaixo ativa/desativa o som após a interação.
+  var videoDepoimento = document.getElementById('videoDepoimento');
+  var soundBtn = document.getElementById('soundBtn');
+
+  if(videoDepoimento && soundBtn){
+    soundBtn.addEventListener('click', function(){
+      videoDepoimento.muted = !videoDepoimento.muted;
+
+      if(videoDepoimento.muted){
+        soundBtn.textContent = '🔊 Escute com som o depoimento';
+        soundBtn.classList.remove('is-on');
+        soundBtn.setAttribute('aria-label','Ativar som do depoimento');
+      }else{
+        soundBtn.textContent = '🔇 Silenciar depoimento';
+        soundBtn.classList.add('is-on');
+        soundBtn.setAttribute('aria-label','Silenciar depoimento');
+      }
+
+      videoDepoimento.play().catch(function(){});
+    });
+  }
 
   render();
 })();
