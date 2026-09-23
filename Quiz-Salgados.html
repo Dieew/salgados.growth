@@ -3,6 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '83784377170899');
+fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=83784377170899&ev=PageView&noscript=1"
+       alt="">
+</noscript>
+<!-- Fim Meta Pixel -->
+
 <title>Isso é pra você? 20k sem sair de casa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -329,6 +350,51 @@
 
 <script>
 (function(){
+  /* =========================================================
+     META PIXEL — eventos essenciais de interação
+     ========================================================= */
+  var pixelState = {
+    quizStarted: false,
+    quizCompleted: false,
+    videoSoundOn: false,
+    whatsappClicked: false,
+    checkoutClicked: false
+  };
+
+  function metaTrack(eventName, params){
+    if(typeof window.fbq !== 'function') return;
+    try {
+      if(params) fbq('trackCustom', eventName, params);
+      else fbq('trackCustom', eventName);
+    } catch(e) {}
+  }
+
+  function metaStandard(eventName, params){
+    if(typeof window.fbq !== 'function') return;
+    try {
+      if(params) fbq('track', eventName, params);
+      else fbq('track', eventName);
+    } catch(e) {}
+  }
+
+  function trackQuizStart(){
+    if(pixelState.quizStarted) return;
+    pixelState.quizStarted = true;
+    metaStandard('ViewContent', {content_name:'Quiz 20k sem sair de casa'});
+    metaTrack('QuizStart', {step:0});
+  }
+
+  function trackQuizStep(step){
+    metaTrack('QuizStep', {step:step, total_steps:6});
+  }
+
+  function trackQuizComplete(){
+    if(pixelState.quizCompleted) return;
+    pixelState.quizCompleted = true;
+    metaStandard('Lead', {content_name:'Quiz completo'});
+    metaTrack('QuizComplete', {total_steps:6});
+  }
+
   var order = ["0","1","2","3","4","5","6","final"];
   var questionSteps = ["1","2","3","4","5","6"];
   var idx = 0;
@@ -395,7 +461,12 @@
   function goBack(){ if(idx > 0){ idx--; render(); } }
 
   backBtn.addEventListener('click', goBack);
-  document.querySelectorAll('[data-next]').forEach(function(btn){ btn.addEventListener('click', goNext); });
+  document.querySelectorAll('[data-next]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      trackQuizStart();
+      goNext();
+    });
+  });
 
   var feedbackText = {
     q1: {
@@ -442,6 +513,14 @@
           fb.classList.add('show');
         }
         showSuccessBurst();
+
+        var stepNumber = parseInt(key.replace('q',''), 10);
+        trackQuizStep(stepNumber);
+
+        if(stepNumber === 6){
+          trackQuizComplete();
+        }
+
         setTimeout(function(){
           group.querySelectorAll('.opt').forEach(function(o){ o.disabled = false; });
           goNext();
@@ -487,6 +566,11 @@
     soundBtn.addEventListener('click', function(){
       videoDepoimento.muted = !videoDepoimento.muted;
 
+      if(!videoDepoimento.muted && !pixelState.videoSoundOn){
+        pixelState.videoSoundOn = true;
+        metaTrack('VideoSoundOn', {video:'depoimento_amos.mp4'});
+      }
+
       if(videoDepoimento.muted){
         soundBtn.textContent = '🔊 Escute com som o depoimento';
         soundBtn.classList.remove('is-on');
@@ -498,6 +582,27 @@
       }
 
       videoDepoimento.play().catch(function(){});
+    });
+  }
+
+  var whatsappFloat = document.querySelector('.whatsapp-float');
+  if(whatsappFloat){
+    whatsappFloat.addEventListener('click', function(){
+      if(!pixelState.whatsappClicked){
+        pixelState.whatsappClicked = true;
+        metaStandard('Contact', {method:'WhatsApp'});
+        metaTrack('WhatsAppClick', {placement:'floating'});
+      }
+    });
+  }
+
+  var checkoutLink = document.querySelector('a[href*="pay.kiwify.com.br"]');
+  if(checkoutLink){
+    checkoutLink.addEventListener('click', function(){
+      if(!pixelState.checkoutClicked){
+        pixelState.checkoutClicked = true;
+        metaStandard('InitiateCheckout', {content_name:'Curso 20k sem sair de casa'});
+      }
     });
   }
 
