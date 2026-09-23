@@ -106,6 +106,65 @@
   .offer .checks span{display:flex;gap:8px;}
   .offer .checks i{color:var(--ember);font-style:normal;font-weight:700;}
   .secure{color:var(--muted-dark);font-size:.72rem;margin-top:12px;}
+
+  /* Elementos de incentivo visual */
+  .progress-motivation{
+    display:flex;align-items:center;justify-content:center;gap:7px;
+    margin:10px auto 0;min-height:28px;color:var(--muted-light);
+    font-size:.76rem;font-weight:600;
+  }
+  .progress-motivation .crumb{opacity:.45;transition:opacity .25s ease,transform .25s ease;}
+  .progress-motivation .crumb.done{opacity:1;transform:scale(1.12);}
+  .progress-motivation .crumb.current{opacity:1;filter:saturate(1.2);}
+  .visual-reward{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    margin:18px auto 0;padding:12px 14px;border-radius:15px;
+    background:rgba(247,183,51,.07);border:1px solid rgba(247,183,51,.14);
+    color:var(--text-light);font-size:.82rem;font-weight:600;
+    animation:rewardIn .35s ease;
+  }
+  .visual-reward .food{font-size:1.5rem;line-height:1;}
+  .visual-reward .reward-copy{color:var(--muted-light);}
+  .visual-reward strong{color:var(--gold);}
+  @keyframes rewardIn{
+    from{opacity:0;transform:translateY(7px) scale(.98);}
+    to{opacity:1;transform:translateY(0) scale(1);}
+  }
+  .success-burst{
+    position:fixed;left:50%;top:46%;z-index:40;pointer-events:none;
+    transform:translate(-50%,-50%);font-size:2rem;opacity:0;
+  }
+  .success-burst.show{animation:burst .65s ease forwards;}
+  @keyframes burst{
+    0%{opacity:0;transform:translate(-50%,-50%) scale(.5);}
+    35%{opacity:1;transform:translate(-50%,-50%) scale(1.25);}
+    100%{opacity:0;transform:translate(-50%,-75%) scale(1);}
+  }
+  .whatsapp-float{
+    position:fixed;right:18px;bottom:18px;z-index:50;
+    width:56px;height:56px;border-radius:50%;display:flex;
+    align-items:center;justify-content:center;text-decoration:none;
+    background:#25D366;color:#fff;font-size:1.65rem;
+    box-shadow:0 8px 24px rgba(0,0,0,.35);
+    border:2px solid rgba(255,255,255,.18);
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .whatsapp-float:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 10px 28px rgba(0,0,0,.42);}
+  .whatsapp-float:active{transform:scale(.94);}
+  .whatsapp-float .wa-label{
+    position:absolute;right:66px;white-space:nowrap;
+    background:var(--cream-2);color:var(--ink);padding:8px 11px;
+    border-radius:10px;font-size:.72rem;font-weight:700;opacity:0;
+    transform:translateX(5px);pointer-events:none;transition:opacity .2s ease,transform .2s ease;
+  }
+  .whatsapp-float:hover .wa-label{opacity:1;transform:translateX(0);}
+  @media(max-width:420px){
+    .whatsapp-float{right:14px;bottom:14px;width:52px;height:52px;}
+    .whatsapp-float .wa-label{display:none;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .visual-reward,.success-burst,.opt,.btn{animation:none!important;transition:none!important;}
+  }
 </style>
 </head>
 <body>
@@ -115,6 +174,14 @@
     <button class="back" id="backBtn" aria-label="Voltar">←</button>
     <div class="bar"><div class="bar-fill" id="barFill"></div></div>
     <span class="step-count" id="stepCount">1/6</span>
+  </div>
+  <div class="progress-motivation" id="progressMotivation" aria-live="polite">
+    <span class="crumb current">🥟</span>
+    <span class="crumb">🥟</span>
+    <span class="crumb">🥟</span>
+    <span class="crumb">🥟</span>
+    <span class="crumb">🥟</span>
+    <span class="crumb">🥟</span>
   </div>
 </div>
 
@@ -138,6 +205,7 @@
         <button class="opt" data-value="nao">Não, mas quero mudar de vida<span class="dot"></span></button>
       </div>
       <p class="micro-feedback" id="fb1"></p>
+      <div class="visual-reward" id="reward1">💰 <span class="reward-copy">Cada resposta te aproxima do seu <strong>próximo passo</strong>.</span></div>
     </div>
 
     <div class="screen" data-screen="2">
@@ -150,6 +218,7 @@
         <button class="opt" data-value="familia">Falta tempo pra família<span class="dot"></span></button>
       </div>
       <p class="micro-feedback" id="fb2"></p>
+      <div class="visual-reward" id="reward2">🏠 <span class="reward-copy">Você está descobrindo onde uma <strong>renda extra</strong> pode entrar na sua rotina.</span></div>
     </div>
 
     <div class="screen" data-screen="3">
@@ -160,6 +229,7 @@
         <button class="opt" data-value="nunca">Nunca tinha pensado, mas topo<span class="dot"></span></button>
       </div>
       <p class="micro-feedback" id="fb3"></p>
+      <div class="visual-reward" id="reward3">🥟 <span class="reward-copy">Esse é o tipo de oportunidade que pode começar <strong>na sua própria cozinha</strong>.</span></div>
     </div>
 
     <div class="screen" data-screen="4">
@@ -171,6 +241,7 @@
         <button class="opt" data-value="alto">Mais de 10 horas<span class="dot"></span></button>
       </div>
       <p class="micro-feedback" id="fb4"></p>
+      <div class="visual-reward" id="reward4">⏰ <span class="reward-copy">Pouco tempo também pode virar <strong>primeiros pedidos</strong>.</span></div>
     </div>
 
     <div class="screen" data-screen="5">
@@ -183,6 +254,7 @@
         <button class="opt" data-value="medo">Medo de tentar e não dar certo<span class="dot"></span></button>
       </div>
       <p class="micro-feedback" id="fb5"></p>
+      <div class="visual-reward" id="reward5">🚀 <span class="reward-copy">O que te trava hoje pode virar um <strong>passo a passo</strong>.</span></div>
     </div>
 
     <div class="screen" data-screen="6">
@@ -193,6 +265,7 @@
         <button class="opt" data-value="talvez">Talvez, quero ver como funciona<span class="dot"></span></button>
       </div>
       <p class="micro-feedback" id="fb6"></p>
+      <div class="visual-reward" id="reward6">🎯 <span class="reward-copy">Última pergunta! Vamos descobrir seu <strong>próximo passo</strong>.</span></div>
     </div>
 
     <div class="screen" data-screen="final">
@@ -242,6 +315,18 @@
   </div>
 </div>
 
+<a
+  class="whatsapp-float"
+  href="https://wa.me/5561993219818?text=Oi%21%20Quero%20saber%20mais%20sobre%20o%20curso."
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Falar sobre o curso pelo WhatsApp">
+  <span class="wa-label">Tirar dúvidas no WhatsApp</span>
+  💬
+</a>
+
+<div class="success-burst" id="successBurst" aria-hidden="true">🥟✨</div>
+
 <script>
 (function(){
   var order = ["0","1","2","3","4","5","6","final"];
@@ -254,6 +339,35 @@
   var barFill = document.getElementById('barFill');
   var stepCount = document.getElementById('stepCount');
   var backBtn = document.getElementById('backBtn');
+  var progressMotivation = document.getElementById('progressMotivation');
+  var successBurst = document.getElementById('successBurst');
+
+  function updateProgressVisual(){
+    if(!progressMotivation) return;
+    var crumbs = progressMotivation.querySelectorAll('.crumb');
+    var id = order[idx];
+    var qIndex = questionSteps.indexOf(id);
+
+    crumbs.forEach(function(crumb, i){
+      crumb.classList.toggle('done', qIndex > i);
+      crumb.classList.toggle('current', qIndex === i);
+    });
+
+    if(id === "final"){
+      crumbs.forEach(function(crumb){ crumb.classList.add('done'); });
+      progressMotivation.innerHTML =
+        '<span class="crumb done">🥟</span><span class="crumb done">🥟</span><span class="crumb done">🥟</span>' +
+        '<span class="crumb done">🥟</span><span class="crumb done">🥟</span><span class="crumb done">🥟</span>' +
+        '<span style="margin-left:4px;color:var(--gold);">✨ Você chegou lá!</span>';
+    }
+  }
+
+  function showSuccessBurst(){
+    if(!successBurst) return;
+    successBurst.classList.remove('show');
+    void successBurst.offsetWidth;
+    successBurst.classList.add('show');
+  }
 
   function render(){
     order.forEach(function(id){ screens[id].classList.remove('active'); });
@@ -274,6 +388,7 @@
       barFill.style.width = ((qIndex+1)/total*100) + "%";
     }
     backBtn.disabled = (idx === 0);
+    updateProgressVisual();
   }
 
   function goNext(){ if(idx < order.length-1){ idx++; render(); } }
@@ -326,6 +441,7 @@
           fb.textContent = (feedbackText[key] || {})[answers[key]] || '';
           fb.classList.add('show');
         }
+        showSuccessBurst();
         setTimeout(function(){
           group.querySelectorAll('.opt').forEach(function(o){ o.disabled = false; });
           goNext();
