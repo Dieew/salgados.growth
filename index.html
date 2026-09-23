@@ -6,6 +6,30 @@
 <title>Como fazer 20k sem sair de casa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- =========================================================
+       META PIXEL — ESQUINAO DOS SALGADOS
+       Pixel ID: 83784377170899
+       ========================================================= -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '83784377170899');
+    fbq('track', 'PageView');
+  </script>
+
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=83784377170899&ev=PageView&noscript=1"
+         alt="">
+  </noscript>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -775,6 +799,152 @@ function ativarSomDepoimento() {
   }catch(err){}
 </script>
 
+
+
+<script>
+(function () {
+  'use strict';
+  if (typeof fbq !== 'function') return;
+
+  var sent = {
+    scroll25:false, scroll50:false, scroll75:false, scroll90:false, scroll100:false,
+    time10:false, time30:false, time60:false, time120:false, time300:false,
+    qualified:false, calculator:false, quizComplete:false
+  };
+
+  var maxScroll = 0;
+  var activeMs = 0;
+  var lastTick = performance.now();
+
+  function custom(name, params) {
+    try { fbq('trackCustom', name, params || {}); } catch (e) {}
+  }
+
+  function standard(name, params) {
+    try { fbq('track', name, params || {}); } catch (e) {}
+  }
+
+  function scrollPercent() {
+    var doc = document.documentElement;
+    var scrollable = Math.max(doc.scrollHeight - window.innerHeight, 1);
+    return Math.min(100, Math.round((window.scrollY / scrollable) * 100));
+  }
+
+  function qualified() {
+    if (!sent.qualified && sent.time30 && sent.scroll50) {
+      sent.qualified = true;
+      custom('QualifiedVisit', { engaged_seconds:30, scroll_depth:50 });
+    }
+  }
+
+  function checkScroll() {
+    var percent = scrollPercent();
+    if (percent > maxScroll) maxScroll = percent;
+
+    [[25,'scroll25'],[50,'scroll50'],[75,'scroll75'],[90,'scroll90'],[100,'scroll100']]
+      .forEach(function (item) {
+        var threshold = item[0], key = item[1];
+        if (percent >= threshold && !sent[key]) {
+          sent[key] = true;
+          custom('ScrollDepth', { percent:threshold, max_scroll:maxScroll });
+          if (threshold === 50) qualified();
+        }
+      });
+  }
+
+  window.addEventListener('scroll', checkScroll, { passive:true });
+  window.addEventListener('load', checkScroll);
+
+  setInterval(function () {
+    var now = performance.now();
+    if (!document.hidden) activeMs += now - lastTick;
+    lastTick = now;
+
+    var seconds = Math.floor(activeMs / 1000);
+    [[10,'time10'],[30,'time30'],[60,'time60'],[120,'time120'],[300,'time300']]
+      .forEach(function (item) {
+        var threshold = item[0], key = item[1];
+        if (seconds >= threshold && !sent[key]) {
+          sent[key] = true;
+          custom('EngagedTime', { seconds:threshold });
+          if (threshold === 30) qualified();
+        }
+      });
+  }, 1000);
+
+  document.addEventListener('visibilitychange', function () {
+    lastTick = performance.now();
+  });
+
+  document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var section = link.closest('section');
+      standard('InitiateCheckout', {
+        content_name:'Método 20k sem sair de casa',
+        content_category:'curso',
+        value:99.90,
+        currency:'BRL'
+      });
+      custom('CTA_Click', {
+        destination:'Kiwify',
+        section:(section && section.id) ? section.id : 'sem-id',
+        label:(link.textContent || '').trim().slice(0,80)
+      });
+    });
+  });
+
+  document.querySelectorAll('a[href*="wa.me/"], a[href*="whatsapp.com/"]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      standard('Contact', { contact_method:'WhatsApp' });
+      custom('WhatsAppClick', {
+        placement:link.classList.contains('wa-float') ? 'floating' : 'page'
+      });
+    });
+  });
+
+  document.querySelectorAll('[data-quiz-item]').forEach(function (item) {
+    item.addEventListener('click', function () {
+      var total = document.querySelectorAll('[data-quiz-item]').length;
+      var selected = document.querySelectorAll('[data-quiz-item].picked').length;
+      custom('QuizInteraction', { selected_items:selected, total_items:total });
+
+      if (selected >= 4 && !sent.quizComplete) {
+        sent.quizComplete = true;
+        custom('QuizComplete', { selected_items:selected, total_items:total });
+      }
+    });
+  });
+
+  ['calcPedidos','calcTicket','calcDias'].forEach(function (id) {
+    var field = document.getElementById(id);
+    if (field) {
+      field.addEventListener('input', function () {
+        if (sent.calculator) return;
+        sent.calculator = true;
+        custom('CalculatorInteraction', { field:id });
+      });
+    }
+  });
+
+  var video = document.getElementById('videoDepoimento');
+  var videoStarted = false, video50 = false;
+  if (video) {
+    video.addEventListener('play', function () {
+      if (videoStarted) return;
+      videoStarted = true;
+      custom('VideoStart', { video:'depoimento_amos' });
+    });
+
+    video.addEventListener('timeupdate', function () {
+      if (!video.duration || video50) return;
+      if ((video.currentTime / video.duration) >= 0.5) {
+        video50 = true;
+        custom('Video50Percent', { video:'depoimento_amos' });
+      }
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
