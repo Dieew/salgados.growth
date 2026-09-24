@@ -14,12 +14,12 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 
-fbq('init', '83784377170899');
+fbq('init', '837843771770899');
 fbq('track', 'PageView');
 </script>
 <noscript>
   <img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id=83784377170899&ev=PageView&noscript=1"
+       src="https://www.facebook.com/tr?id=837843771770899&ev=PageView&noscript=1"
        alt="">
 </noscript>
 <!-- Fim Meta Pixel -->
@@ -351,258 +351,118 @@ fbq('track', 'PageView');
 <script>
 (function(){
   /* =========================================================
-     META PIXEL — eventos essenciais de interação
+     META PIXEL — 6 eventos essenciais
+     1. PageView
+     2. EngagedTime (10s)
+     3. ScrollDepth (50%)
+     4. CTA_Click
+     5. WhatsAppClick
+     6. InitiateCheckout
      ========================================================= */
+
   var pixelState = {
-    quizStarted: false,
-    quizCompleted: false,
-    videoSoundOn: false,
-    whatsappClicked: false,
-    checkoutClicked: false
+    time10:false,
+    scroll50:false,
+    ctaClicked:false,
+    whatsappClicked:false,
+    checkoutClicked:false
   };
 
-  function metaTrack(eventName, params){
+  function custom(eventName, params){
     if(typeof window.fbq !== 'function') return;
-    try {
-      if(params) fbq('trackCustom', eventName, params);
-      else fbq('trackCustom', eventName);
-    } catch(e) {}
+    try { fbq('trackCustom', eventName, params || {}); } catch(e) {}
   }
 
-  function metaStandard(eventName, params){
+  function standard(eventName, params){
     if(typeof window.fbq !== 'function') return;
-    try {
-      if(params) fbq('track', eventName, params);
-      else fbq('track', eventName);
-    } catch(e) {}
+    try { fbq('track', eventName, params || {}); } catch(e) {}
   }
 
-  function trackQuizStart(){
-    if(pixelState.quizStarted) return;
-    pixelState.quizStarted = true;
-    metaStandard('ViewContent', {content_name:'Quiz 20k sem sair de casa'});
-    metaTrack('QuizStart', {step:0});
+  /* EngagedTime — 10 segundos de tempo ativo */
+  var activeMs = 0;
+  var lastTick = performance.now();
+
+  setInterval(function(){
+    var now = performance.now();
+
+    if(!document.hidden){
+      activeMs += now - lastTick;
+    }
+
+    lastTick = now;
+
+    if(!pixelState.time10 && activeMs >= 10000){
+      pixelState.time10 = true;
+      custom('EngagedTime', {seconds:10});
+    }
+  }, 1000);
+
+  document.addEventListener('visibilitychange', function(){
+    lastTick = performance.now();
+  });
+
+  /* ScrollDepth — 50% da tela/página disponível */
+  function scrollPercent(){
+    var stage = document.querySelector('.stage');
+    if(!stage) return 0;
+
+    var scrollable = Math.max(stage.scrollHeight - stage.clientHeight, 1);
+    return Math.min(100, Math.round((stage.scrollTop / scrollable) * 100));
   }
 
-  function trackQuizStep(step){
-    metaTrack('QuizStep', {step:step, total_steps:6});
-  }
+  function checkScroll(){
+    if(pixelState.scroll50) return;
 
-  function trackQuizComplete(){
-    if(pixelState.quizCompleted) return;
-    pixelState.quizCompleted = true;
-    metaStandard('Lead', {content_name:'Quiz completo'});
-    metaTrack('QuizComplete', {total_steps:6});
-  }
-
-  var order = ["0","1","2","3","4","5","6","final"];
-  var questionSteps = ["1","2","3","4","5","6"];
-  var idx = 0;
-  var answers = {};
-  var screens = {};
-  order.forEach(function(id){ screens[id] = document.querySelector('[data-screen="'+id+'"]'); });
-
-  var barFill = document.getElementById('barFill');
-  var stepCount = document.getElementById('stepCount');
-  var backBtn = document.getElementById('backBtn');
-  var progressMotivation = document.getElementById('progressMotivation');
-  var successBurst = document.getElementById('successBurst');
-
-  function updateProgressVisual(){
-    if(!progressMotivation) return;
-    var crumbs = progressMotivation.querySelectorAll('.crumb');
-    var id = order[idx];
-    var qIndex = questionSteps.indexOf(id);
-
-    crumbs.forEach(function(crumb, i){
-      crumb.classList.toggle('done', qIndex > i);
-      crumb.classList.toggle('current', qIndex === i);
-    });
-
-    if(id === "final"){
-      crumbs.forEach(function(crumb){ crumb.classList.add('done'); });
-      progressMotivation.innerHTML =
-        '<span class="crumb done">🥟</span><span class="crumb done">🥟</span><span class="crumb done">🥟</span>' +
-        '<span class="crumb done">🥟</span><span class="crumb done">🥟</span><span class="crumb done">🥟</span>' +
-        '<span style="margin-left:4px;color:var(--gold);">✨ Você chegou lá!</span>';
+    if(scrollPercent() >= 50){
+      pixelState.scroll50 = true;
+      custom('ScrollDepth', {percent:50});
     }
   }
 
-  function showSuccessBurst(){
-    if(!successBurst) return;
-    successBurst.classList.remove('show');
-    void successBurst.offsetWidth;
-    successBurst.classList.add('show');
+  var stageEl = document.querySelector('.stage');
+  if(stageEl){
+    stageEl.addEventListener('scroll', checkScroll, {passive:true});
+    window.addEventListener('load', checkScroll);
   }
 
-  function render(){
-    order.forEach(function(id){ screens[id].classList.remove('active'); });
-    screens[order[idx]].classList.add('active');
-    document.querySelector('.stage').scrollTop = 0;
-
-    var id = order[idx];
-    var qIndex = questionSteps.indexOf(id);
-    var total = questionSteps.length;
-    if(id === "0"){
-      stepCount.textContent = "";
-      barFill.style.width = "3%";
-    } else if(id === "final"){
-      stepCount.textContent = "Pronto";
-      barFill.style.width = "100%";
-    } else {
-      stepCount.textContent = (qIndex+1) + "/" + total;
-      barFill.style.width = ((qIndex+1)/total*100) + "%";
-    }
-    backBtn.disabled = (idx === 0);
-    updateProgressVisual();
-  }
-
-  function goNext(){ if(idx < order.length-1){ idx++; render(); } }
-  function goBack(){ if(idx > 0){ idx--; render(); } }
-
-  backBtn.addEventListener('click', goBack);
-  document.querySelectorAll('[data-next]').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      trackQuizStart();
-      goNext();
-    });
-  });
-
-  var feedbackText = {
-    q1: {
-      sim: 'Ótimo ponto de partida: dá pra começar sem sair do emprego.',
-      nao: 'Perfeito, o método também serve pra quem já quer virar essa página.'
-    },
-    q2: {
-      salario: 'Uma renda extra de casa já ajuda a fechar esse buraco no mês.',
-      crescimento: 'Ter o próprio negócio muda esse teto de crescimento.',
-      negocio: 'Esse é o ponto de partida perfeito pra começar.',
-      familia: 'O método cabe em pouco tempo, sem tomar seu dia inteiro.'
-    },
-    q3: {
-      ja: 'Então chegou a hora de sair do pensar e ir pro fazer.',
-      nunca: 'Dá pra começar do zero, sem nunca ter vendido nada.'
-    },
-    q4: {
-      pouco: 'Mesmo com pouco tempo, dá pra tirar os primeiros pedidos do papel.',
-      medio: 'Esse tempo já é suficiente pra tocar o método com calma.',
-      alto: 'Com esse tempo dá pra acelerar bem mais rápido.'
-    },
-    q5: {
-      produto: 'O que vender e como montar o cardápio vem logo no início do curso.',
-      preco: 'Tem uma planilha pronta pra você precificar sem perder margem.',
-      vendas: 'Tem passo a passo de vendas, divulgação e roteiros prontos pra usar.',
-      medo: 'É normal sentir isso no começo. O passo a passo existe pra reduzir esse risco.'
-    },
-    q6: {
-      sim: 'Essa renda é o primeiro passo pra ir aumentando de vida aos poucos.',
-      talvez: 'Faz sentido testar primeiro. É assim que o método funciona.'
-    }
-  };
-
-  document.querySelectorAll('[data-options]').forEach(function(group){
-    var key = group.getAttribute('data-options');
-    var fb = document.getElementById('fb' + key.replace('q',''));
-    group.querySelectorAll('.opt').forEach(function(opt){
-      opt.addEventListener('click', function(){
-        group.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('chosen'); o.disabled = true; });
-        opt.classList.add('chosen');
-        answers[key] = opt.getAttribute('data-value');
-        if(fb){
-          fb.textContent = (feedbackText[key] || {})[answers[key]] || '';
-          fb.classList.add('show');
-        }
-        showSuccessBurst();
-
-        var stepNumber = parseInt(key.replace('q',''), 10);
-        trackQuizStep(stepNumber);
-
-        if(stepNumber === 6){
-          trackQuizComplete();
-        }
-
-        setTimeout(function(){
-          group.querySelectorAll('.opt').forEach(function(o){ o.disabled = false; });
-          goNext();
-        }, 650);
-      });
-    });
-  });
-
-  function buildMatchList(){
-    var items = [];
-    if(answers.q1 === 'sim') items.push('Você começa de casa, sem largar o CLT agora.');
-    else items.push('Você já está pronto pra sair do zero e mudar de vida.');
-    var tempo = {
-      pouco: 'Mesmo com pouco tempo por semana, dá pra tirar os primeiros pedidos do papel.',
-      medio: 'Seu tempo livre já é suficiente pra tocar o método com calma.',
-      alto: 'Seu tempo livre permite acelerar ainda mais rápido.'
-    };
-    items.push(tempo[answers.q4] || 'No tempo que você tiver disponível, dá pra começar a vender.');
-    var trava = {
-      produto: 'O que vender e como montar o cardápio: resolvido logo no início do curso.',
-      preco: 'Como precificar sem perder margem: tem planilha pronta no curso.',
-      vendas: 'Como vender e divulgar: passo a passo com roteiros prontos.',
-      medo: 'O medo de tentar: reduzido com um passo a passo claro do início ao fim.'
-    };
-    items.push(trava[answers.q5] || 'O que te trava hoje é resolvido dentro do curso.');
-    items.push('Você começa pequeno e vai aumentando de vida conforme conquista clientes.');
-    var list = document.getElementById('matchList');
-    list.innerHTML = items.map(function(t){ return '<div class="match-item"><i>✓</i><span>'+t+'</span></div>'; }).join('');
-  }
-
-  var finalScreen = screens['final'];
-  var observer = new MutationObserver(function(){
-    if(finalScreen.classList.contains('active')) buildMatchList();
-  });
-  observer.observe(finalScreen, {attributes:true, attributeFilter:['class']});
-
-  // O navegador bloqueia autoplay com áudio. Por isso o vídeo começa
-  // silencioso e o botão abaixo ativa/desativa o som após a interação.
-  var videoDepoimento = document.getElementById('videoDepoimento');
-  var soundBtn = document.getElementById('soundBtn');
-
-  if(videoDepoimento && soundBtn){
-    soundBtn.addEventListener('click', function(){
-      videoDepoimento.muted = !videoDepoimento.muted;
-
-      if(!videoDepoimento.muted && !pixelState.videoSoundOn){
-        pixelState.videoSoundOn = true;
-        metaTrack('VideoSoundOn', {video:'depoimento_amos.mp4'});
-      }
-
-      if(videoDepoimento.muted){
-        soundBtn.textContent = '🔊 Escute com som o depoimento';
-        soundBtn.classList.remove('is-on');
-        soundBtn.setAttribute('aria-label','Ativar som do depoimento');
-      }else{
-        soundBtn.textContent = '🔇 Silenciar depoimento';
-        soundBtn.classList.add('is-on');
-        soundBtn.setAttribute('aria-label','Silenciar depoimento');
-      }
-
-      videoDepoimento.play().catch(function(){});
-    });
-  }
-
-  var whatsappFloat = document.querySelector('.whatsapp-float');
-  if(whatsappFloat){
-    whatsappFloat.addEventListener('click', function(){
-      if(!pixelState.whatsappClicked){
-        pixelState.whatsappClicked = true;
-        metaStandard('Contact', {method:'WhatsApp'});
-        metaTrack('WhatsAppClick', {placement:'floating'});
-      }
-    });
-  }
-
+  /* CTA / checkout */
   var checkoutLink = document.querySelector('a[href*="pay.kiwify.com.br"]');
+
   if(checkoutLink){
     checkoutLink.addEventListener('click', function(){
+      if(!pixelState.ctaClicked){
+        pixelState.ctaClicked = true;
+
+        custom('CTA_Click', {
+          destination:'Kiwify',
+          label:(checkoutLink.textContent || '').trim().slice(0,80)
+        });
+      }
+
       if(!pixelState.checkoutClicked){
         pixelState.checkoutClicked = true;
-        metaStandard('InitiateCheckout', {content_name:'Curso 20k sem sair de casa'});
+
+        standard('InitiateCheckout', {
+          content_name:'Curso 20k sem sair de casa',
+          value:99.90,
+          currency:'BRL'
+        });
       }
+    });
+  }
+
+  /* WhatsApp */
+  var whatsappFloat = document.querySelector('.whatsapp-float');
+
+  if(whatsappFloat){
+    whatsappFloat.addEventListener('click', function(){
+      if(pixelState.whatsappClicked) return;
+
+      pixelState.whatsappClicked = true;
+
+      custom('WhatsAppClick', {
+        placement:'floating'
+      });
     });
   }
 
