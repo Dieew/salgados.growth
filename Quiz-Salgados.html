@@ -660,16 +660,22 @@ fbq('track', 'PageView');
     stageEl.addEventListener('scroll', checkScroll, {passive:true});
   }
 
-  /* CTA + InitiateCheckout */
-  var checkoutLink = document.querySelector('a[href*="pay.kiwify.com.br"]');
+  /* CTA + InitiateCheckout + WhatsApp
+     Delegação de eventos: captura cliques mesmo se os elementos
+     forem exibidos/trocados dinamicamente pelo quiz.
+     Mantidos: Pixel ID, nomes dos eventos, URL da Kiwify e parâmetros. */
+  document.addEventListener('click', function(event){
+    var target = event.target;
+    if(!target || !target.closest) return;
 
-  if(checkoutLink){
-    checkoutLink.addEventListener('click', function(){
+    var checkout = target.closest('a[href*="pay.kiwify.com.br"]');
+
+    if(checkout){
       if(!pixelState.ctaClicked){
         pixelState.ctaClicked = true;
         custom('CTA_Click', {
           destination:'Kiwify',
-          label:(checkoutLink.textContent || '').trim().slice(0,80)
+          label:(checkout.textContent || '').trim().slice(0,80)
         });
       }
 
@@ -681,14 +687,13 @@ fbq('track', 'PageView');
           currency:'BRL'
         });
       }
-    });
-  }
 
-  /* WhatsApp */
-  var whatsappFloat = document.querySelector('.whatsapp-float');
+      return;
+    }
 
-  if(whatsappFloat){
-    whatsappFloat.addEventListener('click', function(){
+    var whatsapp = target.closest('.whatsapp-float');
+
+    if(whatsapp){
       if(pixelState.whatsappClicked) return;
 
       pixelState.whatsappClicked = true;
@@ -696,8 +701,8 @@ fbq('track', 'PageView');
       custom('WhatsAppClick', {
         placement:'floating'
       });
-    });
-  }
+    }
+  });
 
   /* Inicializa o quiz */
   render();
