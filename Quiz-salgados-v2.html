@@ -55,13 +55,13 @@ fbq('track', 'PageView');
   .bar-fill{height:100%;width:6%;background:linear-gradient(90deg,var(--ember),var(--gold));transition:width .35s ease;}
   .step-count{font-size:.72rem;color:var(--muted-light);flex:0 0 auto;font-variant-numeric:tabular-nums;}
 
-  /* Teaser da oferta - aparece a partir da pergunta 4 */
-  .offer-teaser{
-    max-width:520px;margin:10px auto 0;display:flex;align-items:center;justify-content:center;gap:7px;
-    font-size:.74rem;font-weight:700;color:var(--gold);opacity:0;max-height:0;overflow:hidden;
-    transition:opacity .3s ease,max-height .3s ease,margin .3s ease;
+  /* Teaser da oferta - aparece dentro da tela, abaixo das opções, a partir da pergunta 4 */
+  .offer-teaser-inline{
+    display:flex;align-items:center;justify-content:center;gap:7px;
+    font-size:.76rem;font-weight:700;color:var(--gold);
+    background:rgba(247,183,51,.08);border:1px solid rgba(247,183,51,.18);
+    border-radius:999px;padding:9px 14px;margin-top:18px;text-align:center;
   }
-  .offer-teaser.show{opacity:1;max-height:30px;margin-top:10px;}
 
   .stage{position:absolute;inset:0;padding-top:calc(70px + var(--safe-t));padding-bottom:calc(24px + var(--safe-b));display:flex;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;}
   .wrap{max-width:520px;margin:0 auto;padding:0 22px;width:100%;flex:1;display:flex;flex-direction:column;}
@@ -228,7 +228,6 @@ fbq('track', 'PageView');
     <span class="crumb">🥟</span>
     <span class="crumb">🥟</span>
   </div>
-  <div class="offer-teaser" id="offerTeaser">🎁 Sua oferta especial te espera no fim</div>
 </div>
 
 <div class="stage">
@@ -288,6 +287,7 @@ fbq('track', 'PageView');
         <button class="opt" data-value="alto">Mais de 10 horas<span class="dot"></span></button>
       </div>
       <p class="micro-feedback" id="fb4"></p>
+      <div class="offer-teaser-inline">🎁 Sua oferta especial te espera no fim</div>
     </div>
 
     <div class="screen" data-screen="5">
@@ -301,6 +301,7 @@ fbq('track', 'PageView');
         <button class="opt" data-value="medo">Medo de tentar e não dar certo<span class="dot"></span></button>
       </div>
       <p class="micro-feedback" id="fb5"></p>
+      <div class="offer-teaser-inline">🎁 Sua oferta especial te espera no fim</div>
     </div>
 
     <div class="screen" data-screen="6">
@@ -312,6 +313,7 @@ fbq('track', 'PageView');
         <button class="opt" data-value="talvez">Talvez, quero ver como funciona<span class="dot"></span></button>
       </div>
       <p class="micro-feedback" id="fb6"></p>
+      <div class="offer-teaser-inline">🎁 Sua oferta especial te espera no fim</div>
     </div>
 
     <!-- ===== TELA FINAL ===== -->
@@ -325,8 +327,8 @@ fbq('track', 'PageView');
             <span class="video-tag">Depoimento real</span>
             <video
               id="videoDepoimento"
-              src="assets/depoimento_emerson.mp4"
-              poster="assets/depoimento_thumb.jpg"
+              src="assets/depoimento_amos.mp4"
+              poster="assets/depoimento_amos_thumb.jpg"
               autoplay
               muted
               loop
@@ -338,7 +340,7 @@ fbq('track', 'PageView');
               <span class="icon">🔊</span>
             </div>
           </div>
-          <p>Toque no vídeo para ouvir o Emerson!</p>
+          <p>Toque no vídeo para ouvir o depoimento</p>
         </div>
 
         <div class="quick-match">
@@ -410,7 +412,6 @@ fbq('track', 'PageView');
   var backBtn = document.getElementById('backBtn');
   var progressMotivation = document.getElementById('progressMotivation');
   var successBurst = document.getElementById('successBurst');
-  var offerTeaser = document.getElementById('offerTeaser');
 
   /* Progresso não-linear: acelera nas duas últimas perguntas pra dar
      sensação de "quase lá" e reduzir abandono perto do fim. */
@@ -440,18 +441,6 @@ fbq('track', 'PageView');
     });
   }
 
-  function updateOfferTeaser(){
-    if(!offerTeaser) return;
-    var id = order[idx];
-    var qIndex = questionSteps.indexOf(id);
-    // aparece a partir da pergunta 4 (índice 3) até a última pergunta
-    if(qIndex >= 3){
-      offerTeaser.classList.add('show');
-    } else {
-      offerTeaser.classList.remove('show');
-    }
-  }
-
   function goTo(newIdx){
     screens[order[idx]].classList.remove('active');
     idx = newIdx;
@@ -470,7 +459,6 @@ fbq('track', 'PageView');
 
     backBtn.disabled = (idx === 0);
     updateProgressVisual();
-    updateOfferTeaser();
 
     if(id === 'final' && typeof fbq !== 'undefined'){
       fbq('trackCustom', 'QuizCompleted');
