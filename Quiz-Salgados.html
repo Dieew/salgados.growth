@@ -393,7 +393,7 @@ fbq('track', 'PageView');
      3. ScrollDepth (50%)
      4. CTA_Click
      5. WhatsAppClick
-     6. InitiateCheckout
+     6. KiwifyClick
      ========================================================= */
 
   /* ---------- Estado do quiz ---------- */
@@ -509,12 +509,12 @@ fbq('track', 'PageView');
     });
   }
 
-  /* ---------- CTA final: evento de pixel ---------- */
+  /* ---------- CTA final: clique para ir ao checkout da Kiwify ---------- */
   var ctaFinal = document.getElementById('ctaFinal');
   if(ctaFinal){
     ctaFinal.addEventListener('click', function(){
       if(typeof fbq !== 'undefined'){
-        fbq('track', 'InitiateCheckout');
+        fbq('trackCustom', 'KiwifyClick');
       }
     });
   }
