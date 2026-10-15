@@ -145,7 +145,10 @@ fbq('track', 'PageView');
 
   .offer{background:var(--cream-2);color:var(--ink);border-radius:22px;padding:24px 22px;margin-top:20px;text-align:center;}
   .price-label{color:var(--muted-dark);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;}
-  .price-big{font-size:2.3rem;font-weight:800;color:var(--ember);line-height:1;margin:6px 0 2px;}
+  .price-before{display:inline-block;color:var(--muted-dark);font-size:1rem;font-weight:700;text-decoration:line-through;text-decoration-thickness:2px;opacity:.8;margin-top:10px;}
+  .price-deal{display:flex;align-items:center;justify-content:center;gap:10px;margin:5px 0 4px;}
+  .price-big{font-size:clamp(2.8rem,12vw,3.6rem);font-weight:800;color:var(--ember);line-height:1;letter-spacing:-.055em;text-shadow:0 2px 0 rgba(214,69,43,.08);}
+  .price-discount{display:inline-flex;align-items:center;justify-content:center;background:var(--gold);color:var(--ink);font-size:.7rem;font-weight:800;line-height:1.1;padding:7px 9px;border-radius:10px;transform:rotate(3deg);box-shadow:0 3px 0 rgba(30,20,16,.12);}
   .price-sub{color:var(--muted-dark);font-size:.82rem;margin-bottom:16px;}
   .offer .checks{display:flex;flex-direction:column;gap:7px;text-align:left;margin-bottom:16px;font-size:.85rem;color:var(--ink);}
   .offer .checks span{display:flex;gap:8px;}
@@ -350,8 +353,12 @@ fbq('track', 'PageView');
         </div>
 
         <div class="offer">
-          <div class="price-label">Preço de fundador</div>
-          <div class="price-big">R$99,90</div>
+          <div class="price-label">Oferta especial por tempo limitado</div>
+          <div class="price-before">De R$ 297,00</div>
+          <div class="price-deal">
+            <div class="price-big">R$ 99,00</div>
+            <span class="price-discount">67%<br>OFF</span>
+          </div>
           <div class="price-sub">Pagamento único, sem mensalidade</div>
           <div class="checks">
             <span><i>✓</i> Passo a passo do zero até os primeiros pedidos</span>
