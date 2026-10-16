@@ -130,9 +130,27 @@ section{padding:64px 0}
 
 /* sobre */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
-.about .media{aspect-ratio:4/3}
 .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
 .chip{border:1px solid var(--line);background:var(--dark-2);border-radius:999px;padding:8px 15px;font-size:.8rem}
+
+
+/* foto do criador + caixinhas */
+.about .media.who{aspect-ratio:4/5;width:100%;max-width:440px;margin:0 auto;border:2px solid var(--gold)}
+.who img{object-position:50% 22%;filter:contrast(1.05) saturate(1.1)}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,24,17,.2),rgba(36,24,17,0) 35%,rgba(36,24,17,.92)),linear-gradient(135deg,rgba(247,183,51,.22),rgba(214,69,43,.12))}
+.rain{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.rain span{position:absolute;top:-14%;left:var(--l);font-size:var(--s,1.6rem);animation:fall var(--t,5s) linear infinite;animation-delay:var(--d,0s)}
+@keyframes fall{to{top:104%;transform:rotate(30deg)}}
+.cf1,.cf2{position:absolute;background:rgba(255,255,255,.96);color:var(--ink);border-radius:14px;padding:9px 13px;box-shadow:0 12px 24px -10px rgba(0,0,0,.6);animation:bob 3.6s ease-in-out infinite}
+.cf1{top:14px;left:14px}.cf2{top:46%;right:14px;animation-delay:-1.8s}
+.cf1 b,.cf2 b{display:block;font:800 1.05rem 'Outfit',sans-serif;color:var(--ember);line-height:1.2}
+.cf1 small,.cf2 small{display:block;font-size:.7rem;color:var(--md);line-height:1.25}
+@keyframes bob{50%{transform:translateY(-6px)}}
+.qa{position:absolute;left:14px;right:14px;bottom:62px;display:grid;gap:6px}
+.qa p{max-width:88%;padding:8px 12px;font-size:.82rem;line-height:1.35;color:#191919}
+.qa .q{justify-self:start;background:#fff;font-weight:600;border-radius:14px 14px 14px 4px}
+.qa .a{justify-self:end;background:#DCF8C6;border-radius:14px 14px 4px 14px;animation:ans 7s ease infinite}
+@keyframes ans{0%,18%{opacity:0;transform:translateY(8px)}28%,92%{opacity:1;transform:none}100%{opacity:0}}
 
 /* depoimentos */
 .tw{display:grid;grid-template-columns:1fr 1fr 1.15fr 1fr 1fr;gap:14px;align-items:center;margin-top:28px;width:min(1280px,calc(100vw - 60px));position:relative;left:50%;transform:translateX(-50%)}
@@ -359,8 +377,15 @@ footer{padding:0 0 calc(36px + var(--sb))}
       <p class="lead">Tudo o que ensino foi aplicado na prática: é o caminho que usei para sair do zero e transformar os primeiros pedidos em um negócio.</p>
       <div class="chips"><span class="chip">Começou dentro de casa</span><span class="chip">Vendas pelo WhatsApp</span><span class="chip">Testado na prática</span><span class="chip">3 lojas em 2 anos</span></div>
     </div>
-    <div class="media">
-      <img src="assets/salgados_foto.jpeg" alt="Salgados fritos prontos para venda, produzidos na cozinha de casa" loading="lazy">
+    <div class="media who">
+      <img src="assets/foto_criador.jpg" alt="Foto do criador do método" loading="lazy">
+      <div class="shade"></div>
+      <div class="rain" aria-hidden="true">
+        <span style="--l:5%;--d:0s;--t:5s">💵</span><span style="--l:20%;--d:1.6s;--t:6s;--s:1.2rem">💵</span><span style="--l:35%;--d:3.2s;--t:5.5s;--s:1.3rem">💰</span><span style="--l:62%;--d:.8s;--t:6s;--s:1.2rem">💵</span><span style="--l:78%;--d:2.4s;--t:5s">💰</span><span style="--l:90%;--d:4s;--t:5.5s;--s:1.8rem">💵</span>
+      </div>
+      <div class="cf1"><b>💰 R$250 mil/mês</b><small>faturamento das 3 lojas hoje</small></div>
+      <div class="cf2"><b>🏪 3 lojas</b><small>em 2 anos, começando em casa</small></div>
+      <div class="qa"><p class="q">Preciso ter experiência pra começar?</p><p class="a">✅ Não. O passo a passo parte do zero.</p></div>
       <div class="tag">Método criado num negócio real</div>
     </div>
   </div>
