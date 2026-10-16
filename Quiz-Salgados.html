@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<!-- Meta Pixel -->
+<title>Quiz: dá pra você vender salgados de casa e sair do CLT?</title>
+<meta name="description" content="Responda 6 perguntas rápidas e veja como começar a vender salgados de casa, no seu tempo, sem loja e sem experiência.">
+<meta name="theme-color" content="#241811">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥟</text></svg>">
+
+<!-- Meta Pixel (ID do quiz: 28187663737596007) -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -13,545 +18,374 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-
 fbq('init', '28187663737596007');
 fbq('track', 'PageView');
 </script>
-<noscript>
-  <img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id=28187663737596007&ev=PageView&noscript=1"
-       alt="">
-</noscript>
-<!-- Fim Meta Pixel -->
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=28187663737596007&ev=PageView&noscript=1" alt=""></noscript>
 
-<title>Isso é pra você? 20k sem sair de casa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800;900&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#1E1410; --dark:#241811; --dark-2:#2E1F16; --dark-line:#3D2B20;
-    --cream:#FAF5EC; --cream-2:#FFFFFF; --cream-line:#E8DECD;
-    --gold:#F7B733; --gold-deep:#E09A16; --ember:#D6452B;
-    --text-light:#FFF8EE; --muted-light:#C3AF9E; --muted-dark:#6E6055;
-    --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html,body{height:100%;}
-  body{
-    background:var(--dark);color:var(--text-light);
-    font-family:'Figtree',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
-    font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%;
-    overflow:hidden;position:fixed;inset:0;
-  }
-  h1,h2,.brand,.price-big{font-family:'Outfit',sans-serif;letter-spacing:-0.03em;}
-  .hl{color:var(--gold);}
+:root{--ink:#1E1410;--dark:#241811;--d2:#2E1F16;--line:#3D2B20;--cream:#FAF5EC;--cline:#E8DECD;--gold:#F7B733;--gold-d:#E09A16;--ember:#D6452B;--ember-d:#B63722;--pink:#FBE3DD;--tl:#FFF8EE;--ml:#C3AF9E;--md:#6E6055;--st:env(safe-area-inset-top,0px);--sb:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--dark);color:var(--tl);font:16px/1.5 'Figtree',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body.final{padding-bottom:calc(84px + var(--sb))}
+img,video{max-width:100%;display:block}
+h1,h2,h3,.num,.price{font-family:'Outfit',sans-serif;letter-spacing:-.03em}
+h1{font-size:clamp(2rem,1.5rem + 3vw,2.7rem);line-height:1.08;font-weight:900}
+h2{font-size:clamp(1.45rem,1.2rem + 1.6vw,1.9rem);line-height:1.15;font-weight:800}
+.hl{color:var(--gold)}.em{color:var(--ember)}
+.mk{display:inline-block;background:var(--gold);color:#241811;padding:.02em .25em;transform:rotate(-2deg);border-radius:4px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 
-  .top{position:fixed;top:0;left:0;right:0;z-index:20;padding:calc(16px + var(--safe-t)) 20px 14px;background:linear-gradient(180deg,var(--dark) 60%,transparent);}
-  .top-row{display:flex;align-items:center;gap:14px;max-width:520px;margin:0 auto;}
-  .back{width:34px;height:34px;border-radius:50%;background:var(--dark-2);border:1px solid var(--dark-line);display:flex;align-items:center;justify-content:center;color:var(--muted-light);flex:0 0 auto;cursor:pointer;font-size:1rem;}
-  .back:disabled{opacity:0;pointer-events:none;}
-  .bar{flex:1;height:7px;border-radius:20px;background:var(--dark-2);overflow:hidden;}
-  .bar-fill{height:100%;width:6%;background:linear-gradient(90deg,var(--ember),var(--gold));transition:width .35s ease;}
-  .step-count{font-size:.72rem;color:var(--muted-light);flex:0 0 auto;font-variant-numeric:tabular-nums;}
+.top{position:sticky;top:0;z-index:20;background:rgba(36,24,17,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:calc(12px + var(--st)) 20px 12px;border-bottom:1px solid var(--line)}
+.row{display:flex;align-items:center;gap:12px;max-width:520px;margin:0 auto}
+.back{width:36px;height:36px;border-radius:50%;background:var(--d2);border:1px solid var(--line);color:var(--ml);font-size:1rem;cursor:pointer;flex:0 0 auto}
+.back:disabled{opacity:0;pointer-events:none}
+.bar{flex:1;height:8px;border-radius:20px;background:var(--d2);overflow:hidden}
+.fill{height:100%;width:6%;background:linear-gradient(90deg,var(--ember),var(--gold));transition:width .35s}
+.cnt{font-size:.74rem;color:var(--ml);font-variant-numeric:tabular-nums;min-width:30px;text-align:right}
+.wrap{max-width:520px;margin:0 auto;padding:22px 22px 40px}
+.screen{display:none;animation:fade .3s}.screen.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+.pill{display:inline-block;background:var(--pink);color:var(--ember);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 13px;border-radius:999px;margin-bottom:14px}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.sub{color:var(--ml);margin-top:12px;max-width:44ch}
 
-  /* Teaser da oferta - aparece dentro da tela, abaixo das opções, a partir da pergunta 4 */
-  .offer-teaser-inline{
-    display:flex;align-items:center;justify-content:center;gap:7px;
-    font-size:.76rem;font-weight:700;color:var(--gold);
-    background:rgba(247,183,51,.08);border:1px solid rgba(247,183,51,.18);
-    border-radius:999px;padding:9px 14px;margin-top:18px;text-align:center;
-  }
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--gold);color:var(--ink);border:0;border-radius:999px;padding:18px 22px;font:700 1.05rem 'Figtree',sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s,background .15s}
+.btn:active{transform:scale(.98)}
+.btn-red{background:var(--ember);color:#fff;justify-content:space-between;text-transform:uppercase;box-shadow:0 12px 26px -10px rgba(214,69,43,.7);animation:pulse 2.4s ease-in-out infinite}
+.btn-red::after{content:"›";font-size:2rem;line-height:1}
+.btn-red:hover{background:var(--ember-d)}
+@keyframes pulse{50%{transform:scale(1.02)}}
 
-  .stage{position:absolute;inset:0;padding-top:calc(70px + var(--safe-t));padding-bottom:calc(24px + var(--safe-b));display:flex;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;}
-  .wrap{max-width:520px;margin:0 auto;padding:0 22px;width:100%;flex:1;display:flex;flex-direction:column;}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}
+.nums div{background:var(--d2);border:1px solid var(--line);border-radius:16px;padding:14px 8px;text-align:center}
+.num{display:block;font-size:1.55rem;font-weight:900;color:var(--gold);line-height:1.05}
+.nums small{color:var(--ml);font-size:.72rem;line-height:1.3;display:block;margin-top:4px}
+.disc{color:#9A8878;font-size:.72rem;margin-top:12px}
 
-  .screen{display:none;flex-direction:column;flex:1;animation:fade .35s ease;}
-  .screen.active{display:flex;}
-  @keyframes fade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.gif{height:140px;margin-top:16px;border-radius:16px;overflow:hidden;background:var(--d2);border:1px solid var(--line)}
+.gif img{width:100%;height:100%;object-fit:cover}
+.opts{display:grid;gap:11px;margin-top:20px}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;background:var(--d2);border:1.5px solid var(--line);border-radius:16px;padding:14px 18px;font:500 1rem 'Figtree',sans-serif;color:var(--tl);text-align:left;cursor:pointer;transition:border-color .15s,background .15s,transform .1s}
+.opt:active{transform:scale(.98)}
+.opt i{flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-style:normal;font-size:.7rem;font-weight:800;color:var(--ink)}
+.opt.on{border-color:var(--gold);background:rgba(247,183,51,.12)}
+.opt.on i{background:var(--gold);border-color:var(--gold)}
+.opt.on i::after{content:"✓"}
+.fb{margin-top:14px;min-height:1.4em;font-size:.88rem;color:var(--gold)}
+.tease{display:none;margin-top:14px;text-align:center;font-size:.78rem;font-weight:700;color:var(--gold);background:rgba(247,183,51,.08);border:1px solid rgba(247,183,51,.2);border-radius:999px;padding:9px 14px}
 
-  .eyebrow{display:flex;align-items:center;gap:9px;font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
-  .eyebrow::before{content:"";width:22px;height:1px;background:currentColor;}
-  h2{font-size:clamp(1.4rem,1.15rem + 1.6vw,1.85rem);line-height:1.18;font-weight:800;}
-  .sub{color:var(--muted-light);font-size:.92rem;margin-top:10px;max-width:42ch;}
+.load{text-align:center;padding:70px 0}
+.spin{width:54px;height:54px;border-radius:50%;border:5px solid var(--d2);border-top-color:var(--gold);margin:0 auto 22px;animation:rot 1s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.load p{color:var(--ml);margin-top:8px;min-height:1.5em}
 
-  /* GIF de cada pergunta */
-  .quiz-gif{
-    width:100%;max-width:280px;margin:16px auto 0;border-radius:18px;overflow:hidden;
-    background:var(--dark-2);border:1px solid var(--dark-line);aspect-ratio:1/1;
-  }
-  .quiz-gif img{display:block;width:100%;height:100%;object-fit:cover;}
+.res{text-align:center}
+.res .perso{background:var(--d2);border:1px solid var(--gold);border-radius:18px;padding:16px;margin-top:16px;text-align:left;font-size:.95rem;color:var(--ml)}
+.res .perso b{color:var(--tl)}
+.res .nums{margin:18px 0}
+.res .btn{margin-top:4px}
+.res .small{color:var(--ml);font-size:.78rem;margin-top:10px}
+.sec{margin-top:34px}
+.sec h3{font-size:1.25rem;font-weight:800;margin-bottom:14px}
+.vbox{width:100%;max-width:280px;aspect-ratio:9/16;margin:0 auto;border-radius:20px;overflow:hidden;position:relative;background:#120d09;border:1px solid var(--line)}
+.vbox video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vtag{position:absolute;top:10px;left:10px;z-index:2;background:rgba(30,20,16,.75);font-size:.68rem;font-weight:700;padding:4px 10px;border-radius:999px}
+.snd{position:absolute;inset:0;z-index:1;border:0;background:rgba(18,13,9,.3);display:grid;place-items:center;cursor:pointer}
+.snd span{background:var(--gold);color:var(--ink);font:700 .9rem 'Figtree',sans-serif;padding:12px 20px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+.slots{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 22px 10px;margin:0 -22px;scrollbar-width:none}
+.slots::-webkit-scrollbar{display:none}
+.slot{flex:0 0 68%;max-width:290px;aspect-ratio:740/1600;scroll-snap-align:center;background:#fff;border-radius:16px;overflow:hidden;position:relative;display:grid;place-items:center}
+.slot::before{content:attr(data-n);position:absolute;color:var(--md);font-size:.8rem}
+.slot img{position:relative;width:100%;height:100%;object-fit:contain;background:#fff}
+.swipe{color:var(--ml);font-size:.78rem;margin-top:4px}
 
-  .options{display:flex;flex-direction:column;gap:11px;margin-top:22px;}
-  .opt{background:var(--dark-2);border:1.5px solid var(--dark-line);border-radius:16px;padding:17px 18px;display:flex;align-items:center;gap:13px;font-size:.96rem;color:var(--text-light);cursor:pointer;text-align:left;transition:border-color .15s ease,background .15s ease,transform .1s ease;}
-  .opt:active{transform:scale(.98);}
-  .opt .dot{flex:0 0 auto;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--dark-line);display:flex;align-items:center;justify-content:center;}
-  .opt.chosen{border-color:var(--gold);background:rgba(247,183,51,.1);}
-  .opt.chosen .dot{background:var(--gold);border-color:var(--gold);}
-  .opt.chosen .dot::after{content:"✓";font-size:.62rem;font-weight:800;color:var(--ink);}
-  .opt:disabled{pointer-events:none;}
+.tk{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--pink);color:var(--ember);font-size:.75rem;font-weight:700;flex:0 0 auto;font-style:normal}
+.offer{background:#fff;color:var(--ink);border-radius:28px;padding:32px 22px 24px;text-align:center;position:relative;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.offer .pill{margin-bottom:12px}
+.offer h3{font-size:clamp(1.9rem,1.4rem + 3vw,2.5rem);font-weight:900;text-transform:uppercase;line-height:1;margin:0}
+.osub{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--md);margin-top:14px}
+.anchor{color:var(--md);text-decoration:line-through;font-weight:600;margin-top:14px}
+.por{font-size:.74rem;letter-spacing:.2em;color:var(--md)}
+.price{font-size:clamp(4rem,3rem + 5vw,5rem);font-weight:900;color:var(--ember);line-height:1;letter-spacing:-.04em;margin:4px 0}
+.off{position:absolute;top:18px;right:16px;background:var(--gold);color:var(--ink);font:800 .78rem/1.1 'Outfit',sans-serif;padding:8px 10px;border-radius:10px;transform:rotate(6deg)}
+.psub{font-size:.85rem;color:var(--md);padding-bottom:18px;border-bottom:1px solid var(--cline)}
+.ol{list-style:none;display:grid;gap:13px;text-align:left;margin:20px 0 24px}
+.ol li{display:flex;gap:12px;font-size:.95rem;line-height:1.4}
+.secure{font-size:.76rem;color:var(--md);margin-top:12px}
+.guar{display:flex;gap:18px;align-items:center;background:var(--d2);border:1px solid var(--line);border-radius:22px;padding:20px;margin-top:16px}
+.seal{flex:0 0 auto;width:80px;height:80px;border-radius:50%;background:var(--gold);color:#241811;display:grid;place-content:center;text-align:center;line-height:1.05}
+.seal b{font:900 1.8rem 'Outfit',sans-serif}.seal span{font-size:.6rem;font-weight:700}
+.guar h3{font-size:1.05rem;margin-bottom:4px}.guar p{color:var(--ml);font-size:.86rem}
+.legal{color:#9A8878;font-size:.72rem;margin-top:26px}
 
-  .micro-feedback{margin-top:14px;font-size:.86rem;color:var(--gold);opacity:0;transform:translateY(4px);transition:opacity .25s ease,transform .25s ease;min-height:1.2em;}
-  .micro-feedback.show{opacity:1;transform:translateY(0);}
-
-  .cta-fixed{margin-top:auto;padding-top:22px;}
-  .btn{
-    width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--gold);color:var(--ink);
-    border:none;border-radius:999px;padding:16px 20px;font-family:'Figtree',sans-serif;font-weight:700;font-size:1.02rem;
-    cursor:pointer;transition:background .15s ease,transform .15s ease;
-  }
-  .btn:active{transform:scale(.98);}
-  .btn:disabled{opacity:.4;pointer-events:none;}
-  .btn-ember{background:var(--ember);color:#fff;}
-
-  /* ===== TELA FINAL REDESENHADA ===== */
-  .result-badge{align-self:center;background:rgba(247,183,51,.14);color:var(--gold);border-radius:999px;padding:7px 16px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;}
-  .result h2{text-align:center;max-width:24ch;margin:0 auto;}
-
-  /* Vídeo logo no topo do resultado, é o primeiro gatilho emocional */
-  .testi-slot{margin-top:18px;background:var(--dark-2);border:1.5px solid var(--dark-line);border-radius:20px;padding:14px;text-align:center;}
-  .testi-slot .video-box{
-    width:100%;max-width:280px;aspect-ratio:9/16;margin:0 auto;border-radius:16px;
-    background:#120d09;display:flex;align-items:center;justify-content:center;
-    overflow:hidden;position:relative;
-  }
-  .testi-slot .video-box video{
-    display:block;width:100%;height:100%;object-fit:cover;
-    background:#120d09;border-radius:16px;
-  }
-  .testi-slot .video-tag{
-    position:absolute;top:10px;left:10px;background:rgba(30,20,16,.7);color:var(--text-light);
-    font-size:.66rem;font-weight:700;padding:4px 9px;border-radius:999px;letter-spacing:.03em;
-  }
-  .testi-slot .sound-overlay{
-    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    background:rgba(18,13,9,.35);cursor:pointer;transition:background .2s ease;
-  }
-  .testi-slot .sound-overlay:hover{background:rgba(18,13,9,.5);}
-  .testi-slot .sound-overlay .icon{
-    width:52px;height:52px;border-radius:50%;background:var(--gold);color:var(--ink);
-    display:flex;align-items:center;justify-content:center;font-size:1.3rem;
-    box-shadow:0 6px 18px rgba(0,0,0,.35);
-  }
-  .testi-slot p{color:var(--muted-light);font-size:.76rem;margin-top:10px;}
-
-  /* Bullets curtos no lugar da match-list extensa */
-  .quick-match{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px;}
-  .quick-match span{
-    background:var(--dark-2);border:1px solid var(--dark-line);color:var(--text-light);
-    font-size:.76rem;font-weight:600;padding:7px 12px;border-radius:999px;
-  }
-  .quick-match span i{color:var(--gold);font-style:normal;margin-right:4px;}
-
-  .offer{background:var(--cream-2);color:var(--ink);border-radius:22px;padding:24px 22px;margin-top:20px;text-align:center;}
-  .price-label{color:var(--muted-dark);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;}
-  .price-before{display:inline-block;color:var(--muted-dark);font-size:1rem;font-weight:700;text-decoration:line-through;text-decoration-thickness:2px;opacity:.8;margin-top:10px;}
-  .price-deal{display:flex;align-items:center;justify-content:center;gap:10px;margin:5px 0 4px;}
-  .price-big{font-size:clamp(2.8rem,12vw,3.6rem);font-weight:800;color:var(--ember);line-height:1;letter-spacing:-.055em;text-shadow:0 2px 0 rgba(214,69,43,.08);}
-  .price-discount{display:inline-flex;align-items:center;justify-content:center;background:var(--gold);color:var(--ink);font-size:.7rem;font-weight:800;line-height:1.1;padding:7px 9px;border-radius:10px;transform:rotate(3deg);box-shadow:0 3px 0 rgba(30,20,16,.12);}
-  .price-sub{color:var(--muted-dark);font-size:.82rem;margin-bottom:16px;}
-  .offer .checks{display:flex;flex-direction:column;gap:7px;text-align:left;margin-bottom:16px;font-size:.85rem;color:var(--ink);}
-  .offer .checks span{display:flex;gap:8px;}
-  .offer .checks i{color:var(--ember);font-style:normal;font-weight:700;}
-  .secure{color:var(--muted-dark);font-size:.72rem;margin-top:10px;}
-
-  /* Elementos de incentivo visual */
-  .progress-motivation{
-    display:flex;align-items:center;justify-content:center;gap:7px;
-    margin:10px auto 0;min-height:28px;color:var(--muted-light);
-    font-size:.76rem;font-weight:600;
-  }
-  .progress-motivation .crumb{opacity:.45;transition:opacity .25s ease,transform .25s ease;}
-  .progress-motivation .crumb.done{opacity:1;transform:scale(1.12);}
-  .progress-motivation .crumb.current{opacity:1;filter:saturate(1.2);}
-  .visual-reward{
-    display:flex;align-items:center;justify-content:center;gap:10px;
-    margin:16px auto 0;padding:12px 14px;border-radius:15px;
-    background:rgba(247,183,51,.07);border:1px solid rgba(247,183,51,.14);
-    color:var(--text-light);font-size:.82rem;font-weight:600;
-    animation:rewardIn .35s ease;
-  }
-  .visual-reward .food{font-size:1.5rem;line-height:1;}
-  .visual-reward .reward-copy{color:var(--muted-light);}
-  .visual-reward strong{color:var(--gold);}
-  @keyframes rewardIn{
-    from{opacity:0;transform:translateY(7px) scale(.98);}
-    to{opacity:1;transform:translateY(0) scale(1);}
-  }
-  .success-burst{
-    position:fixed;left:50%;top:46%;z-index:40;pointer-events:none;
-    transform:translate(-50%,-50%);font-size:2rem;opacity:0;
-  }
-  .success-burst.show{animation:burst .65s ease forwards;}
-  @keyframes burst{
-    0%{opacity:0;transform:translate(-50%,-50%) scale(.5);}
-    35%{opacity:1;transform:translate(-50%,-50%) scale(1.25);}
-    100%{opacity:0;transform:translate(-50%,-75%) scale(1);}
-  }
-  .whatsapp-float{
-    position:fixed;right:18px;bottom:18px;z-index:50;
-    width:56px;height:56px;border-radius:50%;display:flex;
-    align-items:center;justify-content:center;text-decoration:none;
-    background:#25D366;color:#fff;font-size:1.65rem;
-    box-shadow:0 8px 24px rgba(0,0,0,.35);
-    border:2px solid rgba(255,255,255,.18);
-    transition:transform .15s ease,box-shadow .15s ease;
-  }
-  .whatsapp-float:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 10px 28px rgba(0,0,0,.42);}
-  .whatsapp-float:active{transform:scale(.94);}
-  .whatsapp-float .wa-label{
-    position:absolute;right:66px;white-space:nowrap;
-    background:var(--cream-2);color:var(--ink);padding:8px 11px;
-    border-radius:10px;font-size:.72rem;font-weight:700;opacity:0;
-    transform:translateX(5px);pointer-events:none;transition:opacity .2s ease,transform .2s ease;
-  }
-  .whatsapp-float:hover .wa-label{opacity:1;transform:translateX(0);}
-  @media(max-width:420px){
-    .whatsapp-float{right:14px;bottom:14px;width:52px;height:52px;}
-    .whatsapp-float .wa-label{display:none;}
-  }
-  @media(prefers-reduced-motion:reduce){
-    .visual-reward,.success-burst,.opt,.btn{animation:none!important;transition:none!important;}
-  }
+.mcta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(21,13,9,.97);border-top:1px solid var(--line);padding:10px 16px calc(10px + var(--sb))}
+body.final .mcta{display:block}
+.mcta .row{justify-content:space-between}
+.mcta .num{font-size:1.4rem;font-weight:900;color:var(--gold)}
+.mcta small{display:block;color:var(--ml);font-size:.7rem;line-height:1.2}
+.mcta .btn{width:auto;padding:13px 20px;font-size:.92rem}
+.wa{display:none;position:fixed;right:14px;bottom:calc(92px + var(--sb));z-index:55;width:50px;height:50px;border-radius:50%;background:#25D366;place-items:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.6)}
+body.final .wa{display:grid}
+.wa svg{width:25px;height:25px;fill:#fff}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
-<div class="top">
-  <div class="top-row">
-    <button class="back" id="backBtn" aria-label="Voltar">←</button>
-    <div class="bar"><div class="bar-fill" id="barFill"></div></div>
-    <span class="step-count" id="stepCount">1/6</span>
-  </div>
-  <div class="progress-motivation" id="progressMotivation" aria-live="polite">
-    <span class="crumb current">🥟</span>
-    <span class="crumb">🥟</span>
-    <span class="crumb">🥟</span>
-    <span class="crumb">🥟</span>
-    <span class="crumb">🥟</span>
-    <span class="crumb">🥟</span>
-  </div>
-</div>
+<div class="top"><div class="row">
+  <button class="back" id="back" aria-label="Voltar">←</button>
+  <div class="bar"><div class="fill" id="fill"></div></div>
+  <span class="cnt" id="cnt"></span>
+</div></div>
 
-<div class="stage">
-  <div class="wrap" id="wrap">
+<main class="wrap">
 
-    <div class="screen active" data-screen="0">
-      <div class="eyebrow">Antes de continuar</div>
-      <h2>Vamos ver se o método <span class="hl">20k sem sair de casa</span> combina com a sua vida hoje?</h2>
-      <p class="sub">São 6 perguntas rápidas. No final você recebe seu resultado.</p>
-      <div class="cta-fixed">
-        <button class="btn" data-next>Começar ↗</button>
+  <!-- 0. ABERTURA -->
+  <section class="screen active" data-s="0">
+    <span class="pill">Quiz de 1 minuto</span>
+    <h1>Dá pra você <span class="mk">vender salgados de casa</span> e sair do CLT?</h1>
+    <p class="sub">Responda 6 perguntas rápidas e receba seu resultado, com o caminho para começar do zero, sem loja e sem experiência.</p>
+    <div class="nums">
+      <div><span class="num">3 lojas</span><small>em 2 anos, começando em casa</small></div>
+      <div><span class="num">R$250 mil</span><small>por mês nas 3 lojas hoje</small></div>
+      <div><span class="num">R$0</span><small>de estrutura no início</small></div>
+    </div>
+    <button class="btn" data-go>Começar o quiz ↗</button>
+    <p class="disc">Resultados do negócio que deu origem ao método. Não garantem resultado individual.</p>
+  </section>
+
+  <!-- 1 a 6. PERGUNTAS -->
+  <section class="screen" data-s="1" data-q="q1">
+    <div class="eyebrow">Pergunta 1 de 6</div>
+    <h2>Hoje você trabalha de carteira assinada (CLT)?</h2>
+    <div class="gif"><img src="assets/quiz1.gif" alt="" width="520" height="140" loading="lazy" decoding="async"></div>
+    <div class="opts">
+      <button class="opt" data-v="sim">Sim, sou CLT<i></i></button>
+      <button class="opt" data-v="nao">Não, mas quero mudar de vida<i></i></button>
+    </div><p class="fb" aria-live="polite"></p>
+  </section>
+
+  <section class="screen" data-s="2" data-q="q2">
+    <div class="eyebrow">Pergunta 2 de 6</div>
+    <h2>O que mais pesa no seu dia a dia hoje?</h2>
+    <div class="gif"><img src="assets/quiz2.gif" alt="" width="520" height="140" loading="lazy" decoding="async"></div>
+    <div class="opts">
+      <button class="opt" data-v="salario">O salário não sobra no fim do mês<i></i></button>
+      <button class="opt" data-v="crescimento">Não vejo espaço pra crescer<i></i></button>
+      <button class="opt" data-v="negocio">Sempre quis ter meu próprio negócio<i></i></button>
+      <button class="opt" data-v="familia">Falta tempo pra família<i></i></button>
+    </div><p class="fb" aria-live="polite"></p>
+  </section>
+
+  <section class="screen" data-s="3" data-q="q3">
+    <div class="eyebrow">Pergunta 3 de 6</div>
+    <h2>Você já pensou em vender salgados de casa pra ter uma renda extra?</h2>
+    <div class="gif"><img src="assets/quiz3.gif" alt="" width="520" height="140" loading="lazy" decoding="async"></div>
+    <div class="opts">
+      <button class="opt" data-v="ja">Sim, já pensei nisso<i></i></button>
+      <button class="opt" data-v="nunca">Nunca pensei, mas topo conhecer<i></i></button>
+    </div><p class="fb" aria-live="polite"></p>
+  </section>
+
+  <section class="screen" data-s="4" data-q="q4">
+    <div class="eyebrow">Pergunta 4 de 6</div>
+    <h2>Quanto tempo livre você tem por semana pra isso?</h2>
+    <div class="gif"><img src="assets/quiz4.gif" alt="" width="520" height="140" loading="lazy" decoding="async"></div>
+    <div class="opts">
+      <button class="opt" data-v="pouco">Menos de 5 horas<i></i></button>
+      <button class="opt" data-v="medio">Entre 5 e 10 horas<i></i></button>
+      <button class="opt" data-v="alto">Mais de 10 horas<i></i></button>
+    </div><p class="fb" aria-live="polite"></p>
+  </section>
+
+  <section class="screen" data-s="5" data-q="q5">
+    <div class="eyebrow">Pergunta 5 de 6</div>
+    <h2>O que mais te trava pra começar?</h2>
+    <div class="gif"><img src="assets/quiz5.gif" alt="" width="520" height="140" loading="lazy" decoding="async"></div>
+    <div class="opts">
+      <button class="opt" data-v="produto">Não sei o que vender<i></i></button>
+      <button class="opt" data-v="preco">Não sei como precificar<i></i></button>
+      <button class="opt" data-v="vendas">Não sei como vender e divulgar<i></i></button>
+      <button class="opt" data-v="medo">Medo de tentar e não dar certo<i></i></button>
+    </div><p class="fb" aria-live="polite"></p>
+  </section>
+
+  <section class="screen" data-s="6" data-q="q6">
+    <div class="eyebrow">Última pergunta</div>
+    <h2>Se virasse uma renda extra de R$2 a 5 mil por mês, você consideraria sair do CLT?</h2>
+    <div class="gif"><img src="assets/quiz6.gif" alt="" width="520" height="140" loading="lazy" decoding="async"></div>
+    <div class="opts">
+      <button class="opt" data-v="sim">Sim, com certeza<i></i></button>
+      <button class="opt" data-v="talvez">Talvez, quero ver como funciona<i></i></button>
+    </div><p class="fb" aria-live="polite"></p>
+  </section>
+
+  <p class="tease" id="tease">🎁 Sua oferta especial te espera no resultado</p>
+
+  <!-- CARREGANDO -->
+  <section class="screen load" data-s="load">
+    <div class="spin"></div>
+    <h2>Montando seu resultado...</h2>
+    <p id="loadTxt">Lendo suas respostas</p>
+  </section>
+
+  <!-- RESULTADO -->
+  <section class="screen res" data-s="final">
+    <span class="pill">Seu resultado</span>
+    <h2>Você pode começar do zero, de casa, <span class="hl">no tempo que tiver hoje.</span></h2>
+    <p class="perso" id="perso"></p>
+    <div class="nums">
+      <div><span class="num">3 lojas</span><small>em 2 anos</small></div>
+      <div><span class="num">R$250 mil</span><small>por mês, nas 3 lojas</small></div>
+      <div><span class="num">7 dias</span><small>de garantia total</small></div>
+    </div>
+    <a class="btn btn-red" data-buy href="https://pay.kiwify.com.br/EAsIbs3" target="_blank" rel="noopener noreferrer">Quero garantir meu acesso</a>
+    <p class="small">R$99,90 no pagamento único · 7 dias de garantia</p>
+
+    <div class="sec">
+      <h3>Veja quem já está aplicando</h3>
+      <div class="vbox">
+        <span class="vtag">Depoimento real</span>
+        <video id="vid" src="assets/depoimento_emerson.mp4" poster="assets/depoimento_emerson_thumb.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Depoimento em vídeo"></video>
+        <button class="snd" id="snd" type="button" aria-label="Ativar som do depoimento"><span>🔊 Toque para ouvir</span></button>
       </div>
     </div>
 
-    <div class="screen" data-screen="1">
-      <div class="eyebrow">Pergunta 1 de 6</div>
-      <h2>Hoje você trabalha de carteira assinada (CLT)?</h2>
-      <div class="quiz-gif"><img src="assets/quiz1.gif" alt="" loading="lazy"></div>
-      <div class="options" data-options="q1">
-        <button class="opt" data-value="sim">Sim, sou CLT<span class="dot"></span></button>
-        <button class="opt" data-value="nao">Não, mas quero mudar de vida<span class="dot"></span></button>
+    <div class="sec">
+      <!-- Mesmos 4 prints da página de vendas: assets/depoimento1.jpg ... depoimento4.jpg -->
+      <div class="slots">
+        <figure class="slot" data-n="[DEPOIMENTO 1]"><img src="assets/depoimento1.jpg" alt="Depoimento de aluno 1" loading="lazy" onerror="this.style.display='none'"></figure>
+        <figure class="slot" data-n="[DEPOIMENTO 2]"><img src="assets/depoimento2.jpg" alt="Depoimento de aluno 2" loading="lazy" onerror="this.style.display='none'"></figure>
+        <figure class="slot" data-n="[DEPOIMENTO 3]"><img src="assets/depoimento3.jpg" alt="Depoimento de aluno 3" loading="lazy" onerror="this.style.display='none'"></figure>
+        <figure class="slot" data-n="[DEPOIMENTO 4]"><img src="assets/depoimento4.jpg" alt="Depoimento de aluno 4" loading="lazy" onerror="this.style.display='none'"></figure>
       </div>
-      <p class="micro-feedback" id="fb1"></p>
+      <p class="swipe">Deslize para ver mais →</p>
     </div>
 
-    <div class="screen" data-screen="2">
-      <div class="eyebrow">Pergunta 2 de 6</div>
-      <h2>O que mais pesa no seu dia de CLT?</h2>
-      <div class="quiz-gif"><img src="assets/quiz2.gif" alt="" loading="lazy"></div>
-      <div class="options" data-options="q2">
-        <button class="opt" data-value="salario">O salário não sobra no fim do mês<span class="dot"></span></button>
-        <button class="opt" data-value="crescimento">Não vejo crescimento nem espaço pra evoluir<span class="dot"></span></button>
-        <button class="opt" data-value="negocio">Sempre quis ter meu próprio negócio<span class="dot"></span></button>
-        <button class="opt" data-value="familia">Falta tempo pra família<span class="dot"></span></button>
+    <div class="sec">
+      <div class="offer">
+        <span class="off">49%<br>OFF</span>
+        <span class="pill">Curso online</span>
+        <h3>Do zero aos <span class="em">R$ 20 mil</span> <span class="mk">na prática</span></h3>
+        <p class="osub">Venda salgados da sua cozinha e fature alto</p>
+        <p class="anchor">De R$197,00</p>
+        <p class="por">POR APENAS</p>
+        <div class="price">R$ 99,90</div>
+        <p class="psub">Pagamento único · sem mensalidade · acesso imediato</p>
+        <ul class="ol">
+          <li><i class="tk">✓</i><span>Como comprar dos <b>revendedores certos</b> e pagar mais barato</span></li>
+          <li><i class="tk">✓</i><span>Estratégias para <b>vender mais</b> e atrair mais clientes</span></li>
+          <li><i class="tk">✓</i><span>Como vender salgados direto <b>da cozinha</b> de casa</span></li>
+          <li><i class="tk">✓</i><span>Precificação e formação de <b>combos que vendem</b></span></li>
+          <li><i class="tk">✓</i><span>Marketing simples para divulgar no <b>WhatsApp</b> e nas redes sociais</span></li>
+          <li><i class="tk">✓</i><span><b>Acesso quase vitalício</b> e atualizações sem custo</span></li>
+          <li><i class="tk">✓</i><span>Garantia incondicional de <b>7 dias</b></span></li>
+          <li><i class="tk">✓</i><span><b>Suporte</b> para tirar dúvidas</span></li>
+        </ul>
+        <a class="btn btn-red" data-buy href="https://pay.kiwify.com.br/EAsIbs3" target="_blank" rel="noopener noreferrer">Quero garantir meu acesso</a>
+        <p class="secure">🔒 Compra segura pelo checkout da Kiwify.</p>
       </div>
-      <p class="micro-feedback" id="fb2"></p>
-    </div>
-
-    <div class="screen" data-screen="3">
-      <div class="eyebrow">Pergunta 3 de 6</div>
-      <h2>Você já pensou em ter uma renda extra vendendo salgados de casa?</h2>
-      <div class="quiz-gif"><img src="assets/quiz3.gif" alt="" loading="lazy"></div>
-      <div class="options" data-options="q3">
-        <button class="opt" data-value="ja">Sim, já pensei nisso<span class="dot"></span></button>
-        <button class="opt" data-value="nunca">Nunca tinha pensado, mas topo<span class="dot"></span></button>
+      <div class="guar">
+        <div class="seal"><b>7</b><span>dias de garantia</span></div>
+        <div><h3>O risco é meu, não seu</h3><p>Entre, assista e aplique. Se em 7 dias achar que não é pra você, peça o reembolso e devolvemos o valor integral.</p></div>
       </div>
-      <p class="micro-feedback" id="fb3"></p>
+      <p class="legal">Os resultados apresentados pertencem ao negócio que deu origem ao método e não representam promessa ou garantia de resultados individuais. O desempenho depende da aplicação do método, da região e da dedicação de cada pessoa. Este site não é afiliado ao Facebook, Instagram ou WhatsApp. Compras processadas pela Kiwify. [RAZÃO SOCIAL] · CNPJ [CNPJ] · <a href="[LINK POLÍTICA DE PRIVACIDADE]" style="color:inherit">Privacidade</a> · <a href="[LINK TERMOS DE USO]" style="color:inherit">Termos</a></p>
     </div>
+  </section>
+</main>
 
-    <div class="screen" data-screen="4">
-      <div class="eyebrow">Pergunta 4 de 6</div>
-      <h2>Quanto tempo livre você tem por semana pra dedicar a isso?</h2>
-      <div class="quiz-gif"><img src="assets/quiz4.gif" alt="" loading="lazy"></div>
-      <div class="options" data-options="q4">
-        <button class="opt" data-value="pouco">Menos de 5 horas<span class="dot"></span></button>
-        <button class="opt" data-value="medio">Entre 5 e 10 horas<span class="dot"></span></button>
-        <button class="opt" data-value="alto">Mais de 10 horas<span class="dot"></span></button>
-      </div>
-      <p class="micro-feedback" id="fb4"></p>
-      <div class="offer-teaser-inline">🎁 Sua oferta especial te espera no fim</div>
-    </div>
+<a class="wa" href="https://wa.me/5561993219818?text=Oi%21%20Quero%20saber%20mais%20sobre%20o%20curso." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8.9-.1.2-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.3 7.3 0 01-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 00-.7.3c-.2.3-.9.9-.9 2.1s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.7 3 .6.5 0 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.3z"/></svg></a>
 
-    <div class="screen" data-screen="5">
-      <div class="eyebrow">Pergunta 5 de 6</div>
-      <h2>O que mais te trava pra começar hoje?</h2>
-      <div class="quiz-gif"><img src="assets/quiz5.gif" alt="" loading="lazy"></div>
-      <div class="options" data-options="q5">
-        <button class="opt" data-value="produto">Não sei o que vender<span class="dot"></span></button>
-        <button class="opt" data-value="preco">Não sei como precificar<span class="dot"></span></button>
-        <button class="opt" data-value="vendas">Não sei como vender ou divulgar<span class="dot"></span></button>
-        <button class="opt" data-value="medo">Medo de tentar e não dar certo<span class="dot"></span></button>
-      </div>
-      <p class="micro-feedback" id="fb5"></p>
-      <div class="offer-teaser-inline">🎁 Sua oferta especial te espera no fim</div>
-    </div>
-
-    <div class="screen" data-screen="6">
-      <div class="eyebrow">Pergunta 6 de 6</div>
-      <h2>Se isso virasse uma renda extra de R$2 a 5 mil por mês, mudaria sua decisão de continuar só no CLT?</h2>
-      <div class="quiz-gif"><img src="assets/quiz6.gif" alt="" loading="lazy"></div>
-      <div class="options" data-options="q6">
-        <button class="opt" data-value="sim">Sim, com certeza<span class="dot"></span></button>
-        <button class="opt" data-value="talvez">Talvez, quero ver como funciona<span class="dot"></span></button>
-      </div>
-      <p class="micro-feedback" id="fb6"></p>
-      <div class="offer-teaser-inline">🎁 Sua oferta especial te espera no fim</div>
-    </div>
-
-    <!-- ===== TELA FINAL ===== -->
-    <div class="screen" data-screen="final">
-      <div class="result">
-        <div class="result-badge">Seu resultado</div>
-        <h2>Você pode começar do zero, de casa, no tempo que tiver hoje.</h2>
-
-        <div class="testi-slot">
-          <div class="video-box">
-            <span class="video-tag">Depoimento real</span>
-            <video
-              id="videoDepoimento"
-              src="assets/depoimento_emerson.mp4"
-              poster="assets/depoimento_emerson_thumb.jpg"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="auto"
-              aria-label="Depoimento em vídeo">
-            </video>
-            <div class="sound-overlay" id="soundOverlay" role="button" aria-label="Ativar som do depoimento">
-              <span class="icon">🔊</span>
-            </div>
-          </div>
-          <p>Toque no vídeo para ouvir nosso chef Emerson!</p>
-        </div>
-
-        <div class="quick-match">
-          <span><i>✓</i> Começa do zero</span>
-          <span><i>✓</i> Direto de casa</span>
-          <span><i>✓</i> No tempo que você tiver</span>
-        </div>
-
-        <div class="offer">
-          <div class="price-label">Oferta especial por tempo limitado</div>
-          <div class="price-before">De R$ 297,00</div>
-          <div class="price-deal">
-            <div class="price-big">R$ 99,00</div>
-            <span class="price-discount">67%<br>OFF</span>
-          </div>
-          <div class="price-sub">Pagamento único, sem mensalidade</div>
-          <div class="checks">
-            <span><i>✓</i> Passo a passo do zero até os primeiros pedidos</span>
-            <span><i>✓</i> Roteiros de vídeos virais e estratégias pra ganhar seguidores</span>
-            <span><i>✓</i> Planilha de precificação sem perder margem</span>
-            <span><i>✓</i> Acesso quase vitalício</span>
-            <span><i>✓</i> Garantia incondicional de 7 dias</span>
-          </div>
-          <a class="btn btn-ember" id="ctaFinal" href="https://pay.kiwify.com.br/EAsIbs3" target="_blank" rel="noopener noreferrer">Quero garantir meu acesso ↗</a>
-          <p class="secure">Compra processada pelo checkout seguro da Kiwify.</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<a
-  class="whatsapp-float"
-  href="https://wa.me/5561993219818?text=Oi%21%20Quero%20saber%20mais%20sobre%20o%20curso."
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Falar sobre o curso pelo WhatsApp">
-  <span class="wa-label">Tirar dúvidas no WhatsApp</span>
-  💬
-</a>
-
-<div class="success-burst" id="successBurst" aria-hidden="true">🥟✨</div>
+<div class="mcta"><div class="row">
+  <div><span class="num">R$99,90</span><small>pagamento único · 7 dias de garantia</small></div>
+  <a class="btn btn-red" data-buy href="https://pay.kiwify.com.br/EAsIbs3" target="_blank" rel="noopener noreferrer" style="animation:none;box-shadow:none">Comprar</a>
+</div></div>
 
 <script>
 (function(){
-  /* =========================================================
-     NAVEGAÇÃO DO QUIZ + META PIXEL
-     Pixel atual: 28187663737596007
+  var order=['0','1','2','3','4','5','6','load','final'];
+  var pct={'0':6,'1':16,'2':30,'3':46,'4':62,'5':78,'6':92,'load':96,'final':100};
+  var FB={q1:'Boa! Muita gente que entra aqui começou no CLT.',q2:'Entendi. Vou levar isso em conta no seu resultado.',q3:'Ótimo! Dá pra começar com o que você já tem na cozinha.',q4:'Perfeito. Dá pra começar com poucas horas por semana.',q5:'Esse ponto é coberto direto no curso.',q6:'Anotado! Falta só montar seu resultado.'};
+  var DOR={salario:'o salário que não sobra no fim do mês',crescimento:'a falta de espaço pra crescer',negocio:'a vontade de ter seu próprio negócio',familia:'a falta de tempo pra família'};
+  var TRAVA={produto:'não saber o que vender',preco:'não saber como precificar',vendas:'não saber como vender e divulgar',medo:'o medo de não dar certo'};
+  var S={};order.forEach(function(k){S[k]=document.querySelector('[data-s="'+k+'"]');});
+  var idx=0,ans={},timers=[],sent={},act=0,last=performance.now();
+  var $=function(id){return document.getElementById(id);};
+  function px(t,n,p){try{if(window.fbq)fbq(t,n,p||{});}catch(e){}}
+  function once(k,fn){if(!sent[k]){sent[k]=1;fn();}}
 
-     6 eventos:
-     1. PageView
-     2. EngagedTime (10s)
-     3. ScrollDepth (50%)
-     4. CTA_Click
-     5. WhatsAppClick
-     6. KiwifyClick
-     ========================================================= */
-
-  /* ---------- Estado do quiz ---------- */
-  var order = ["0","1","2","3","4","5","6","final"];
-  var questionSteps = ["1","2","3","4","5","6"];
-  var idx = 0;
-  var answers = {};
-
-  var screens = {};
-  order.forEach(function(id){
-    screens[id] = document.querySelector('[data-screen="'+id+'"]');
-  });
-
-  var barFill = document.getElementById('barFill');
-  var stepCount = document.getElementById('stepCount');
-  var backBtn = document.getElementById('backBtn');
-  var progressMotivation = document.getElementById('progressMotivation');
-  var successBurst = document.getElementById('successBurst');
-
-  /* Progresso não-linear: acelera nas duas últimas perguntas pra dar
-     sensação de "quase lá" e reduzir abandono perto do fim. */
-  var progressMap = { "0":6, "1":14, "2":28, "3":44, "4":62, "5":80, "6":93, "final":100 };
-
-  function showSuccessBurst(){
-    if(!successBurst) return;
-    successBurst.classList.remove('show');
-    void successBurst.offsetWidth;
-    successBurst.classList.add('show');
-  }
-
-  function updateProgressVisual(){
-    if(!progressMotivation) return;
-    var crumbs = progressMotivation.querySelectorAll('.crumb');
-    var id = order[idx];
-    var qIndex = questionSteps.indexOf(id);
-
-    crumbs.forEach(function(crumb, i){
-      crumb.classList.remove('done','current');
-      if(qIndex === -1){
-        if(id === 'final') crumb.classList.add('done');
-        return;
-      }
-      if(i < qIndex) crumb.classList.add('done');
-      else if(i === qIndex) crumb.classList.add('current');
-    });
-  }
-
-  function goTo(newIdx){
-    screens[order[idx]].classList.remove('active');
-    idx = newIdx;
-    var id = order[idx];
-    screens[id].classList.add('active');
-
-    barFill.style.width = (progressMap[id] || 6) + '%';
-
-    if(questionSteps.indexOf(id) !== -1){
-      stepCount.textContent = (questionSteps.indexOf(id)+1) + '/6';
-    } else if(id === 'final'){
-      stepCount.textContent = '6/6';
-    } else {
-      stepCount.textContent = '1/6';
+  function goTo(n,push){
+    timers.forEach(clearTimeout);timers=[];
+    S[order[idx]].classList.remove('active');
+    idx=n;var id=order[idx];
+    S[id].classList.add('active');
+    $('fill').style.width=pct[id]+'%';
+    var q=+id;$('cnt').textContent=q>=1?q+'/6':'';
+    $('back').disabled=idx===0;
+    $('tease').style.display=(q>=4&&q<=6)?'block':'none';
+    document.body.classList.toggle('final',id==='final');
+    window.scrollTo(0,0);
+    if(push!==false)history.pushState({i:idx},'');
+    if(id==='load'){
+      var t=$('loadTxt');t.textContent='Lendo suas respostas';
+      timers.push(setTimeout(function(){t.textContent='Montando seu caminho para começar';},1100));
+      timers.push(setTimeout(function(){goTo(idx+1,false);},2300));
     }
-
-    backBtn.disabled = (idx === 0);
-    updateProgressVisual();
-
-    if(id === 'final' && typeof fbq !== 'undefined'){
-      fbq('trackCustom', 'QuizCompleted');
+    if(id==='final'){
+      var d=ans.q2&&ans.q5?'Você contou que o que mais pesa é <b>'+DOR[ans.q2]+'</b> e que o que te trava é <b>'+TRAVA[ans.q5]+'</b>. O curso foi feito pra resolver isso, passo a passo, a partir do zero.':'O curso foi feito pra quem começa do zero, com poucas horas por semana e só a cozinha de casa.';
+      $('perso').innerHTML=d;
+      once('lead',function(){px('track','Lead');px('trackCustom','QuizCompleted');px('track','ViewContent',{content_name:'Método 20k sem sair de casa',value:99.90,currency:'BRL'});});
     }
   }
 
-  document.querySelectorAll('[data-next]').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      goTo(idx+1);
-    });
+  document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){once('start',function(){px('trackCustom','QuizStart');});goTo(idx+1);});});
+  $('back').addEventListener('click',function(){history.back();});
+  window.addEventListener('popstate',function(){
+    var id=order[idx],t=id==='final'?idx-2:idx-1;
+    if(t>=0)goTo(t,false);
   });
+  history.replaceState({i:0},'');
 
-  backBtn.addEventListener('click', function(){
-    if(idx>0) goTo(idx-1);
-  });
-
-  /* ---------- Respostas ---------- */
-  document.querySelectorAll('[data-options]').forEach(function(group){
-    var qKey = group.getAttribute('data-options');
-    group.querySelectorAll('.opt').forEach(function(opt){
-      opt.addEventListener('click', function(){
-        group.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('chosen'); });
-        opt.classList.add('chosen');
-        answers[qKey] = opt.getAttribute('data-value');
-
-        var fb = document.getElementById('fb' + qKey.replace('q',''));
-        if(fb){
-          fb.textContent = 'Perfeito, seguindo pro próximo passo...';
-          fb.classList.add('show');
-        }
-        showSuccessBurst();
-
-        setTimeout(function(){ goTo(idx+1); }, 500);
+  document.querySelectorAll('[data-q]').forEach(function(sc){
+    var k=sc.getAttribute('data-q'),fb=sc.querySelector('.fb');
+    sc.querySelectorAll('.opt').forEach(function(o){
+      o.addEventListener('click',function(){
+        sc.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on');});
+        o.classList.add('on');ans[k]=o.getAttribute('data-v');
+        fb.textContent=FB[k];
+        px('trackCustom','QuizStep',{step:k,answer:ans[k]});
+        timers.push(setTimeout(function(){goTo(idx+1);},650));
       });
     });
   });
 
-  /* ---------- Vídeo de depoimento: ativar som ---------- */
-  var video = document.getElementById('videoDepoimento');
-  var soundOverlay = document.getElementById('soundOverlay');
-  if(soundOverlay && video){
-    soundOverlay.addEventListener('click', function(){
-      video.muted = !video.muted;
-      if(!video.muted){
-        soundOverlay.style.display = 'none';
-        video.play();
-      }
-    });
-  }
+  // som do depoimento
+  var v=$('vid'),sn=$('snd');
+  sn.addEventListener('click',function(){v.muted=false;v.currentTime=0;v.play();sn.style.display='none';});
 
-  /* ---------- CTA final: clique para ir ao checkout da Kiwify ---------- */
-  var ctaFinal = document.getElementById('ctaFinal');
-  if(ctaFinal){
-    ctaFinal.addEventListener('click', function(){
-      if(typeof fbq !== 'undefined'){
-        fbq('trackCustom', 'KiwifyClick');
-      }
-    });
-  }
-
-  /* ---------- WhatsApp: evento de pixel ---------- */
-  document.querySelectorAll('.whatsapp-float').forEach(function(link){
-    link.addEventListener('click', function(){
-      if(typeof fbq !== 'undefined'){
-        fbq('trackCustom', 'WhatsAppClick');
-      }
+  // links da Kiwify levam a UTM/fbclid de quem veio do anúncio + evento de checkout
+  document.querySelectorAll('a[data-buy]').forEach(function(a){
+    var qs=location.search.slice(1);
+    if(qs)a.href+=(a.href.indexOf('?')>-1?'&':'?')+qs;
+    a.addEventListener('click',function(){
+      px('track','InitiateCheckout',{content_name:'Método 20k sem sair de casa',content_category:'curso',value:99.90,currency:'BRL'});
+      px('trackCustom','KiwifyClick',{label:a.textContent.trim().slice(0,40)});
     });
   });
+  document.querySelector('.wa').addEventListener('click',function(){px('trackCustom','WhatsAppClick');});
 
-  /* ---------- Engajamento (10s) e scroll (50%) ---------- */
-  setTimeout(function(){
-    if(typeof fbq !== 'undefined') fbq('trackCustom', 'EngagedTime');
-  }, 10000);
-
-  var scrollFired = false;
-  document.querySelector('.stage').addEventListener('scroll', function(e){
-    if(scrollFired) return;
-    var el = e.target;
-    var pct = el.scrollTop / (el.scrollHeight - el.clientHeight);
-    if(pct > 0.5){
-      scrollFired = true;
-      if(typeof fbq !== 'undefined') fbq('trackCustom', 'ScrollDepth');
-    }
-  });
-
-  goTo(0);
+  // engajamento (10s ativos) e scroll 50%
+  setInterval(function(){var n=performance.now();if(!document.hidden)act+=n-last;last=n;if(act>=10000)once('t',function(){px('trackCustom','EngagedTime',{seconds:10});});},1000);
+  document.addEventListener('visibilitychange',function(){last=performance.now();});
+  addEventListener('scroll',function(){
+    var d=document.documentElement;
+    if(scrollY/Math.max(d.scrollHeight-innerHeight,1)>=.5&&order[idx]==='final')once('s',function(){px('trackCustom','ScrollDepth',{percent:50});});
+  },{passive:true});
+  goTo(0,false);
 })();
 </script>
 </body>
